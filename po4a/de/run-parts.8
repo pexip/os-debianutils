@@ -10,7 +10,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH RUN\-PARTS 8 "14. Nov. 2010" Debian 
+.TH RUN\-PARTS 8 "27. Jun. 2012" Debian 
 .SH NAME
 run\-parts \- Skripte oder Programme in einem Verzeichnis ausführen
 .SH ÜBERSICHT
@@ -41,9 +41,10 @@ Falls die Option »\-\-regex« angegeben ist, müssen die Namen auf den
 angepassten erweiterten regulären Ausdruck passen, der der Option übergeben
 wurde.
 
-Dateien werden in der lexikalisch sortierten Reihenfolge ihrer Namen
-ausgeführt, es sei denn, die Option »\-\-reverse« ist angegeben, in diesem
-Fall werden sie in der umgekehrten Reihenfolge ausgeführt.
+Dateien werden in der lexikalisch sortierten Reihenfolge (gemäß den
+C/POSIX\-Locale\-Sortierregeln) ihrer Namen ausgeführt, es sei denn, die
+Option »\-\-reverse« ist angegeben, in diesem Fall werden sie in der
+umgekehrten Reihenfolge ausgeführt.
 
 .SH OPTIONEN
 .TP 

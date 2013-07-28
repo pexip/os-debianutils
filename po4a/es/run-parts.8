@@ -10,7 +10,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH RUN\-PARTS 8 "14 de noviembre de 2010" Debian 
+.TH RUN\-PARTS 8 "27 de junio de 2012" Debian 
 .SH NOMBRE
 run\-parts \- Ejecuta scripts o programas en un directorio
 .SH SINOPSIS
@@ -24,7 +24,7 @@ run\-parts \- Ejecuta scripts o programas en un directorio
 .PP
 \fBrun\-parts\fP ejecuta todos los ficheros con permisos de ejecución, dentro de
 los limites descritos a continuación, que se encuentran en el
-\fIdirectorio\fP. Se ignorarán otros ficheros o directorios.
+\fIdirectorio\fP. Se ignoran otros ficheros o directorios.
 
 Si no se introducen las opción «\-\-lsbsysinit» o «\-\-regex», los nombres sólo
 pueden incluir caracteres ASCII mayúsculas y minúsculas, dígitos ASCII,
@@ -32,15 +32,16 @@ guiones bajos ASCII, y signos de resta ASCII.
 
 SI se introduce la opción «\-\-lsbsysinit», los nombres no pueden finalizar
 con «.dpkg\-old», «.dpkg\-dist», «.dpkg\-new» o «dpkg\-tmp». Además, deben
-pertenecer a uno de los siguientes espacios de nombre («namespaces»): el
-espacio asignado por LANANA , (^[a\-z0\-9]+$); los espacios de nombre
-jerárquicos y reservados LSB, (^_?([a\-z0\-9_.]+\-)+[a\-z0\-9]+$); y el espacio
-de nombre del script para cron de Debian, (^[a\-zA\-Z0\-9_\-]+$).
+pertenecer a uno de los siguientes espacios de nombre: el espacio asignado
+por LANANA , (^[a\-z0\-9]+$); los espacios de nombre jerárquicos y reservados
+LSB, (^_?([a\-z0\-9_.]+\-)+[a\-z0\-9]+$); y el espacio de nombre del script para
+cron de Debian, (^[a\-zA\-Z0\-9_\-]+$).
 
 Si se introduce la opción «\-\-regex», los nombres deben coincidir con la
-expresión regular extendida especificada como argumento a esa opción.
+expresión regular extendida definida como argumento a esa opción.
 
-Los ficheros se ejecutan en orden alfabético, a menos que se introduzca la
+Los ficheros se ejecutan en orden alfabético (de acuerdo a las reglas de
+ordenación de caracteres de locale C/POSIX) a menos que se introduzca la
 opción «\-\-reverse», en cuyo caso se ejecutan en orden inverso.
 
 .SH OPCIONES
@@ -49,7 +50,7 @@ opción «\-\-reverse», en cuyo caso se ejecutan en orden inverso.
 Muestra los nombres de los scripts que se ejecutarían, sin ejecutarlos.
 .TP 
 \fB\-\-list\fP
-Muestra los nombres de todos los ficheros encontrados (no se limita a
+Muestra los nombres de todos los ficheros coincidentes (no se limita a
 ejecutables), sin ejecutarlos. Esta opción no se puede utilizar junto con
 «\-\-test».
 .TP 
@@ -74,8 +75,8 @@ Utiliza espacios de nombre LSB en lugar del comportamiento clásico.
 .TP 
 \fB\-\-new\-session\fP
 Ejecuta cada script en una sesión diferente. Si usa esta opción, cancelar el
-proceso de «run\-parts» no cancelará el script en ejecución, sino que
-continuaría hasta su finalización.
+proceso de «run\-parts» no cancela el script en ejecución, sino que este
+continua hasta su finalización.
 .TP 
 \fB\-\-regex=\fP\fIexpresión\-regular\fP
 Comprueba los nombres de fichero con una expresión regular extendida
@@ -84,8 +85,8 @@ uno.
 .TP 
 \fB\-u, \-\-umask=\fP\fIumask\fP
 Define umask con el valor \fIumask\fP antes de ejecutar los scripts. \fIumask\fP
-se debería especificar con un valor octal. El valor predeterminado de umask
-es 022.
+se debe especificar con un valor octal. El valor predeterminado de umask es
+022.
 .TP 
 \fB\-a, \-\-arg=\fP\fIargumento\fP
 Introduce el \fIargumento\fP a los scripts. Cada argumento a introducir debe ir

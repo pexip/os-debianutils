@@ -21,12 +21,12 @@ forma:
 
 .RE
 \fI<número>\fP representa el número de versión, siendo cero el más
-reciente. Los números de versión  > 0 se comprimen, a menos que \fB\-l\fP lo
+reciente. Los números de versión > 0 se comprimen, a menos que \fB\-l\fP lo
 impida. El número de versión cero no se comprime, ya que puede que un
-proceso mantenga el \fIfichero\fP abierto para la E/S. Sólo si preservan las
+proceso mantenga el \fIfichero\fP abierto para la E/S. Sólo se preservan las
 versiones \fIciclo\fP del fichero.
 
-Si el fichero no existe y se introduce \fB\-t\fP, este será creado.
+Si el fichero no existe y se introduce \fB\-t\fP, este se crea.
 
 Se permiten las siguientes acciones con ficheros que existen, y con un
 tamaño mayor que cero:
@@ -41,16 +41,16 @@ ciclo, sin importar el uso de \fB\-l\fP. Se ignoran los ficheros sin versión.
 
 .IP 2)
 El \fIfichero\fP.\fI1\fP nuevo se comprime, a menos que se introduzca la opción
-\fB\-l\fP. Puede cambiar el comportamiento con las opciones \fB\-m\fP, \fB\-u\fP, y
+\fB\-l\fP. Puede cambiar el funcionamiento con las opciones \fB\-m\fP, \fB\-u\fP, y
 \fB\-g\fP.
 
 .IP 3)
 El \fIfichero\fP principal se renombra como \fIfichero\fP.\fI0\fP.
 
 .IP 4)
-Si se introducen las opciones \fB\-m\fP, \fB\-u\fP, \fB\-g\fP, \fB\-t\fP o \fB\-p\fP, se creará
-un \fIfichero\fP, de acuerdo a las opciones dadas. Con la opción \fB\-p\fP, el
-fichero se creará con el mismo propietario, grupo y permisos originales.
+Si se introducen las opciones \fB\-m\fP, \fB\-u\fP, \fB\-g\fP, \fB\-t\fP o \fB\-p\fP, se crea un
+\fIfichero\fP, de acuerdo a las opciones dadas. Con la opción \fB\-p\fP, el fichero
+se crea con el mismo propietario, grupo y permisos originales.
 
 .IP 5)
 Las opciones \fB\-m\fP, \fB\-u\fP y \fB\-g\fP modifican el nuevo \fIfichero\fP.\fI0\fP.
@@ -99,7 +99,7 @@ Define el nivel de compresión o uso de memoria (por omisión: 9, excepto xz)
 Fuerza la limpieza de ficheros de registro que han completado un ciclo
 .TP 
 \fB\-d\fP
-Usa la fecha estándar al iterar los ficheros
+Utiliza la fecha estándar al iterar los ficheros
 .TP 
 \fB\-D formato\-fecha\fP
 Sobreescribe el formato de fecha, con el siguiente formato
@@ -109,13 +109,13 @@ Sobreescribe el formato de fecha, con el siguiente formato
 Usa \fIdirectorio\fP en lugar del directorio actual para iterar ficheros
 .TP 
 \fB\-n\fP
-No rota ficheros vacíos
+No itera ficheros vacíos
 .TP 
 \fB\-q\fP
 Modo silencioso
 .SH FALLOS
 Si un proceso aún está editando \fIfichero.0\fP, y «savelog» lo renombra como
-\fIfichero.1\fP, comprimiéndolo.
+\fIfichero.1\fP, comprimiéndolo, se pueden perder datos.
 
 .SH "VÉASE TAMBIÉN"
 \fBlogrotate\fP(8)
