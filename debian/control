@@ -1,12 +1,14 @@
 Source: debianutils
 Section: utils
 Priority: required
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Maintainer: Pexip AS <packaging@pexip.com>
+XSBC-Pexip-Original-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Clint Adams <clint@debian.org>
-Uploaders: Manoj Srivastava <srivasta@debian.org>
+XSBC-Pexip-Original-Uploaders: Manoj Srivastava <srivasta@debian.org>
 Standards-Version: 3.9.2
 Vcs-Git: git://git.debian.org/users/clint/debianutils.git
 Vcs-Browser: http://git.debian.org/?p=users/clint/debianutils.git
+XS-Pexip-Upstream: http://archive.ubuntu.com/ubuntu/ precise
 
 Package: debianutils
 Architecture: any
