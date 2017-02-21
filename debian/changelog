@@ -1,23 +1,79 @@
-debianutils (4.2.1ubuntu2pexip1) pexip; urgency=low
+debianutils (4.4pexip1) pexip; urgency=low
 
-  * Prepare Pexip packaging
+  * Migrate to Jessie
 
- -- John-Mark Bell <jmb@pexip.com>  Tue, 24 Dec 2013 14:43:23 +0000
+ -- John-Mark Bell <jmb@pexip.com>  Tue, 21 Feb 2017 19:00:21 +0000
 
-debianutils (4.2.1ubuntu2) precise; urgency=low
+debianutils (4.4) unstable; urgency=low
 
-  * Ensure correct strip is called when cross-building (LP: #962997)
+  [ Robert Luberda ]
+  * Initial translation of manual pages into Polish.  closes: #709945.
 
- -- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>  Fri, 23 Mar 2012 12:21:47 +0100
+  [ Clint Adams ]
+  * Bump to Standards-Version 3.9.4.
+  * savelog: patch from Bob Proulx to silence ls error message with
+    savelog -C.  closes: #653940.
+  * Patch from Robert Collins to fix compiler warnings.  closes: #699315.
+  * add-shell: use awk to replace the final newline in /etc/shells
+    even if the admin has removed it for some reason.  closes: #698874.
+  * Add Italian man pages from Beatrice Torracca.  closes: #708753.
 
-debianutils (4.2.1ubuntu1) precise; urgency=low
+ -- Clint Adams <clint@debian.org>  Sat, 27 Jul 2013 21:19:15 -0400
 
-  * Merge from Debian testing. (closes: LP: #933051)
-    Remaining changes:
-    - Mark debianutils as Multi-Arch: foreign to allow for isc-dhcp-client
-      to be installable with multi-arch (needed for armhf containers on x86)
+debianutils (4.3.4) unstable; urgency=low
 
- -- Maarten Bezemer <maarten.bezemer@gmail.com>  Wed, 15 Feb 2012 20:27:06 +0100
+  [ David Prévot ]
+  * French man page translation proofread by Stéphane Blondon.
+    closes: #684074.
+
+  [ Clint Adams ]
+  * Slovenian man page translation update from Andrej Žnidarši.
+  * Patch from KURASAWA Nozomu to fix Japanese man page build.
+    closes: #683405.
+  * Updated Spanish man page from Omar Campagne.  closes: #684132.
+
+ -- Clint Adams <clint@debian.org>  Sun, 16 Sep 2012 18:56:57 -0400
+
+debianutils (4.3.3) unstable; urgency=low
+
+  * Japanese man page translations from KURASAWA Nozomu.  closes: #682721.
+  * French man page translation update from David Prévot.  closes: #683122.
+  * German man page translation update from Helge Kreutzmann.  closes: #682449.
+
+ -- Clint Adams <clint@debian.org>  Sat, 28 Jul 2012 21:32:11 -0400
+
+debianutils (4.3.2) unstable; urgency=low
+
+  * Fix list of utilities in long description.  closes: #666077.
+  * run-parts(8): clarify that run-parts execution order is not
+    locale-dependent.  closes: #654340.
+  * tempfile(1): note that tempfile cannot create directories.
+    closes: #457974.
+
+ -- Clint Adams <clint@debian.org>  Wed, 27 Jun 2012 21:44:53 -0400
+
+debianutils (4.3.1) unstable; urgency=low
+
+  * Updated Spanish man page translation from Omar Campagne.  closes: #673631.
+
+ -- Clint Adams <clint@debian.org>  Thu, 31 May 2012 20:56:30 -0400
+
+debianutils (4.3) unstable; urgency=low
+
+  * Patch from Wookey to set Multi-Arch: foreign.  closes: #665964.
+  * Patch from Wookey to fix stripping on cross-builds.  closes: #665988.
+
+ -- Clint Adams <clint@debian.org>  Tue, 27 Mar 2012 15:29:33 -0400
+
+debianutils (4.2.2) unstable; urgency=low
+
+  [ Michal Čihař ]
+  * Properly handle situation inside vserver.  closes: #665352.
+
+  [ Clint Adams ]
+  * Bump to Standards-Version 3.9.3.
+
+ -- Clint Adams <clint@debian.org>  Sat, 24 Mar 2012 10:51:35 -0400
 
 debianutils (4.2.1) unstable; urgency=low
 
@@ -32,13 +88,6 @@ debianutils (4.2) unstable; urgency=low
    dead child processes.  closes: #379645.
 
  -- Clint Adams <clint@debian.org>  Sat, 28 Jan 2012 15:47:18 -0500
-
-debianutils (4.1ubuntu1) precise; urgency=low
-
-  * Mark debianutils as Multi-Arch: foreign to allow for isc-dhcp-client
-    to be installable with multi-arch (needed for armhf containers on x86)
-
- -- Stéphane Graber <stgraber@ubuntu.com>  Thu, 02 Feb 2012 17:08:51 -0500
 
 debianutils (4.1) unstable; urgency=low
 
