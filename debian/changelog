@@ -1,4 +1,4 @@
-debianutils (4.4pexip1) pexip; urgency=low
+debianutils (4.4+b1pexip1) pexip; urgency=low
 
   * Migrate to Jessie
 
