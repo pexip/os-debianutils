@@ -4,14 +4,17 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WHICH 1 "1 May 2009" Debian 
+.TH WHICH 1 "29 Jun 2016" Debian 
 .SH 名前
 which \- コマンドの場所
 .SH 書式
 which [\-a] filename ...
 .SH 説明
-\fBwhich\fP は、その引数を、厳密な POSIX 準拠シェルでコマンドとして与えられた場合の、現在の環境で実行されるファイル (やリンク)
-のパス名を返します。引数の名前に一致する実行ファイルを PATH から検索して、これを行います。シンボリックリンクは追跡しません。
+\fBwhich\fP returns the pathnames of the files (or links) which would be
+executed in the current environment, had its arguments been given as
+commands in a strictly POSIX\-conformant shell.  It does this by searching
+the PATH for executable files matching the names of the arguments. It does
+not canonicalize path names.
 .SH オプション
 .TP 
 \fB\-a\fP

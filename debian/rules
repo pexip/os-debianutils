@@ -24,6 +24,8 @@ CFLAGS := $(shell dpkg-buildflags --get CFLAGS)
 CPPFLAGS := $(shell dpkg-buildflags --get CPPFLAGS)
 LDFLAGS := $(shell dpkg-buildflags --get LDFLAGS)
 
+BUILD_DATE := $(shell dpkg-parsechangelog | sed -n -e 's/^Date: //p')
+
 build: build-indep build-arch
 build-indep:
 
@@ -73,9 +75,6 @@ ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
 	   	debian/tmp/usr/bin/ischroot
 endif
 
-ifneq ($(DEB_HOST_ARCH_OS),hurd)
-	ln -s /bin/which debian/tmp/usr/bin/which
-endif
 ifeq ($(DEB_HOST_ARCH_OS),linux)
 	mv debian/tmp/usr/sbin/installkernel debian/tmp/sbin/
 else
@@ -93,17 +92,21 @@ endif
 	     debian/tmp/usr/share/man/ja/man[18] \
 	     debian/tmp/usr/share/man/pl/man[18] \
 	     debian/tmp/usr/share/man/sl/man[18] \
-             debian/tmp/usr/share/doc/$(package) -type f | xargs gzip -9
+             debian/tmp/usr/share/doc/$(package) -type f | xargs gzip -9n
 	$(INSTALL_FILE) debian/copyright debian/tmp/usr/share/doc/$(package)
 	$(INSTALL_SCRIPT) debian/postinst debian/tmp/DEBIAN/
 	$(INSTALL_SCRIPT) debian/postrm debian/tmp/DEBIAN/
 
-	cd debian/tmp && find * -type f ! -regex '^DEBIAN/.*' -print0 | xargs -r0 md5sum > DEBIAN/md5sums
+	cd debian/tmp && find * -type f ! -regex '^DEBIAN/.*' -print0 | LC_ALL=C sort -z | xargs -r0 md5sum > DEBIAN/md5sums
+
+	find debian/tmp ! -type l -print0 | xargs -0r chmod go=rX,u+rw,a-s
 
 	dpkg-shlibdeps debian/tmp/bin/run-parts \
 			debian/tmp/bin/tempfile \
 			debian/tmp/usr/bin/ischroot
 	dpkg-gencontrol -isp
+	find debian/tmp -depth -newermt '$(BUILD_DATE)' -print0 | \
+		xargs -0r touch --no-dereference --date='$(BUILD_DATE)'
 	dpkg --build debian/tmp ..
 
 define checkdir

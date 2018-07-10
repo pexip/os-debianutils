@@ -1,3 +1,80 @@
+debianutils (4.8.1.1) unstable; urgency=medium
+
+  * de.po: German man page translation update from Helge
+    Kreutzmann.  closes: #858850.
+  * it.po: Italian man page translation update from Beatrice
+    Torracca.  closes: #858878.
+
+ -- Clint Adams <clint@debian.org>  Sun, 02 Apr 2017 13:10:33 -0400
+
+debianutils (4.8.1) unstable; urgency=medium
+
+  * po4a/po/fr.po: French man page translation update from
+    Baptiste Jammet.  closes: #844656.
+
+ -- Clint Adams <clint@debian.org>  Thu, 17 Nov 2016 15:37:53 -0500
+
+debianutils (4.8) unstable; urgency=medium
+
+  [ Andreas Henriksson ]
+  * add/remove-shell: also add/remove shells' real path.  closes: #817168.
+
+  [ Clint Adams ]
+  * which.1: tweak wording about symlinks.  closes: #819403.
+
+ -- Clint Adams <clint@debian.org>  Wed, 29 Jun 2016 20:17:09 +0200
+
+debianutils (4.7) unstable; urgency=medium
+
+  * Revert "add-shell: use grep instead of awk."  closes: #812784.
+
+ -- Clint Adams <clint@debian.org>  Tue, 26 Jan 2016 13:17:55 -0500
+
+debianutils (4.6) unstable; urgency=medium
+
+  [ Ben Hutchings ]
+  * installkernel: Only run postinst scripts when installing in /boot
+    closes: #812266.
+  * installkernel: Make sure the PATH for postinst scripts includes
+    /usr/sbin and /sbin
+
+  [ Clint Adams ]
+  * Patch from Christoph Biedl to fix the lsbsysinit regex.
+    closes: #802502.
+  * Patch from Andreas Henriksson to make ischroot work as non-root
+    on Linux.  closes: #670119.
+  * add-shell: use grep instead of awk, thanks to Carsten Hey.
+    closes: #796848.
+  * Add LFS check to configure.
+
+ -- Clint Adams <clint@debian.org>  Thu, 21 Jan 2016 22:53:54 -0500
+
+debianutils (4.5.1) unstable; urgency=medium
+
+  [ Jérémy Bobbio ]
+  * Ensure consistent permissions with different umasks.  closes: #774504.
+
+ -- Clint Adams <clint@debian.org>  Mon, 25 May 2015 21:35:19 -0400
+
+debianutils (4.5) unstable; urgency=medium
+
+  [ Clint Adams ]
+  * Update .gitignore for "new" po4a-generated man pages
+
+  [ Jérémy Bobbio ]
+  * Stop recording current time when using gzip
+  * Sort file list when generating md5sums
+  * Fix mtimes before building binary packages
+
+  [ Clint Adams ]
+  * Bump to Standards-Version 3.9.6.
+  * (tweaked) Portuguese man page translations from Américo
+    Monteiro.  closes: #751932.
+  * Tweaked patch from Marco d'Itri to support everything-in-usr.
+    closes: #767924.
+
+ -- Clint Adams <clint@debian.org>  Sun, 26 Apr 2015 11:03:51 -0400
+
 debianutils (4.4+b1pexip1) pexip; urgency=low
 
   * Migrate to Jessie
