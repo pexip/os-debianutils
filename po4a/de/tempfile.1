@@ -14,14 +14,11 @@ DATEI] [\-\-directory=VERZ] [\-\-prefix=ZEICHENKETTE] [\-\-suffix=ZEICHENKETTE]
 .SH BESCHREIBUNG
 .PP
 \fBtempfile\fP erstellt eine temporäre Datei auf eine sichere Art und Weise. Es
-verwendet \fBtempnam\fP(3), um den Namen zu wählen und öffnet sie mit O_RDWR |
-O_CREAT | O_EXCL. Der Dateiname wird auf der Standardausgabe
-ausgegeben. Lesen Sie \fBtempnam\fP(3) für die tatsächlichen Schritte, die in
-der Verzeichnisauswahl durchlaufen werden.
+verwendet \fBmkstemps\fP(3), um den Namen zu wählen und öffnet sie mit O_RDWR |
+O_CREAT | O_EXCL. Der Dateiname wird auf der Standardausgabe ausgegeben.
 .PP
 Die Verzeichnisse, in der die Datei erstellt wird, könnten in dieser
-Reihenfolge durchsucht werden (lesen Sie aber \fBtempnam\fP(3) für verbindliche
-Antworten):
+Reihenfolge durchsucht werden:
 .TP  3
 a)
 Falls die Umgebungsvariable \fBTMPDIR\fP existiert und den Namen eines
@@ -70,16 +67,16 @@ erstellt wurde. Jeder andere Rückgabewert zeigt einen Fehler an.
 .SH FEHLER
 Exklusive Erstellung wird bei Dateien auf NFS\-Partitionen nicht
 garantiert. Tempfile kann keine temporären Verzeichnisse erstellen. Tempfile
-ist veraltet, sie sollten stattdessen mktemp(1) verwenden.
+ist veraltet, Sie sollten stattdessen mktemp(1) verwenden.
 .SH BEISPIEL
 
 .RS
 .nf
 #!/bin/sh
-#[...]
+#[…]
 t=$(tempfile) || exit
 trap "rm \-f \-\- '$t'" EXIT
-#[...]
+#[…]
 rm \-f \-\- "$t"
 trap \- EXIT
 exit

@@ -13,13 +13,12 @@ tempfile \- Crea un fichero temporal de forma segura
 [\-\-name=FICHERO] [\-\-help] [\-\-version]
 .SH DESCRIPCIÓN
 .PP
-\fBtempfile\fP crea un fichero temporal de manera segura. Utiliza \fBtempnam\fP(3)
-para seleccionar un nombre, y lo abre con « O_RDWR | O_CREAT | O_EXCL». El
-nombre de fichero se muestra por la salida estándar. Consulte \fBtempnam\fP(3)
-para ver los pasos que se toman para la selección del directorio.
+\fBtempfile\fP creates a temporary file in a safe manner.  It uses
+\fBmkstemps\fP(3)  to choose the name and opens it with O_RDWR | O_CREAT |
+O_EXCL.  The filename is printed on standard output.
 .PP
-Se busca el directorio en el que crear el fichero en el siguiente orden (sin
-embargo, consulte \fBtempnam\fP(3) para ver información de la fuente original):
+The directory in which to create the file might be searched for in this
+order:
 .TP  3
 a)
 Si existe la variable de entorno \fBTMPDIR\fP, y contiene el nombre de un

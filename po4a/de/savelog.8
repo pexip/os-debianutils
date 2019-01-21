@@ -4,13 +4,13 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH SAVELOG 8 "30. Juni 2010" Debian 
+.TH SAVELOG 8 "30. Dez 2017" Debian 
 .SH NAME
 savelog \- eine Protokolldatei speichern
 .SH ÜBERSICHT
 \fBsavelog\fP [\-m Modus] [\-u Benutzer] [\-g Gruppe] [\-t] [\-p] [\-c Zyklus] [\-l]
 [\-j] [\-J] [\-1\ .\|.\ \-9] [\-C] [\-d] [\-l] [\-r WandVerz] [\-n] [\-q] [\-D
-Datumsformat] Datei ...
+Datumsformat] Datei …
 .SH BESCHREIBUNG
 Der Befehl \fBsavelog\fP speichert alte Kopien von Dateien und komprimiert sie
 optional. Ältere Versionen von \fIDatei\fP werden wie folgt benannt:
@@ -102,7 +102,8 @@ erzwinge Bereinigung von verschobenen Protokolldateien
 Standarddatum zum Wandeln verwenden
 .TP 
 \fB\-D Datumsformat\fP
-überschreibe Datumsformat, in der Form \fI[MMTThhmm[[CC]JJ][.ss]]\fP
+setzte das Datumsformat außer Kraft, in der von dem Befehl \fBdate\fP(1)
+verstandenen Syntax
 .TP 
 \fB\-r\fP
 verwende \fIWandVerz\fP statt . um Dateien zu wandeln

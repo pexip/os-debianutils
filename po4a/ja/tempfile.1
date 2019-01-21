@@ -13,11 +13,12 @@ tempfile \- 安全な一時ファイルの作成
 [\-\-name=FILE] [\-\-help] [\-\-version]
 .SH 説明
 .PP
-\fBtempfile\fP は、一時ファイルを安全な方法で作成します。ファイル名の選択に \fBtempnam\fP(3) を使用し、これを O_RDWR |
-O_CREAT | O_EXCL
-を用いてオープンします。ファイル名は標準出力に出力されます。ディレクトリの選択に関する実際のステップは、\fBtempnam\fP(3) を参照してください。
+\fBtempfile\fP creates a temporary file in a safe manner.  It uses
+\fBmkstemps\fP(3)  to choose the name and opens it with O_RDWR | O_CREAT |
+O_EXCL.  The filename is printed on standard output.
 .PP
-ファイルを作成するディレクトリを、以下の順番で探します (しかし確実なことは \fBtempnam\fP(3) を参照してください)。
+The directory in which to create the file might be searched for in this
+order:
 .TP  3
 a)
 環境変数 \fBTMPDIR\fP が存在し、適切なディレクトリ名が設定されていれば、これを使用します。
