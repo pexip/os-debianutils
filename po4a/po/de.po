@@ -1,12 +1,12 @@
 # Translation of debianutils man page template to German
-# Copyright (C) Helge Kreutzmann <debian@helgefjell.de>, 2011, 2012, 2017.
+# Copyright (C) Helge Kreutzmann <debian@helgefjell.de>, 2011, 2012, 2017, 2018.
 # This file is distributed under the same license as the debianutils package.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: debianutils man page 4.8.1\n"
-"POT-Creation-Date: 2016-11-17 15:39-0500\n"
-"PO-Revision-Date: 2017-03-27 18:47+0200\n"
+"Project-Id-Version: debianutils man page 4.8.6\n"
+"POT-Creation-Date: 2018-05-15 07:57-0400\n"
+"PO-Revision-Date: 2018-06-17 10:01+0200\n"
 "Last-Translator: Helge Kreutzmann <debian@helgefjell.de>\n"
 "Language-Team: de <debian-l10n-german@lists.debian.org>\n"
 "Language: de\n"
@@ -48,7 +48,7 @@ msgstr "ÜBERSICHT"
 #. type: Plain text
 #: ../add-shell.8:8
 msgid "B<add-shell> I<shellname> [I<shellname>...]"
-msgstr "B<add-shell> I<Shell-Name> [I<Shell-Name>...]"
+msgstr "B<add-shell> I<Shell-Name> [I<Shell-Name>…]"
 
 #. type: SH
 #: ../add-shell.8:8 ../installkernel.8:6 ../ischroot.1:8 ../remove-shell.8:8
@@ -74,7 +74,7 @@ msgid "The shells must be provided by their full pathnames."
 msgstr "Die Shells müssen mit ihrem vollen Pfadnamen angegeben werden."
 
 #. type: SH
-#: ../add-shell.8:15 ../remove-shell.8:13 ../savelog.8:158 ../tempfile.1:90
+#: ../add-shell.8:15 ../remove-shell.8:13 ../savelog.8:159 ../tempfile.1:86
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "SIEHE AUCH"
@@ -138,7 +138,7 @@ msgstr ""
 "vmlinuz.old> verfügbar."
 
 #. type: SH
-#: ../installkernel.8:22 ../ischroot.1:35 ../savelog.8:151 ../tempfile.1:73
+#: ../installkernel.8:22 ../ischroot.1:35 ../savelog.8:152 ../tempfile.1:69
 #, no-wrap
 msgid "BUGS"
 msgstr "FEHLER"
@@ -230,7 +230,7 @@ msgstr ""
 "das Skript nicht als Root ausgeführt wird)"
 
 #. type: SH
-#: ../ischroot.1:22 ../run-parts.8:47 ../savelog.8:92 ../tempfile.1:46
+#: ../ischroot.1:22 ../run-parts.8:47 ../savelog.8:92 ../tempfile.1:42
 #: ../which.1:14
 #, no-wrap
 msgid "OPTIONS"
@@ -259,26 +259,26 @@ msgid "Exit with status 0 if the detection is not possible."
 msgstr "mit Status 0 beenden, falls die Erkennung nicht möglich ist"
 
 #. type: TP
-#: ../ischroot.1:29 ../tempfile.1:64
+#: ../ischroot.1:29 ../tempfile.1:60
 #, no-wrap
 msgid "B<--help>"
 msgstr "B<--help>"
 
 #. type: Plain text
-#: ../ischroot.1:32 ../tempfile.1:67
+#: ../ischroot.1:32 ../tempfile.1:63
 msgid "Print a usage message on standard output and exit successfully."
 msgstr ""
 "auf der Standardausgabe einen Benutzungshinweis anzeigen und erfolgreich "
 "beenden"
 
 #. type: TP
-#: ../ischroot.1:32 ../tempfile.1:67
+#: ../ischroot.1:32 ../tempfile.1:63
 #, no-wrap
 msgid "B<--version>"
 msgstr "B<--version>"
 
 #. type: Plain text
-#: ../ischroot.1:35 ../tempfile.1:70
+#: ../ischroot.1:35 ../tempfile.1:66
 msgid "Print version information on standard output and exit successfully."
 msgstr ""
 "auf der Standardausgabe Versionsinformationen anzeigen und erfolgreich "
@@ -314,7 +314,7 @@ msgstr ""
 #. type: Plain text
 #: ../remove-shell.8:8
 msgid "B<remove-shell> I<shellname> [I<shellname>...]"
-msgstr "B<remove-shell> I<Shell-Name> [I<Shell-Name>...]"
+msgstr "B<remove-shell> I<Shell-Name> [I<Shell-Name>…]"
 
 #. type: Plain text
 #: ../remove-shell.8:13
@@ -443,34 +443,34 @@ msgid "B<--list>"
 msgstr "B<--list>"
 
 #. type: Plain text
-#: ../run-parts.8:56
+#: ../run-parts.8:57
 msgid ""
 "print the names of the all matching files (not limited to executables), but "
-"don't actually run them. This option cannot be used with --test."
+"don't actually run them.  This option cannot be used with --test."
 msgstr ""
 "gibt die Namen aller passenden Dateien (nicht begrenzt auf ausführbare "
 "Dateien) aus, führt diese aber nicht aus. Diese Option kann nicht zusammen "
 "mit »--test« verwandt werden."
 
 #. type: TP
-#: ../run-parts.8:56
+#: ../run-parts.8:57
 #, no-wrap
 msgid "B<-v, --verbose>"
 msgstr "B<-v, --verbose>"
 
 #. type: Plain text
-#: ../run-parts.8:59
+#: ../run-parts.8:60
 msgid "print the name of each script to stderr before running."
 msgstr "gibt vor der Ausführung jedes Skriptes den Namen auf Stderr aus."
 
 #. type: TP
-#: ../run-parts.8:59
+#: ../run-parts.8:60
 #, no-wrap
 msgid "B<--report>"
 msgstr "B<--report>"
 
 #. type: Plain text
-#: ../run-parts.8:64
+#: ../run-parts.8:67
 msgid ""
 "similar to B<--verbose>, but only prints the name of scripts which produce "
 "output.  The script's name is printed to whichever of stdout or stderr the "
@@ -482,48 +482,48 @@ msgstr ""
 "ausgibt."
 
 #. type: TP
-#: ../run-parts.8:64
+#: ../run-parts.8:67
 #, no-wrap
 msgid "B<--reverse>"
 msgstr "B<--reverse>"
 
 #. type: Plain text
-#: ../run-parts.8:67
+#: ../run-parts.8:70
 msgid "reverse the scripts' execution order."
 msgstr "invertiert die Reihenfolge der Ausführung."
 
 #. type: TP
-#: ../run-parts.8:67
+#: ../run-parts.8:70
 #, no-wrap
 msgid "B<--exit-on-error>"
 msgstr "B<--exit-on-error>"
 
 #. type: Plain text
-#: ../run-parts.8:70
+#: ../run-parts.8:73
 msgid "exit as soon as a script returns with a non-zero exit code."
 msgstr ""
 "beenden, sobald ein Skript mit einem von Null verschiedenen Exit-Code "
 "zurückkehrt."
 
 #. type: TP
-#: ../run-parts.8:70
+#: ../run-parts.8:73
 #, no-wrap
 msgid "B<--lsbsysinit>"
 msgstr "B<--lsbsysinit>"
 
 #. type: Plain text
-#: ../run-parts.8:73
+#: ../run-parts.8:76
 msgid "use LSB namespaces instead of classical behavior."
 msgstr "LSB-Namensräume statt des klassischen Verhaltens verwenden."
 
 #. type: TP
-#: ../run-parts.8:73
+#: ../run-parts.8:76
 #, no-wrap
 msgid "B<--new-session>"
 msgstr "B<--new-session>"
 
 #. type: Plain text
-#: ../run-parts.8:78
+#: ../run-parts.8:81
 msgid ""
 "run each script in a separate process session.  If you use this option, "
 "killing run-parts will not kill the currently running script, it will run "
@@ -534,13 +534,13 @@ msgstr ""
 "laufende Skript töten, welches bis zum Ende durchlaufen wird."
 
 #. type: TP
-#: ../run-parts.8:78
+#: ../run-parts.8:81
 #, no-wrap
 msgid "B<--regex=>I<RE>"
 msgstr "B<--regex=>I<RE>"
 
 #. type: Plain text
-#: ../run-parts.8:83
+#: ../run-parts.8:86
 msgid ""
 "validate filenames against custom extended regular expression I<RE>.  See "
 "the EXAMPLES section for an example."
@@ -549,13 +549,13 @@ msgstr ""
 "I<RE>. Sie finden im Abschnitt BEISPIELE ein Beispiel dazu."
 
 #. type: TP
-#: ../run-parts.8:83
+#: ../run-parts.8:86
 #, no-wrap
 msgid "B<-u, --umask=>I<umask>"
 msgstr "B<-u, --umask=>I<Umask>"
 
 #. type: Plain text
-#: ../run-parts.8:90
+#: ../run-parts.8:93
 msgid ""
 "sets the umask to I<umask> before running the scripts.  I<umask> should be "
 "specified in octal.  By default the umask is set to 022."
@@ -564,13 +564,13 @@ msgstr ""
 "oktal angegeben werden. Standardmäßig ist die Umask auf 022 gesetzt."
 
 #. type: TP
-#: ../run-parts.8:90
+#: ../run-parts.8:93
 #, no-wrap
 msgid "B<-a, --arg=>I<argument>"
 msgstr "B<-a, --arg=>I<Optionen>"
 
 #. type: Plain text
-#: ../run-parts.8:97
+#: ../run-parts.8:100
 msgid ""
 "pass I<argument> to the scripts.  Use B<--arg> once for each argument you "
 "want passed."
@@ -579,13 +579,13 @@ msgstr ""
 "weiterzugebende Option einmal B<--arg>."
 
 #. type: TP
-#: ../run-parts.8:97
+#: ../run-parts.8:100
 #, no-wrap
 msgid "B<-->"
 msgstr "B<-->"
 
 #. type: Plain text
-#: ../run-parts.8:103
+#: ../run-parts.8:106
 msgid ""
 "specifies that this is the end of the options.  Any filename after B<--> "
 "will be not be interpreted as an option even if it starts with a hyphen."
@@ -594,35 +594,35 @@ msgstr ""
 "als Option interpretiert, selbst wenn er mit einem Minuszeichen beginnt."
 
 #. type: TP
-#: ../run-parts.8:103
+#: ../run-parts.8:106
 #, no-wrap
 msgid "B<-h, --help>"
 msgstr "B<-h, --help>"
 
 #. type: Plain text
-#: ../run-parts.8:106
+#: ../run-parts.8:109
 msgid "display usage information and exit."
 msgstr "zeigt die Benutzungsinformationen an und beendet das Programm."
 
 #. type: TP
-#: ../run-parts.8:106
+#: ../run-parts.8:109
 #, no-wrap
 msgid "B<-V, --version>"
 msgstr "B<-V, --version>"
 
 #. type: Plain text
-#: ../run-parts.8:109
+#: ../run-parts.8:112
 msgid "display version and copyright and exit."
 msgstr "zeigt die Version und das Copyright an und beendet das Programm."
 
 #. type: SH
-#: ../run-parts.8:110
+#: ../run-parts.8:113
 #, no-wrap
 msgid "EXAMPLES"
 msgstr "BEISPIELE"
 
 #. type: Plain text
-#: ../run-parts.8:113
+#: ../run-parts.8:116
 msgid ""
 "Print the names of all files in /etc that start with `p' and end with `d':"
 msgstr ""
@@ -630,40 +630,40 @@ msgstr ""
 "enden:"
 
 #. type: Plain text
-#: ../run-parts.8:115
+#: ../run-parts.8:118
 msgid "run-parts --list --regex \\[aq]^p.*d$\\[aq] /etc"
 msgstr "run-parts --list --regex \\[aq]^p.*d$\\[aq] /etc"
 
 #. type: SH
-#: ../run-parts.8:116
+#: ../run-parts.8:119
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 #. type: Plain text
-#: ../run-parts.8:119
+#: ../run-parts.8:122
 msgid "Copyright (C) 1994 Ian Jackson."
 msgstr "Copyright (C) 1994 Ian Jackson."
 
 #. type: Plain text
-#: ../run-parts.8:121
+#: ../run-parts.8:124
 msgid "Copyright (C) 1996 Jeff Noxon."
 msgstr "Copyright (C) 1996 Jeff Noxon."
 
 #. type: Plain text
-#: ../run-parts.8:123
+#: ../run-parts.8:126
 msgid "Copyright (C) 1996, 1997, 1998 Guy Maor"
 msgstr "Copyright (C) 1996, 1997, 1998 Guy Maor"
 
 #. type: Plain text
-#: ../run-parts.8:125
+#: ../run-parts.8:128
 msgid ""
 "Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Clint Adams"
 msgstr ""
 "Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Clint Adams"
 
 #. type: Plain text
-#: ../run-parts.8:130
+#: ../run-parts.8:133
 msgid ""
 "B<run-parts> is free software; see the GNU General Public License version 2 "
 "or later for copying conditions.  There is I<no> warranty."
@@ -680,8 +680,8 @@ msgstr "SAVELOG"
 #. type: TH
 #: ../savelog.8:2
 #, no-wrap
-msgid "30 Jun 2010"
-msgstr "30. Juni 2010"
+msgid "30 Dec 2017"
+msgstr "30. Dez 2017"
 
 #. type: Plain text
 #: ../savelog.8:5
@@ -697,7 +697,7 @@ msgid ""
 msgstr ""
 "B<savelog> [-m Modus] [-u Benutzer] [-g Gruppe] [-t] [-p] [-c Zyklus] [-l] [-"
 "j] [-J] [-1\\ .\\|.\\ -9] [-C] [-d] [-l] [-r WandVerz] [-n] [-q] [-D "
-"Datumsformat] Datei ..."
+"Datumsformat] Datei …"
 
 #. type: Plain text
 #: ../savelog.8:16
@@ -978,45 +978,48 @@ msgid "B<-D dateformat>"
 msgstr "B<-D Datumsformat>"
 
 #. type: Plain text
-#: ../savelog.8:140
-msgid "override date format, in the form of I<[MMDDhhmm[[CC]YY][.ss]]>"
-msgstr "überschreibe Datumsformat, in der Form I<[MMTThhmm[[CC]JJ][.ss]]>"
+#: ../savelog.8:141
+msgid ""
+"override date format, in the syntax understood by the B<date>(1)  command"
+msgstr ""
+"setzte das Datumsformat außer Kraft, in der von dem Befehl B<date>(1) "
+"verstandenen Syntax"
 
 #. type: TP
-#: ../savelog.8:140
+#: ../savelog.8:141
 #, no-wrap
 msgid "B<-r>"
 msgstr "B<-r>"
 
 #. type: Plain text
-#: ../savelog.8:145
+#: ../savelog.8:146
 msgid "use I<rolldir> instead of . to roll files"
 msgstr "verwende I<WandVerz> statt . um Dateien zu wandeln"
 
 #. type: TP
-#: ../savelog.8:145
+#: ../savelog.8:146
 #, no-wrap
 msgid "B<-n>"
 msgstr "B<-n>"
 
 #. type: Plain text
-#: ../savelog.8:148
+#: ../savelog.8:149
 msgid "do not rotate empty files"
 msgstr "leere Dateien nicht rotieren"
 
 #. type: TP
-#: ../savelog.8:148
+#: ../savelog.8:149
 #, no-wrap
 msgid "B<-q>"
 msgstr "B<-q>"
 
 #. type: Plain text
-#: ../savelog.8:151
+#: ../savelog.8:152
 msgid "be quiet"
 msgstr "nichts ausgeben"
 
 #. type: Plain text
-#: ../savelog.8:157
+#: ../savelog.8:158
 msgid ""
 "If a process is still writing to I<file.0>, and savelog moves it to "
 "I<file.1> and compresses it, data could be lost."
@@ -1025,7 +1028,7 @@ msgstr ""
 "I<Datei.1> verschiebt und dann komprimiert, könnten Daten verloren gehen."
 
 #. type: Plain text
-#: ../savelog.8:159
+#: ../savelog.8:160
 msgid "B<logrotate>(8)"
 msgstr "B<logrotate>(8)"
 
@@ -1053,37 +1056,33 @@ msgstr ""
 "mode=MODUS] [--name=DATEI] [--help] [--version]"
 
 #. type: Plain text
-#: ../tempfile.1:18
+#: ../tempfile.1:16
 msgid ""
 "B<tempfile> creates a temporary file in a safe manner.  It uses "
-"B<tempnam>(3)  to choose the name and opens it with O_RDWR | O_CREAT | "
-"O_EXCL.  The filename is printed on standard output. See B<tempnam>(3)  for "
-"the actual steps involved in directory selection."
+"B<mkstemps>(3)  to choose the name and opens it with O_RDWR | O_CREAT | "
+"O_EXCL.  The filename is printed on standard output."
 msgstr ""
 "B<tempfile> erstellt eine temporäre Datei auf eine sichere Art und Weise. Es "
-"verwendet B<tempnam>(3), um den Namen zu wählen und öffnet sie mit O_RDWR | "
+"verwendet B<mkstemps>(3), um den Namen zu wählen und öffnet sie mit O_RDWR | "
 "O_CREAT | O_EXCL. Der Dateiname wird auf der Standardausgabe ausgegeben. "
-"Lesen Sie B<tempnam>(3) für die tatsächlichen Schritte, die in der "
-"Verzeichnisauswahl durchlaufen werden."
 
 #. type: Plain text
-#: ../tempfile.1:23
+#: ../tempfile.1:19
 msgid ""
 "The directory in which to create the file might be searched for in this "
-"order (but refer to B<tempnam>(3)  for authoritative answers):"
+"order:"
 msgstr ""
 "Die Verzeichnisse, in der die Datei erstellt wird, könnten in dieser "
-"Reihenfolge durchsucht werden (lesen Sie aber B<tempnam>(3) für verbindliche "
-"Antworten):"
+"Reihenfolge durchsucht werden:"
 
 #. type: TP
-#: ../tempfile.1:23
+#: ../tempfile.1:19
 #, no-wrap
 msgid "a)"
 msgstr "a)"
 
 #. type: Plain text
-#: ../tempfile.1:29
+#: ../tempfile.1:25
 msgid ""
 "In case the environment variable B<TMPDIR> exists and contains the name of "
 "an appropriate directory, that is used."
@@ -1092,13 +1091,13 @@ msgstr ""
 "geeigneten Verzeichnisses enthält, wird dieses verwandt."
 
 #. type: TP
-#: ../tempfile.1:29
+#: ../tempfile.1:25
 #, no-wrap
 msgid "b)"
 msgstr "b)"
 
 #. type: Plain text
-#: ../tempfile.1:34
+#: ../tempfile.1:30
 msgid ""
 "Otherwise, if the I<--directory> argument is specified and appropriate, it "
 "is used."
@@ -1107,13 +1106,13 @@ msgstr ""
 "sie verwandt."
 
 #. type: TP
-#: ../tempfile.1:34
+#: ../tempfile.1:30
 #, no-wrap
 msgid "c)"
 msgstr "c)"
 
 #. type: Plain text
-#: ../tempfile.1:41
+#: ../tempfile.1:37
 msgid ""
 "Otherwise, I<P_tmpdir> (as defined in I<E<lt>stdio.hE<gt>>)  is used when "
 "appropriate."
@@ -1122,48 +1121,48 @@ msgstr ""
 "verwandt, wenn geeignet."
 
 #. type: TP
-#: ../tempfile.1:41
+#: ../tempfile.1:37
 #, no-wrap
 msgid "d)"
 msgstr "d)"
 
 #. type: Plain text
-#: ../tempfile.1:46
+#: ../tempfile.1:42
 msgid "Finally an implementation-defined directory I<(/tmp)> may be used."
 msgstr ""
 "Abschließend könnte ein implementierungsdefiniertes Verzeichnis I<(/tmp)> "
 "verwandt werden."
 
 #. type: TP
-#: ../tempfile.1:47
+#: ../tempfile.1:43
 #, no-wrap
 msgid "B<-d, --directory >I<DIR>"
 msgstr "B<-d, --directory >I<VERZ>"
 
 #. type: Plain text
-#: ../tempfile.1:50
+#: ../tempfile.1:46
 msgid "Place the file in DIR."
 msgstr "die Datei in VERZ erstellen"
 
 #. type: TP
-#: ../tempfile.1:50
+#: ../tempfile.1:46
 #, no-wrap
 msgid "B<-m, --mode >I<MODE>"
 msgstr "B<-m, --mode >I<MODUS>"
 
 #. type: Plain text
-#: ../tempfile.1:53
+#: ../tempfile.1:49
 msgid "Open the file with MODE instead of 0600."
 msgstr "die Datei mit MODUS anstatt 0600 öffnen."
 
 #. type: TP
-#: ../tempfile.1:53
+#: ../tempfile.1:49
 #, no-wrap
 msgid "B<-n, --name >I<FILE>"
 msgstr "B<-n, --name >I<DATEI>"
 
 #. type: Plain text
-#: ../tempfile.1:58
+#: ../tempfile.1:54
 msgid ""
 "Use FILE for the name instead of B<tempnam>(3)B<.> The options -d, -p, and -"
 "s are ignored if this option is given."
@@ -1172,37 +1171,37 @@ msgstr ""
 "werden bei Verwendung dieser Option ignoriert."
 
 #. type: TP
-#: ../tempfile.1:58
+#: ../tempfile.1:54
 #, no-wrap
 msgid "B<-p, --prefix >I<STRING>"
 msgstr "B<-p, --prefix >I<ZEICHENKETTE>"
 
 #. type: Plain text
-#: ../tempfile.1:61
+#: ../tempfile.1:57
 msgid "Use up to five letters of STRING to generate the name."
 msgstr ""
 "bis zu fünf Buchstaben aus ZEICHENKETTE für die Erstellung des Namens "
 "verwenden."
 
 #. type: TP
-#: ../tempfile.1:61
+#: ../tempfile.1:57
 #, no-wrap
 msgid "B<-s, --suffix >I<STRING>"
 msgstr "B<-s, --suffix >I<ZEICHENKETTE>"
 
 #. type: Plain text
-#: ../tempfile.1:64
+#: ../tempfile.1:60
 msgid "Generate the file with STRING as the suffix."
 msgstr "Die Datei mit ZEICHENKETTE als Endung erstellen."
 
 #. type: SH
-#: ../tempfile.1:70
+#: ../tempfile.1:66
 #, no-wrap
 msgid "RETURN VALUES"
 msgstr "RÜCKGABEWERTE"
 
 #. type: Plain text
-#: ../tempfile.1:73
+#: ../tempfile.1:69
 msgid ""
 "An exit status of 0 means the temporary file was created successfully.  Any "
 "other exit status indicates an error."
@@ -1211,7 +1210,7 @@ msgstr ""
 "erstellt wurde. Jeder andere Rückgabewert zeigt einen Fehler an."
 
 #. type: Plain text
-#: ../tempfile.1:77
+#: ../tempfile.1:73
 msgid ""
 "Exclusive creation is not guaranteed when creating files on NFS partitions.  "
 "tempfile cannot make temporary directories.  tempfile is deprecated; you "
@@ -1219,16 +1218,16 @@ msgid ""
 msgstr ""
 "Exklusive Erstellung wird bei Dateien auf NFS-Partitionen nicht garantiert. "
 "Tempfile kann keine temporären Verzeichnisse erstellen. Tempfile ist "
-"veraltet, sie sollten stattdessen mktemp(1) verwenden."
+"veraltet, Sie sollten stattdessen mktemp(1) verwenden."
 
 #. type: SH
-#: ../tempfile.1:77
+#: ../tempfile.1:73
 #, no-wrap
 msgid "EXAMPLE"
 msgstr "BEISPIEL"
 
 #. type: Plain text
-#: ../tempfile.1:89
+#: ../tempfile.1:85
 #, no-wrap
 msgid ""
 "#!/bin/sh\n"
@@ -1241,16 +1240,16 @@ msgid ""
 "exit\n"
 msgstr ""
 "#!/bin/sh\n"
-"#[...]\n"
+"#[…]\n"
 "t=$(tempfile) || exit\n"
 "trap \"rm -f -- '$t'\" EXIT\n"
-"#[...]\n"
+"#[…]\n"
 "rm -f -- \"$t\"\n"
 "trap - EXIT\n"
 "exit\n"
 
 #. type: Plain text
-#: ../tempfile.1:92
+#: ../tempfile.1:88
 msgid "B<tempnam>(3), B<mktemp>(1)"
 msgstr "B<tempnam>(3), B<mktemp>(1)"
 
@@ -1274,7 +1273,7 @@ msgstr "which - finde einen Befehl"
 #. type: Plain text
 #: ../which.1:7
 msgid "which [-a] filename ..."
-msgstr "which [-a] Dateiname ..."
+msgstr "which [-a] Dateiname …"
 
 #. type: Plain text
 #: ../which.1:14
@@ -1285,8 +1284,8 @@ msgid ""
 "the PATH for executable files matching the names of the arguments. It does "
 "not canonicalize path names."
 msgstr ""
-"B<which> liefert die Pfadnamen der Dateien (oder Links), die in "
-"der aktuellen Umgebung ausgeführt würden, wenn ihre Argumente als Befehle in "
+"B<which> liefert die Pfadnamen der Dateien (oder Links), die in der "
+"aktuellen Umgebung ausgeführt würden, wenn ihre Argumente als Befehle in "
 "einer streng-POSIX-konformen Shell übergeben worden wären. Dies erfolgt, "
 "indem der PATH nach ausführbaren Dateien, die auf die Argumente passen, "
 "durchsucht wird. Pfadnamen werden nicht in eine kanonische Form gebracht."
@@ -1342,6 +1341,12 @@ msgstr "B<2>"
 #: ../which.1:27
 msgid "if an invalid option is specified"
 msgstr "falls eine ungültige Option angegeben wurde"
+
+#~ msgid "30 Jun 2010"
+#~ msgstr "30. Juni 2010"
+
+#~ msgid "override date format, in the form of I<[MMDDhhmm[[CC]YY][.ss]]>"
+#~ msgstr "überschreibe Datumsformat, in der Form I<[MMTThhmm[[CC]JJ][.ss]]>"
 
 #~ msgid "1 May 2009"
 #~ msgstr "1. Mai 2009"

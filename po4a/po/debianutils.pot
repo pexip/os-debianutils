@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-11-17 15:39-0500\n"
+"POT-Creation-Date: 2018-05-15 07:57-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,7 +70,7 @@ msgid "The shells must be provided by their full pathnames."
 msgstr ""
 
 #. type: SH
-#: ../add-shell.8:15 ../remove-shell.8:13 ../savelog.8:158 ../tempfile.1:90
+#: ../add-shell.8:15 ../remove-shell.8:13 ../savelog.8:159 ../tempfile.1:86
 #, no-wrap
 msgid "SEE ALSO"
 msgstr ""
@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 
 #. type: SH
-#: ../installkernel.8:22 ../ischroot.1:35 ../savelog.8:151 ../tempfile.1:73
+#: ../installkernel.8:22 ../ischroot.1:35 ../savelog.8:152 ../tempfile.1:69
 #, no-wrap
 msgid "BUGS"
 msgstr ""
@@ -210,7 +210,7 @@ msgid ""
 msgstr ""
 
 #. type: SH
-#: ../ischroot.1:22 ../run-parts.8:47 ../savelog.8:92 ../tempfile.1:46 ../which.1:14
+#: ../ischroot.1:22 ../run-parts.8:47 ../savelog.8:92 ../tempfile.1:42 ../which.1:14
 #, no-wrap
 msgid "OPTIONS"
 msgstr ""
@@ -238,24 +238,24 @@ msgid "Exit with status 0 if the detection is not possible."
 msgstr ""
 
 #. type: TP
-#: ../ischroot.1:29 ../tempfile.1:64
+#: ../ischroot.1:29 ../tempfile.1:60
 #, no-wrap
 msgid "B<--help>"
 msgstr ""
 
 #. type: Plain text
-#: ../ischroot.1:32 ../tempfile.1:67
+#: ../ischroot.1:32 ../tempfile.1:63
 msgid "Print a usage message on standard output and exit successfully."
 msgstr ""
 
 #. type: TP
-#: ../ischroot.1:32 ../tempfile.1:67
+#: ../ischroot.1:32 ../tempfile.1:63
 #, no-wrap
 msgid "B<--version>"
 msgstr ""
 
 #. type: Plain text
-#: ../ischroot.1:35 ../tempfile.1:70
+#: ../ischroot.1:35 ../tempfile.1:66
 msgid "Print version information on standard output and exit successfully."
 msgstr ""
 
@@ -388,31 +388,31 @@ msgid "B<--list>"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:56
+#: ../run-parts.8:57
 msgid ""
 "print the names of the all matching files (not limited to executables), but "
-"don't actually run them. This option cannot be used with --test."
+"don't actually run them.  This option cannot be used with --test."
 msgstr ""
 
 #. type: TP
-#: ../run-parts.8:56
+#: ../run-parts.8:57
 #, no-wrap
 msgid "B<-v, --verbose>"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:59
+#: ../run-parts.8:60
 msgid "print the name of each script to stderr before running."
 msgstr ""
 
 #. type: TP
-#: ../run-parts.8:59
+#: ../run-parts.8:60
 #, no-wrap
 msgid "B<--report>"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:64
+#: ../run-parts.8:67
 msgid ""
 "similar to B<--verbose>, but only prints the name of scripts which produce "
 "output.  The script's name is printed to whichever of stdout or stderr the "
@@ -420,46 +420,46 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: ../run-parts.8:64
+#: ../run-parts.8:67
 #, no-wrap
 msgid "B<--reverse>"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:67
+#: ../run-parts.8:70
 msgid "reverse the scripts' execution order."
 msgstr ""
 
 #. type: TP
-#: ../run-parts.8:67
+#: ../run-parts.8:70
 #, no-wrap
 msgid "B<--exit-on-error>"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:70
+#: ../run-parts.8:73
 msgid "exit as soon as a script returns with a non-zero exit code."
 msgstr ""
 
 #. type: TP
-#: ../run-parts.8:70
+#: ../run-parts.8:73
 #, no-wrap
 msgid "B<--lsbsysinit>"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:73
+#: ../run-parts.8:76
 msgid "use LSB namespaces instead of classical behavior."
 msgstr ""
 
 #. type: TP
-#: ../run-parts.8:73
+#: ../run-parts.8:76
 #, no-wrap
 msgid "B<--new-session>"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:78
+#: ../run-parts.8:81
 msgid ""
 "run each script in a separate process session.  If you use this option, "
 "killing run-parts will not kill the currently running script, it will run "
@@ -467,123 +467,123 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: ../run-parts.8:78
+#: ../run-parts.8:81
 #, no-wrap
 msgid "B<--regex=>I<RE>"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:83
+#: ../run-parts.8:86
 msgid ""
 "validate filenames against custom extended regular expression I<RE>.  See "
 "the EXAMPLES section for an example."
 msgstr ""
 
 #. type: TP
-#: ../run-parts.8:83
+#: ../run-parts.8:86
 #, no-wrap
 msgid "B<-u, --umask=>I<umask>"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:90
+#: ../run-parts.8:93
 msgid ""
 "sets the umask to I<umask> before running the scripts.  I<umask> should be "
 "specified in octal.  By default the umask is set to 022."
 msgstr ""
 
 #. type: TP
-#: ../run-parts.8:90
+#: ../run-parts.8:93
 #, no-wrap
 msgid "B<-a, --arg=>I<argument>"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:97
+#: ../run-parts.8:100
 msgid ""
 "pass I<argument> to the scripts.  Use B<--arg> once for each argument you "
 "want passed."
 msgstr ""
 
 #. type: TP
-#: ../run-parts.8:97
+#: ../run-parts.8:100
 #, no-wrap
 msgid "B<-->"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:103
+#: ../run-parts.8:106
 msgid ""
 "specifies that this is the end of the options.  Any filename after B<--> "
 "will be not be interpreted as an option even if it starts with a hyphen."
 msgstr ""
 
 #. type: TP
-#: ../run-parts.8:103
+#: ../run-parts.8:106
 #, no-wrap
 msgid "B<-h, --help>"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:106
+#: ../run-parts.8:109
 msgid "display usage information and exit."
 msgstr ""
 
 #. type: TP
-#: ../run-parts.8:106
+#: ../run-parts.8:109
 #, no-wrap
 msgid "B<-V, --version>"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:109
+#: ../run-parts.8:112
 msgid "display version and copyright and exit."
 msgstr ""
 
 #. type: SH
-#: ../run-parts.8:110
+#: ../run-parts.8:113
 #, no-wrap
 msgid "EXAMPLES"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:113
+#: ../run-parts.8:116
 msgid "Print the names of all files in /etc that start with `p' and end with `d':"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:115
+#: ../run-parts.8:118
 msgid "run-parts --list --regex \\[aq]^p.*d$\\[aq] /etc"
 msgstr ""
 
 #. type: SH
-#: ../run-parts.8:116
+#: ../run-parts.8:119
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:119
+#: ../run-parts.8:122
 msgid "Copyright (C) 1994 Ian Jackson."
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:121
+#: ../run-parts.8:124
 msgid "Copyright (C) 1996 Jeff Noxon."
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:123
+#: ../run-parts.8:126
 msgid "Copyright (C) 1996, 1997, 1998 Guy Maor"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:125
+#: ../run-parts.8:128
 msgid "Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Clint Adams"
 msgstr ""
 
 #. type: Plain text
-#: ../run-parts.8:130
+#: ../run-parts.8:133
 msgid ""
 "B<run-parts> is free software; see the GNU General Public License version 2 "
 "or later for copying conditions.  There is I<no> warranty."
@@ -598,7 +598,7 @@ msgstr ""
 #. type: TH
 #: ../savelog.8:2
 #, no-wrap
-msgid "30 Jun 2010"
+msgid "30 Dec 2017"
 msgstr ""
 
 #. type: Plain text
@@ -863,52 +863,52 @@ msgid "B<-D dateformat>"
 msgstr ""
 
 #. type: Plain text
-#: ../savelog.8:140
-msgid "override date format, in the form of I<[MMDDhhmm[[CC]YY][.ss]]>"
+#: ../savelog.8:141
+msgid "override date format, in the syntax understood by the B<date>(1)  command"
 msgstr ""
 
 #. type: TP
-#: ../savelog.8:140
+#: ../savelog.8:141
 #, no-wrap
 msgid "B<-r>"
 msgstr ""
 
 #. type: Plain text
-#: ../savelog.8:145
+#: ../savelog.8:146
 msgid "use I<rolldir> instead of . to roll files"
 msgstr ""
 
 #. type: TP
-#: ../savelog.8:145
+#: ../savelog.8:146
 #, no-wrap
 msgid "B<-n>"
 msgstr ""
 
 #. type: Plain text
-#: ../savelog.8:148
+#: ../savelog.8:149
 msgid "do not rotate empty files"
 msgstr ""
 
 #. type: TP
-#: ../savelog.8:148
+#: ../savelog.8:149
 #, no-wrap
 msgid "B<-q>"
 msgstr ""
 
 #. type: Plain text
-#: ../savelog.8:151
+#: ../savelog.8:152
 msgid "be quiet"
 msgstr ""
 
 #. type: Plain text
-#: ../savelog.8:157
+#: ../savelog.8:158
 msgid ""
 "If a process is still writing to I<file.0>, and savelog moves it to "
 "I<file.1> and compresses it, data could be lost."
 msgstr ""
 
 #. type: Plain text
-#: ../savelog.8:159
+#: ../savelog.8:160
 msgid "B<logrotate>(8)"
 msgstr ""
 
@@ -932,143 +932,142 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:18
+#: ../tempfile.1:16
 msgid ""
 "B<tempfile> creates a temporary file in a safe manner.  It uses "
-"B<tempnam>(3)  to choose the name and opens it with O_RDWR | O_CREAT | "
-"O_EXCL.  The filename is printed on standard output. See B<tempnam>(3)  for "
-"the actual steps involved in directory selection."
+"B<mkstemps>(3)  to choose the name and opens it with O_RDWR | O_CREAT | "
+"O_EXCL.  The filename is printed on standard output."
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:23
+#: ../tempfile.1:19
 msgid ""
 "The directory in which to create the file might be searched for in this "
-"order (but refer to B<tempnam>(3)  for authoritative answers):"
+"order:"
 msgstr ""
 
 #. type: TP
-#: ../tempfile.1:23
+#: ../tempfile.1:19
 #, no-wrap
 msgid "a)"
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:29
+#: ../tempfile.1:25
 msgid ""
 "In case the environment variable B<TMPDIR> exists and contains the name of "
 "an appropriate directory, that is used."
 msgstr ""
 
 #. type: TP
-#: ../tempfile.1:29
+#: ../tempfile.1:25
 #, no-wrap
 msgid "b)"
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:34
+#: ../tempfile.1:30
 msgid ""
 "Otherwise, if the I<--directory> argument is specified and appropriate, it "
 "is used."
 msgstr ""
 
 #. type: TP
-#: ../tempfile.1:34
+#: ../tempfile.1:30
 #, no-wrap
 msgid "c)"
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:41
+#: ../tempfile.1:37
 msgid ""
 "Otherwise, I<P_tmpdir> (as defined in I<E<lt>stdio.hE<gt>>)  is used when "
 "appropriate."
 msgstr ""
 
 #. type: TP
-#: ../tempfile.1:41
+#: ../tempfile.1:37
 #, no-wrap
 msgid "d)"
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:46
+#: ../tempfile.1:42
 msgid "Finally an implementation-defined directory I<(/tmp)> may be used."
 msgstr ""
 
 #. type: TP
-#: ../tempfile.1:47
+#: ../tempfile.1:43
 #, no-wrap
 msgid "B<-d, --directory >I<DIR>"
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:50
+#: ../tempfile.1:46
 msgid "Place the file in DIR."
 msgstr ""
 
 #. type: TP
-#: ../tempfile.1:50
+#: ../tempfile.1:46
 #, no-wrap
 msgid "B<-m, --mode >I<MODE>"
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:53
+#: ../tempfile.1:49
 msgid "Open the file with MODE instead of 0600."
 msgstr ""
 
 #. type: TP
-#: ../tempfile.1:53
+#: ../tempfile.1:49
 #, no-wrap
 msgid "B<-n, --name >I<FILE>"
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:58
+#: ../tempfile.1:54
 msgid ""
 "Use FILE for the name instead of B<tempnam>(3)B<.> The options -d, -p, and "
 "-s are ignored if this option is given."
 msgstr ""
 
 #. type: TP
-#: ../tempfile.1:58
+#: ../tempfile.1:54
 #, no-wrap
 msgid "B<-p, --prefix >I<STRING>"
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:61
+#: ../tempfile.1:57
 msgid "Use up to five letters of STRING to generate the name."
 msgstr ""
 
 #. type: TP
-#: ../tempfile.1:61
+#: ../tempfile.1:57
 #, no-wrap
 msgid "B<-s, --suffix >I<STRING>"
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:64
+#: ../tempfile.1:60
 msgid "Generate the file with STRING as the suffix."
 msgstr ""
 
 #. type: SH
-#: ../tempfile.1:70
+#: ../tempfile.1:66
 #, no-wrap
 msgid "RETURN VALUES"
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:73
+#: ../tempfile.1:69
 msgid ""
 "An exit status of 0 means the temporary file was created successfully.  Any "
 "other exit status indicates an error."
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:77
+#: ../tempfile.1:73
 msgid ""
 "Exclusive creation is not guaranteed when creating files on NFS partitions.  "
 "tempfile cannot make temporary directories.  tempfile is deprecated; you "
@@ -1076,13 +1075,13 @@ msgid ""
 msgstr ""
 
 #. type: SH
-#: ../tempfile.1:77
+#: ../tempfile.1:73
 #, no-wrap
 msgid "EXAMPLE"
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:89
+#: ../tempfile.1:85
 #, no-wrap
 msgid ""
 "#!/bin/sh\n"
@@ -1096,7 +1095,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../tempfile.1:92
+#: ../tempfile.1:88
 msgid "B<tempnam>(3), B<mktemp>(1)"
 msgstr ""
 

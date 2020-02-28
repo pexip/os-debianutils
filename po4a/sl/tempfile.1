@@ -13,13 +13,12 @@ tempfile \- ustvari začasno datoteko v varnem načinu
 [\-\-name=DATOTEKA] [\-\-help] [\-\-version]
 .SH OPIS
 .PP
-\fBtempfile\fP ustvari začasno datoteko na varnen način.  Uporabi \fBtempnam\fP(3)
-za izbor imena in ga odpre z O_RDWR | O_CREAT | O_EXCL.  Ime datoteke je
-izpisano na standardnem izhodu.Glej \fBtempnam\fP(3)  za dejanske korake pri
-izboru mape.
+\fBtempfile\fP creates a temporary file in a safe manner.  It uses
+\fBmkstemps\fP(3)  to choose the name and opens it with O_RDWR | O_CREAT |
+O_EXCL.  The filename is printed on standard output.
 .PP
-Mapa, kjer naj bi se datoteka ustvarila, se poišče v tem vrstnem redu
-(vendar glejte \fBtempnam\fP(3) za zanesljiv odgovor):
+The directory in which to create the file might be searched for in this
+order:
 .TP  3
 a)
 V primeru, ko okoljska spremenljivka \fBTMPDIR\fP obstaja in vsebuje ime
