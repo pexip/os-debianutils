@@ -10,9 +10,8 @@ ischroot \- Detecta si se ejecuta dentro de una jaula chroot
 .SH SINOPSIS
 \fBischroot\fP [\-\-default\-false] [\-\-default\-true] [\-\-help] [\-\-version]
 .SH DESCRIPCIÓN
-.PP
-\fBischroot\fP detecta si se ha ejecutado en el momento presente desde una
-jaula chroot. El estado de salida es:
+\fBischroot\fP detects if it is currently running in a chroot.  The exit status
+is:
 .TP 
 0
 Si se ejecuta desde una jaula chroot.
@@ -25,10 +24,10 @@ Si no es posible detectarlo (Ocurre en sistemas GNU/Linux si el script no se
 ejecuta como administrador).
 .SH OPCIONES
 .TP 
-\fB\-f, \-\-default\-false \fP
+\fB\-f, \-\-default\-false\fP
 Cierra con un estado de salida 1 si la detección no es posible.
 .TP 
-\fB\-t, \-\-default\-true \fP
+\fB\-t, \-\-default\-true\fP
 Cierra con un estado de salida 0 si la detección no es posible.
 .TP 
 \fB\-\-help\fP
@@ -37,6 +36,5 @@ Muestra información de uso por la salida estándar y cierra con éxito.
 \fB\-\-version\fP
 Muestra información de la versión por la salida estándar y cierra con éxito.
 .SH FALLOS
-En sistemas GNU/Linux, no es posible detectar una jaula chroot si no se
-ejecuta con permisos de administrador. Funciona correctamente en sistemas
-GNU/Hurd y GNU/kFreeBSD.
+On GNU/Linux, chroot detection is not possible when not root.  This works
+correctly on GNU/Hurd and GNU/kFreeBSD.

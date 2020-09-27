@@ -4,58 +4,58 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH SAVELOG 8 "30 Dec 2017" Debian 
+.TH SAVELOG 8 "30 dicembre 2017" Debian 
 .SH NOME
 savelog \- salva un file di log
 .SH SINTASSI
 \fBsavelog\fP [\-m modo] [\-u utente] [\-g gruppo] [\-t] [\-p] [\-c ciclo] [\-l] [\-j]
 [\-J] [\-1\ .\|.\ \-9] [\-C] [\-d] [\-l] [\-r dir_di_rotaz] [\-n] [\-q] [\-D
 formatodata] file ...
+.
 .SH DESCRIZIONE
 Il comando \fBsavelog\fP salva e opzionalmente comprime le vecchie copie di
 file. Alle versioni più vecchie di \fIfile\fP viene assegnato il nome:
 .RS
-
+.sp 1
 \fIfile\fP.\fI<numero>\fP\fI<suffisso_compressione>\fP
-
+.sp 1
 .RE
 dove \fI<numero>\fP è il numero di versione, con 0 che corrisponde alla
 più recente. I numeri di versione > 0 vengono compressi a meno che \fB\-l\fP
 non lo impedisca. Il numero di versione 0 non viene compresso perché un
 processo potrebbe ancora avere \fIfile\fP aperto in I/O. Solo le versioni
 \fIciclo\fP vengono mantenute.
-
+.sp 1
 Se il file non esiste ed è stata specificata \fB\-t\fP, allora verrà creato.
-
+.sp 1
 Per i file che esistono e hanno lunghezza maggiore di zero, vengono
 effettuate le seguenti azioni:
-
+.sp 1
 .IP 1)
-I file con numero di versione vengono rotati. La versione \fIfile\fP.\fI2\fP viene
-spostata nella versione \fIfile\fP.\fI3\fP, la versione \fIfile\fP.\fI1\fP viene
-spostata nella versione \fIfile\fP.\fI2\fP e così via. Da ultimo la versione
-\fIfile\fP.\fI0\fP viene spostata nella versione \fIfile\fP.\fI1\fP e la versione
-\fIfile\fP viene eliminata. Sia i nomi compressi sia i non compressi vengono
-rotati, indipendentemente da \fBl\fP. I file di versione mancanti vengono
-ignorati.
-
+Version numbered files are cycled.  Version \fIfile\fP\fB\&.2\fP is moved to
+version \fIfile\fP\fB\&.3\fP, version \fIfile\fP\fB\&.1\fP is moved to version
+\fIfile\fP\fB\&.2\fP, and so on.  Finally version \fIfile\fP\fB\&.0\fP is moved to
+version \fIfile\fP\fB\&.1\fP, and version \fIfile\fP is deleted.  Both compressed
+names and uncompressed names are cycled, regardless of \fB\-l\fP.  Missing
+version files are ignored.
+.
 .IP 2)
-Il nuovo file \fIfile\fP.\fI1\fP viene compresso a meno che non sia specificata
-l'opzione \fB\-l\fP. Viene cambiato in base alle opzioni \fB\-m\fP, \fB\-u\fP e \fB\-g\fP.
-
+The new \fIfile\fP\fB\&.1\fP is compressed unless the \fB\-l\fP flag was given.  It is
+changed subject to the \fB\-m\fP, \fB\-u\fP, and \fB\-g\fP flags.
+.
 .IP 3)
-Il \fIfile\fP principale viene spostato in \fIfile\fP.\fI0\fP.
-
+The main \fIfile\fP is moved to \fIfile\fP\fB.0\fP.
+.
 .IP 4)
 Se sono utilizzate le opzioni \fB\-m\fP, \fB\-u\fP, \fB\-g\fP, \fB\-t\fP o \fB\-p\fP, allora
 viene creato un \fIfile\fP vuoto in accordo con le opzioni specificate. Con
 l'opzione \fB\-p\fP, il file viene creato con gli stessi proprietario, gruppo e
 permessi che aveva prima.
-
+.
 .IP 5)
-Il nuovo \fIfile\fP.\fI0\fP viene cambiato in base alle opzioni \fB\-m\fP, \fB\-u\fP e
-\fB\-g\fP.
-
+The new \fIfile\fP\fB\&.0\fP is changed subject to the \fB\-m\fP, \fB\-u\fP, and \fB\-g\fP
+flags.
+.
 .SH OPZIONI
 .TP 
 \fB\-m modo\fP
@@ -68,8 +68,8 @@ usa chown per assegnare i file di log ad utente, implica \fB\-t\fP
 usa chgrp per assegnare i file di log a gruppo, implica \fB\-t\fP
 .TP 
 \fB\-c ciclo\fP
-Salva un numero ciclo di versione del file di log (valore predefinito:
-7). Il valore di \fIciclo\fP deve essere maggiore o uguale a 2.
+Save cycle versions of the logfile (default: 7).  The \fIcycle\fP count must be
+at least 2.
 .TP 
 \fB\-t\fP
 usa touch su i nuovi file di log
@@ -85,11 +85,10 @@ comprime con bzip2 invece di gzip
 .TP 
 \fB\-J\fP
 comprime con xz invece di gzip
-
-Per xz non è impostata alcuna opzione sulla qualità, e xz decide il valore
-predefinito in base alla quantità totale di RAM fisica. Notare che xz può
-usare una quantità di memoria molto grande per i livelli di compressione più
-alti.
+.sp 1
+For xz no strength option is set, and xz decides on the default based on the
+total amount of physical RAM.  Note that xz can use a very large amount of
+memory for the higher compression levels.
 .TP 
 \fB\-1\ .\|.\ \-9\fP
 livello di compressione o uso della memoria (valore predefinito: 9, tranne
@@ -102,10 +101,10 @@ forza la pulizia dei file di log rotati
 usa la data standard per la rotazione
 .TP 
 \fB\-D formatodata\fP
-override date format, in the syntax understood by the \fBdate\fP(1)  command
+scavalca il formato della data, con la sintassi usata dal comando \fBdate\fP(1)
 .TP 
 \fB\-r\fP
-usa \fIrolldir\fP invece di . per ruotare i file
+use \fIrolldir\fP instead of \&.\& to roll files
 .TP 
 \fB\-n\fP
 non ruota i file vuoti
@@ -113,8 +112,8 @@ non ruota i file vuoti
 \fB\-q\fP
 funziona silenziosamente
 .SH BUG
-Se un processo sta ancora scrivendo su \fIfile.0\fP e savelog lo sposta in
-\fIfile.1\fP e lo comprime, potrebbero andare persi dei dati.
-
+If a process is still writing to \fIfile\fP\fB\&.0\fP, and savelog moves it to
+\fIfile\fP\fB\&.1\fP and compresses it, data could be lost.
+.
 .SH "VEDERE ANCHE"
 \fBlogrotate\fP(8)

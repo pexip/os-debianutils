@@ -13,13 +13,12 @@ tempfile \- Créer un fichier temporaire de façon sûre
 [\fB\-\-suffix\fP=\fICHAÎNE\fP] [\fB\-\-mode\fP=\fIMODE\fP] [\fB\-\-name\fP=\fIFICHIER\fP]
 [\fB\-\-help\fP] [\fB\-\-version\fP]
 .SH DESCRIPTION
+Le programme \fBtempfile\fP crée un fichier temporaire de façon sûre. Il
+utilise \fBmkstemps\fP(3) pour choisir un nom et l'ouvre dans le mode O_RDWR\ |
+O_CREAT\ | O_EXCL. Le nom du fichier est affiché sur la sortie standard.
 .PP
-\fBtempfile\fP creates a temporary file in a safe manner.  It uses
-\fBmkstemps\fP(3)  to choose the name and opens it with O_RDWR | O_CREAT |
-O_EXCL.  The filename is printed on standard output.
-.PP
-The directory in which to create the file might be searched for in this
-order:
+Une recherche peut être effectuée dans le répertoire où le fichier sera
+créé, dans l'ordre suivant\ :
 .TP  3
 a)
 la variable d'environnement \fBTMPDIR\fP sera utilisée si elle existe et
@@ -34,8 +33,7 @@ sinon, le répertoire \fIP_tmpdir\fP (tel que défini dans \fI<stdio.h>\fP)
 est utilisé s'il est valide\ ;
 .TP 
 d)
-enfin, un répertoire \fI(/tmp)\fP défini par l'implémentation peut être
-utilisé\ ;
+Finally an implementation\-defined directory (\fI/tmp\fP)  may be used.
 .SH OPTIONS
 .TP 
 \fB\-d\fP, \fB\-\-directory\fP \fIREP\fP
@@ -60,17 +58,13 @@ affiche un message d'aide sur la sortie standard, puis quitte sans erreur.
 \fB\-\-version\fP
 affiche les informations sur la version, puis quitte sans erreur.
 .SH "VALEUR DE RETOUR"
-Une valeur de retour 0 signifie que le fichier a été créé avec succès. Toute
-autre valeur de retour indique une erreur.
+Une valeur de retour \fB0\fP signifie que le fichier a été créé avec
+succès. Toute autre valeur de retour indique une erreur.
 .SH BOGUES
-Une création exclusive ([\ NdT\ : pour éviter toute situation de compétition,
-ou «\ race condition\ »\ ]) n'est pas garantie lorsque le fichier est créé sur
-une partition NFS. tempfile ne peut pas faire de répertoire temporaire. Le
-programme tempfile est obsolète. Il est conseillé d'utiliser mktemp(1) à la
-place.
+Exclusive creation is not guaranteed when creating files on NFS partitions.
+tempfile cannot make temporary directories.  tempfile is deprecated; you
+should use \fBmktemp\fP(1)  instead.
 .SH EXEMPLES
-
-.RS
 .nf
 #!/bin/sh
 #[...]

@@ -10,8 +10,8 @@ ischroot \- zazna, če se izvaja v chroot
 .SH POVZETEK
 \fBischroot\fP [\-\-default\-false] [\-\-default\-true] [\-\-help] [\-\-version]
 .SH OPIS
-.PP
-\fBischroot\fP zazna, le se trenutno izvaja v chroot. Stanje končanja je:
+\fBischroot\fP detects if it is currently running in a chroot.  The exit status
+is:
 .TP 
 0
 Če se ne izvaja v chroot
@@ -24,10 +24,10 @@ ischroot \- zazna, če se izvaja v chroot
 skrbnik.)
 .SH MOŽNOSTI
 .TP 
-\fB\-f, \-\-default\-false \fP
+\fB\-f, \-\-default\-false\fP
 Končaj s stanjem 1, če zaznava ni mogoča.
 .TP 
-\fB\-t, \-\-default\-true \fP
+\fB\-t, \-\-default\-true\fP
 Končaj s stanjem 0, če zaznava ni mogoča.
 .TP 
 \fB\-\-help\fP
@@ -36,8 +36,8 @@ Izpiše sporočilo uporabe na standarden izhod in uspešno konča.
 \fB\-\-version\fP
 Izpiše podrobnosti o različici na standardni izhod in uspešno konča.
 .SH HROŠČI
-Na GNU/Linux zaznavanje chroot ni mogoče, če niste skrbnik. To deluje
-pravilno na GNU/Hura in GNU/kFreeBSD.
+On GNU/Linux, chroot detection is not possible when not root.  This works
+correctly on GNU/Hurd and GNU/kFreeBSD.
 .SH TRANSLATION
 This document is a translation.
 

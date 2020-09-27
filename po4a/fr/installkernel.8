@@ -9,7 +9,6 @@ installkernel \- Installer une nouvelle image de noyau
 .SH SYNOPSIS
 \fBinstallkernel\fP \fIversion zImage System.map\fP [\fIrépertoire\fP]
 .SH DESCRIPTION
-.PP
 \fBinstallkernel\fP installe une nouvelle image de noyau depuis une
 arborescence source de Linux. Cette commande est appelée par les Makefiles
 du noyau Linux lors de l'invocation de \fBmake install\fP.
@@ -19,10 +18,9 @@ lien symbolique \fI{répertoire}/vmlinuz\fP existait, il sera modifié pour
 pointer sur le nouveau noyau et un lien symbolique
 \fI{répertoire}/vmlinuz.old\fP pointera sur l'ancien noyau.
 .SH BOGUES
-Le programme \fBinstallkernel\fP est placé dans /sbin uniquement parce que les
-makefiles du noyau Linux l'appellent à cet emplacement \-\- même si, en
-principe, il devrait plutôt être placé dans /usr/sbin, puisqu'il n'est pas
-nécessaire pour l'amorçage du système.
+\fBinstallkernel\fP resides in /sbin only because the Linux kernel makefiles
+call it from there.  It should really be in /usr/sbin.  It isn't needed to
+boot a system.
 .SH TRADUCTION
 Ce document est une traduction, réalisée par Nicolas FRANÇOIS le
 8 décembre 2005.

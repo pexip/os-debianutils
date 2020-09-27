@@ -3,7 +3,7 @@
  * Debian run-parts program
  * Copyright (C) 1996 Jeff Noxon <jeff@router.patch.net>,
  * Copyright (C) 1996-1999 Guy Maor <maor@debian.org>
- * Copyright (C) 2002-2012 Clint Adams <clint@debian.org>
+ * Copyright (C) 2002-2020 Clint Adams <clint@debian.org>
  *
  * This is free software; see the GNU General Public License version 2
  * or later for copying conditions.  There is NO warranty.
@@ -11,6 +11,7 @@
  * Based on run-parts.pl version 0.2, Copyright (C) 1994 Ian Jackson.
  *
  */
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdarg.h>
@@ -44,6 +45,9 @@ int exitstatus = 0;
 int regex_mode = 0;
 int exit_on_error_mode = 0;
 int new_session_mode = 0;
+int stdin_mode = 0;
+int stdin_fd = -1; // initialized in run_parts() if {stdin_mode} != 0
+
 
 int argcount = 0, argsize = 0;
 char **args = 0;
@@ -74,10 +78,10 @@ void error(char *format, ...)
 
 void version()
 {
-  fprintf(stderr, "Debian run-parts program, version " PACKAGE_VERSION
+  printf( "Debian run-parts program, version " PACKAGE_VERSION
 	  "\nCopyright (C) 1994 Ian Jackson, Copyright (C) 1996 Jeff Noxon.\n"
 	  "Copyright (C) 1996,1997,1998,1999 Guy Maor\n"
-	  "Copyright (C) 2002-2012 Clint Adams\n"
+	  "Copyright (C) 2002-2020 Clint Adams\n"
 	  "This is free software; see the GNU General Public License version 2\n"
 	  "or later for copying conditions.  There is NO warranty.\n");
   exit(0);
@@ -95,6 +99,7 @@ void usage()
 	  "      --reverse       reverse execution order of scripts.\n"
 	  "      --exit-on-error exit as soon as a script returns with a non-zero exit\n"
 	  "                      code.\n"
+	  "      --stdin         multiplex stdin to scripts being run, using temporary file\n"
 	  "      --lsbsysinit    validate filenames based on LSB sysinit specs.\n"
 	  "      --new-session   run each script in a separate process session\n"
 	  "      --regex=PATTERN validate filenames based on POSIX ERE pattern PATTERN.\n"
@@ -184,6 +189,17 @@ void run_part(char *progname)
     restore_signals();
     if (new_session_mode)
       setsid();
+
+    if (stdin_mode) {
+      if (dup2(stdin_fd, STDIN_FILENO) == -1) {
+        error("dup2: %s", strerror(errno));
+        exit(1);
+      }
+      if (lseek(STDIN_FILENO, 0, SEEK_SET) == (off_t) -1) {
+        error("run-parts: failed to rewind temporary file: %s\n", strerror(errno));
+        exit(1);
+      }
+    }
     if (report_mode) {
       if (dup2(pout[1], STDOUT_FILENO) == -1 ||
 	  dup2(perr[1], STDERR_FILENO) == -1) {
@@ -282,7 +298,7 @@ void run_part(char *progname)
 	  else if (c < 0) {
 	    close(pout[0]);
 	    pout[0] = -1;
-	    error("failed to read from stdout pipe: %s", strerror (errno)); 
+	    error("failed to read from stdout pipe: %s", strerror (errno));
 	  }
 	}
 	if (perr[0] >= 0 && FD_ISSET(perr[0], &set)) {
@@ -302,7 +318,7 @@ void run_part(char *progname)
 	  else if (c < 0) {
 	    close(perr[0]);
 	    perr[0] = -1;
-	    error("failed to read from error pipe: %s", strerror (errno)); 
+	    error("failed to read from error pipe: %s", strerror (errno));
 	  }
 	}
       }
@@ -370,6 +386,75 @@ static void restore_signals()
     sigprocmask(SIG_UNBLOCK, &set, NULL);
 }
 
+#ifdef O_TMPFILE
+static int open_tmpfile_rw(void)
+{
+	const char *tmpdir;
+
+	tmpdir = getenv("TMPDIR");
+	if (!tmpdir) {
+		tmpdir = "/tmp";
+	}
+
+	return open(tmpdir, O_TMPFILE|O_RDWR|O_EXCL, S_IRUSR | S_IWUSR);
+}
+#else
+static char tmpfile_path[] = "/tmp/run-parts.stdin.XXXXXX";
+static int cleanup_tmpfile(void)
+{
+	unlink(tmpfile_path);
+}
+
+static int open_tmpfile_rw(void)
+{
+	int fd;
+
+	fd = mkstemp(tmpfile_path);
+	if (fd != -1) {
+		atexit(&cleanup_tmpfile);
+	}
+	return fd;
+}
+#endif
+
+/*
+ * Copy stdin into temporary read-write file, and return file descriptor to it.
+ */
+static int copy_stdin(void)
+{
+  int fd;
+  const char *tmpdir;
+  char buffer[4096];
+  ssize_t bytes;
+
+  fd = open_tmpfile_rw();
+
+  do {
+    ssize_t rest;
+
+    bytes = rest = read(STDIN_FILENO, buffer, sizeof(buffer));
+    if (bytes < 0) {
+      error("run-parts: failed to read from stdin\n");
+      close(fd);
+      return -1;
+    }
+
+    while (rest > 0) {
+      ssize_t written;
+
+      written = write(fd, buffer, rest);
+      if (written < 0) {
+        error("run-parts: failed to write to temporary file\n");
+        close(fd);
+        return -1;
+      }
+      rest -= written;
+    }
+  } while (bytes > 0);
+
+  return fd;
+}
+
 /* Find the parts to run & call run_part() */
 void run_parts(char *dirname)
 {
@@ -395,6 +480,14 @@ void run_parts(char *dirname)
   if (entries < 0) {
     error("failed to open directory %s: %s", dirname, strerror(errno));
     exit(1);
+  }
+
+  if (stdin_mode) {
+    stdin_fd = copy_stdin();
+    if (stdin_fd < 0) {
+      error("run-parts: failed to copy content of stdin\n");
+      exit(1);
+    }
   }
 
   i = reverse_mode ? 0 : entries;
@@ -497,6 +590,7 @@ int main(int argc, char *argv[])
       {"version", 0, 0, 'V'},
       {"lsbsysinit", 0, &regex_mode, RUNPARTS_LSBSYSINIT},
       {"regex", 1, &regex_mode, RUNPARTS_ERE},
+      {"stdin", 0, &stdin_mode, 1},
       {"exit-on-error", 0, &exit_on_error_mode, 1},
       {"new-session", 0, &new_session_mode, 1},
       {0, 0, 0, 0}

@@ -9,7 +9,6 @@ installkernel \- instaluje nowy obraz jądra
 .SH SKŁADNIA
 \fBinstallkernel \fP\fIwersja zImage System.map [katalog]\fP
 .SH OPIS
-.PP
 \fBinstallkernel\fP instaluje nowy obraz jądra w systemie z katalogu źródeł
 Linuksa. Jest wywoływany przez makefile jądra Linuksa, gdy w katalogu źródeł
 uruchomiony zostanie \fBmake install\fP.
@@ -20,9 +19,9 @@ odświeżane przez utworzenie dowiązania \fI{katalog}/vmlinuz\fP do nowego jąd
 oraz jest tworzone dowiązanie \fI{katalog}/vmlinuz.old\fP wskazujące na
 poprzednio zainstalowane jądro.
 .SH BŁĘDY
-installkernel znajduje się w katalogu /sbin tylko dlatego, że makefile jądra
-Linuksa oczekuje, że będzie w tej lokalizacji. Naprawdę powinien znajdować
-się w /usr/sbin. Nie jest potrzebny do uruchamiania systemu.
+\fBinstallkernel\fP resides in /sbin only because the Linux kernel makefiles
+call it from there.  It should really be in /usr/sbin.  It isn't needed to
+boot a system.
 .SH TŁUMACZENIE
 Niniejsze tłumaczenie jest częścią pakietu debianutils.
 Strony podręcznika zawarte w pakiecie przetłumaczyli:
