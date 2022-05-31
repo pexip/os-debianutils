@@ -12,13 +12,11 @@ tempfile \- crea un file temporaneo in maniera sicura
 [\-\-directory=DIR] [\-\-prefix=STRINGA] [\-\-suffix=STRINGA] [\-\-mode=MODALITÀ]
 [\-\-name=FILE] [\-\-help] [\-\-version]
 .SH DESCRIZIONE
+\fBtempfile\fP crea un file temporaneo in maniera sicura. Usa \fBmkstemps\fP(3)
+per scegliere il nome e lo apre con O_RDWR | O_CREAT | O_EXCL. Il nome di
+file viene stampato sullo standard output.
 .PP
-\fBtempfile\fP creates a temporary file in a safe manner.  It uses
-\fBmkstemps\fP(3)  to choose the name and opens it with O_RDWR | O_CREAT |
-O_EXCL.  The filename is printed on standard output.
-.PP
-The directory in which to create the file might be searched for in this
-order:
+La directory in cui creare il file può essere ricercata in questo ordine:
 .TP  3
 a)
 Se la variabile d'ambiente \fBTMPDIR\fP esiste e contiene il nome di una
@@ -33,8 +31,7 @@ Altimenti, viene usata \fIP_tmpdir\fP (come definita in \fI<stdio.h>\fP)
 quando è appropriata.
 .TP 
 d)
-Da ultimo può essere usata una directory \fI(/tmp)\fP definita
-dall'implementazione.
+Finally an implementation\-defined directory (\fI/tmp\fP)  may be used.
 .SH OPZIONI
 .TP 
 \fB\-d, \-\-directory \fP\fIDIR\fP
@@ -63,12 +60,10 @@ successo.
 Uno stato di uscita 0 significa che il file temporaneo è stato creato con
 successo. Qualsiasi altro stato di uscita indica un errore.
 .SH BUG
-La creazione esclusiva non è garantita quando si creano file su partizioni
-NFS. tempfile non può creare directory temporanee. tempfile è deprecato; si
-dovrebbe usare mktemp(1) al suo posto.
+Exclusive creation is not guaranteed when creating files on NFS partitions.
+tempfile cannot make temporary directories.  tempfile is deprecated; you
+should use \fBmktemp\fP(1)  instead.
 .SH ESEMPIO
-
-.RS
 .nf
 #!/bin/sh
 #[...]

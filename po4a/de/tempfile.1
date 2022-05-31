@@ -12,7 +12,6 @@ tempfile \- eine temporäre Datei in einer sicheren Art und Weise erstellen
 DATEI] [\-\-directory=VERZ] [\-\-prefix=ZEICHENKETTE] [\-\-suffix=ZEICHENKETTE]
 [\-\-mode=MODUS] [\-\-name=DATEI] [\-\-help] [\-\-version]
 .SH BESCHREIBUNG
-.PP
 \fBtempfile\fP erstellt eine temporäre Datei auf eine sichere Art und Weise. Es
 verwendet \fBmkstemps\fP(3), um den Namen zu wählen und öffnet sie mit O_RDWR |
 O_CREAT | O_EXCL. Der Dateiname wird auf der Standardausgabe ausgegeben.
@@ -33,7 +32,7 @@ Andernfalls wird \fIP_tmpdir\fP (wie in \fI<stdio.h>\fP definiert)
 verwandt, wenn geeignet.
 .TP 
 d)
-Abschließend könnte ein implementierungsdefiniertes Verzeichnis \fI(/tmp)\fP
+Abschließend könnte ein implementierungsdefiniertes Verzeichnis (\fI/tmp\fP)
 verwandt werden.
 .SH OPTIONEN
 .TP 
@@ -67,10 +66,8 @@ erstellt wurde. Jeder andere Rückgabewert zeigt einen Fehler an.
 .SH FEHLER
 Exklusive Erstellung wird bei Dateien auf NFS\-Partitionen nicht
 garantiert. Tempfile kann keine temporären Verzeichnisse erstellen. Tempfile
-ist veraltet, Sie sollten stattdessen mktemp(1) verwenden.
+ist veraltet, Sie sollten stattdessen \fBmktemp\fP(1) verwenden.
 .SH BEISPIEL
-
-.RS
 .nf
 #!/bin/sh
 #[…]

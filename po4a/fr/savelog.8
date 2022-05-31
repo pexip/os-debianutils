@@ -4,60 +4,59 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH SAVELOG 8 "30 Dec 2017" "Debian GNU/Linux" 
+.TH SAVELOG 8 "30 décembre 2017" "Debian GNU/Linux" 
 .SH NOM
 savelog \- Sauvegarder un fichier journal
 .SH SYNOPSIS
 \fBsavelog\fP [\-m mode] [\-u utilisateur] [\-g groupe] [\-t] [\-p] [\-c cycle] [\-l]
 [\-j] [\-J] [\-1\ .\|.\ \-9] [\-C] [\-d] [\-l] [\-r répertoire_cyclique] [\-n] [\-q]
 [\-D format_de_date] fichier ...
+.
 .SH DESCRIPTION
 Le programme \fBsavelog\fP sauvegarde un fichier journal et, éventuellement,
 compresse les anciennes versions. Les anciennes versions de \fIfichier\fP sont
 nommées\ :
 .RS
-
+.sp 1
 \fIfichier\fP.\fI<numéro>\fP\fI<extension_de_compression>\fP
-
+.sp 1
 .RE
 où \fI<numéro>\fP est le numéro de version, la version la plus récente
-portant le numéro 0. Si l'option \fB\-l\fP n'est pas spécifiée, les versions
-dont le numéro est supérieur à 0 sont compressées.  La version 0 n'est pas
+portant le numéro\ 0. Si l'option \fB\-l\fP n'est pas spécifiée, les versions
+dont le numéro est supérieur à\ 0 sont compressées.  La version\ 0 n'est pas
 compressée car le \fIfichier\fP est peut\-être utilisé par un programme. Le
 paramètre \fIcycle\fP indique le nombre de versions à conserver.
-
+.sp 1
 Si le fichier n'existe pas et que l'option \fB\-t\fP est utilisée, il sera créé.
-
+.sp 1
 Les actions suivantes sont effectuées pour les fichiers existants et dont la
 taille est supérieure à zéro\ :
-
+.sp 1
 .IP 1)
-la numérotation des versions est cyclique. Le fichier de version
-\fIfichier\fP.\fI2\fP devient version \fIfichier\fP.\fI3\fP, la version \fIfichier\fP.\fI1\fP
-devient version \fIfichier\fP.\fI2\fP, ainsi de suite. Enfin, la version
-\fIfichier\fP.\fI0\fP devient version \fIfichier\fP.\fI1\fP et la version \fIfichier\fP est
-supprimée. Les fichiers compressés et non compressés entrent dans ce cycle,
-même si l'option \fB\-l\fP a été spécifiée. Les versions manquantes sont
-ignorées\ ;
-
+Version numbered files are cycled.  Version \fIfile\fP\fB\&.2\fP is moved to
+version \fIfile\fP\fB\&.3\fP, version \fIfile\fP\fB\&.1\fP is moved to version
+\fIfile\fP\fB\&.2\fP, and so on.  Finally version \fIfile\fP\fB\&.0\fP is moved to
+version \fIfile\fP\fB\&.1\fP, and version \fIfile\fP is deleted.  Both compressed
+names and uncompressed names are cycled, regardless of \fB\-l\fP.  Missing
+version files are ignored.
+.
 .IP 2)
-le nouveau \fIfichier\fP.\fI1\fP est compressé sauf si l'option \fB\-l\fP est
-utilisée. Il est modifié en tenant compte des paramètres des options \fB\-m\fP,
-\fB\-u\fP, et \fB\-g\fP\ ;
-
+The new \fIfile\fP\fB\&.1\fP is compressed unless the \fB\-l\fP flag was given.  It is
+changed subject to the \fB\-m\fP, \fB\-u\fP, and \fB\-g\fP flags.
+.
 .IP 3)
-le fichier principal devient \fIfichier\fP.\fI0\fP\ ;
-
+The main \fIfile\fP is moved to \fIfile\fP\fB.0\fP.
+.
 .IP 4)
-si les options \fB\-m\fP, \fB\-u\fP, \fB\-g\fP, \fB\-t\fP, ou \fB\-p\fP sont utilisées, un
+si les options \fB\-m\fP, \fB\-u\fP, \fB\-g\fP, \fB\-t\fP ou \fB\-p\fP sont utilisées, un
 \fIfichier\fP vide est créé en tenant compte des arguments de ces options. En
 utilisant l'option \fB\-p\fP, le fichier est créé avec les mêmes utilisateur,
 groupe et permissions que l'ancien fichier\ ;
-
+.
 .IP 5)
-le nouveau \fIfichier\fP.\fI0\fP est modifié en fonction des arguments des options
-\fB\-m\fP, \fB\-u\fP, et \fB\-g\fP.
-
+The new \fIfile\fP\fB\&.0\fP is changed subject to the \fB\-m\fP, \fB\-u\fP, and \fB\-g\fP
+flags.
+.
 .SH OPTIONS
 .TP 
 \fB\-m\fP \fImode\fP
@@ -73,8 +72,8 @@ attribue les fichiers journaux au groupe \fIgroupe\fP (chgrp \fIgroupe\fP). Cett
 option implique \fB\-t\fP.
 .TP 
 \fB\-c\fP \fIcycle\fP
-sauvegarde \fIcycle\fP versions du fichier de journalisation (7 par défaut). Le
-nombre de \fIcycle\fP doit être au minimum de 2.
+Save cycle versions of the logfile (default: 7).  The \fIcycle\fP count must be
+at least 2.
 .TP 
 \fB\-t\fP
 si nécessaire, crée le fichier journal.
@@ -91,11 +90,10 @@ compresse avec bzip2 au lieu de gzip.
 .TP 
 \fB\-J\fP
 compresse avec xz au lieu de gzip.
-
-Pour xz, aucune option de compression n'est choisie, xz choisira la valeur
-par défaut en fonction de la quantité disponible de mémoire
-physique. Veuillez noter que xz peut utiliser des quantités importantes de
-mémoire pour les niveaux de compression les plus élevés.
+.sp 1
+For xz no strength option is set, and xz decides on the default based on the
+total amount of physical RAM.  Note that xz can use a very large amount of
+memory for the higher compression levels.
 .TP 
 \fB\-1\ .\|.\ \-9\fP
 niveau de compression ou utilisation mémoire (valeur par défaut\ :\ 9, sauf
@@ -108,11 +106,10 @@ force la suppression des sauvegardes.
 utilise la date (AAMMJJhhmmss) au lieu du numéro de version.
 .TP 
 \fB\-D\fP \fIformat_de_date\fP
-override date format, in the syntax understood by the \fBdate\fP(1)  command
+force le format de date, en utilisant la syntaxe de la commande \fBdate\fP(1)
 .TP 
 \fB\-r\fP \fIrépertoire_cyclique\fP
-sauvegarde les fichiers journaux dans le répertoire \fIrépertoire_cyclique\fP
-au lieu du répertoire courant.
+use \fIrolldir\fP instead of \&.\& to roll files
 .TP 
 \fB\-n\fP
 ne sauvegarde pas les fichiers vides.
@@ -120,9 +117,9 @@ ne sauvegarde pas les fichiers vides.
 \fB\-q\fP
 n'affiche pas de message.
 .SH BOGUES
-Si un programme est en train d'écrire \fIfichier.0\fP, et que savelog le
-renomme \fIfichier.1\fP et le compresse, des données peuvent être perdues.
-
+If a process is still writing to \fIfile\fP\fB\&.0\fP, and savelog moves it to
+\fIfile\fP\fB\&.1\fP and compresses it, data could be lost.
+.
 .SH TRADUCTION
 Ce document est une traduction, réalisée par
 Antoine Gémis <\fIagemis@netuup.com\fR> le 13 janvier 2003 (savelog 1.16.7).

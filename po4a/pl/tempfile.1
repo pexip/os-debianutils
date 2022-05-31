@@ -12,7 +12,6 @@ tempfile \- w bezpieczny sposób tworzy plik tymczasowy
 [\-\-directory=KATALOG] [\-\-prefix=ŁAŃCUCH] [\-\-suffix=ŁAŃCUCH] [\-\-mode=TRYB]
 [\-\-name=PLIK] [\-\-help] [\-\-version]
 .SH OPIS
-.PP
 \fBtempfile\fP creates a temporary file in a safe manner.  It uses
 \fBmkstemps\fP(3)  to choose the name and opens it with O_RDWR | O_CREAT |
 O_EXCL.  The filename is printed on standard output.
@@ -33,8 +32,7 @@ W przeciwnym wypadku używane jest \fIP_tmpdir\fP (zdefiniowane w
 \fI<stdio.h>\fP), jeśli jest to właściwe.
 .TP 
 d)
-W końcu może zostać użyty katalog zdefiniowany podczas implementacji
-(\fI/tmp\fP).
+Finally an implementation\-defined directory (\fI/tmp\fP)  may be used.
 .SH OPCJE
 .TP 
 \fB\-d, \-\-directory \fP\fIKATALOG\fP
@@ -64,13 +62,10 @@ pracę.
 Zwrócony kod 0 oznacza, że pomyślnie stworzono plik tymczasowy. Każdy inny
 kod wskazuje błąd.
 .SH BŁĘDY
-Podczas tworzenia plików na partycji NFS nie jest gwarantowane utworzenie
-pliku na wyłączność. tempfile nie potrafi utworzyć tymczasowych
-katalogów. tempfile nie jest zalecany; zamiast niego należy używać
-mktemp(1).
+Exclusive creation is not guaranteed when creating files on NFS partitions.
+tempfile cannot make temporary directories.  tempfile is deprecated; you
+should use \fBmktemp\fP(1)  instead.
 .SH PRZYKŁAD
-
-.RS
 .nf
 #!/bin/sh
 #[...]

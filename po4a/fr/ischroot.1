@@ -11,26 +11,25 @@ ischroot \- Détection de l'utilisation d'un environnement fermé («\ chroot\ �
 \fBischroot\fP [\fB\-\-default\-false\fP] [\fB\-\-default\-true\fP] [\fB\-\-help\fP]
 [\fB\-\-version\fP]
 .SH DESCRIPTION
-.PP
-\fBischroot\fP détecte s'il est exécuté à l'intérieur d'un environnement fermé
-d'exécution («\ chroot\ »). L'état de sortie est le suivant\ :
+\fBischroot\fP detects if it is currently running in a chroot.  The exit status
+is:
 .TP 
-0
+\fB0\fP
 si l'exécution a lieu dans un environnement fermé
 .TP 
-1
+\fB1\fP
 si l'exécution n'a pas lieu dans un environnement fermé
 .TP 
-2
+\fB2\fP
 s'il est impossible de détecter l'état (sous GNU/Linux, cela se produit
 quand la commande est exécutée sans les privilèges du superutilisateur).
 .SH OPTIONS
 .TP 
-\fB\-f\fP, \fB\-\-default\-false\fP
-Sort avec l'état 1 si la détection est impossible.
+\fB\-f, \-\-default\-false\fP
+Sort avec l'état \fB1\fP si la détection est impossible.
 .TP 
-\fB\-t\fP, \fB\-\-default\-true\fP
-Sort avec l'état 0 si la détection est impossible.
+\fB\-t, \-\-default\-true\fP
+Sort avec l'état \fB0\fP si la détection est impossible.
 .TP 
 \fB\-\-help\fP
 affiche un message d'aide sur la sortie standard, puis quitte sans erreur.
@@ -38,9 +37,8 @@ affiche un message d'aide sur la sortie standard, puis quitte sans erreur.
 \fB\-\-version\fP
 affiche les informations sur la version, puis quitte sans erreur.
 .SH BOGUES
-Sous GNU/Linux, la détection d'un environnement fermé n'est possible que
-pour le superutilisateur. Elle fonctionne correctement pour tout utilisateur
-avec GNU/Hurd et GNU/kFreeBSD.
+On GNU/Linux, chroot detection is not possible when not root.  This works
+correctly on GNU/Hurd and GNU/kFreeBSD.
 .SH TRADUCTION
 Ce document est une traduction, réalisée par Nicolas FRANÇOIS le
 8 décembre 2005.

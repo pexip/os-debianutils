@@ -11,51 +11,50 @@ savelog \- zachowuje plik dziennika
 \fBsavelog\fP [\-m uprawnienia] [\-u użytkownik] [\-g grupa] [\-t] [\-p] [\-c
 liczba_cykli] [\-l] [\-j] [\-J] [\-1\ .\|.\ \-9] [\-C] [\-d] [\-l] [\-r katalog] [\-n]
 [\-q] [\-D format_daty] plik ...
+.
 .SH OPIS
 Polecenie \fBsavelog\fP zachowuje i opcjonalnie kompresuje stare kopie
 plików. Starsze wersje \fIplik\fPu są nazywane:
 .RS
-
+.sp 1
 \fIplik\fP.\fI<numer>\fP\fI<sufix_kompresji>\fP
-
+.sp 1
 .RE
 gdzie \fI<numer>\fP jest numerem wersji, 0 oznacza najnowszą. Wersje o
 numerach > 0 są kompresowane, chyba że zostało to zabronione za pomocą
 opcji \fB\-l\fP. Wersja 0 nie jest kompresowana, ponieważ proces może mieć wciąż
 otwarty \fIplik\fP i wykonywać na nim operacje wejścia/wyjścia. Tylko
 \fIliczba_cykli\fP wersji plików jest przechowywanych.
-
+.sp 1
 Jeśli plik nie istnieje oraz podano opcję \fB\-t\fP, to zostanie utworzony.
-
+.sp 1
 W przypadku plików, które istnieją i mają rozmiar większy od zera,
 wykonywane są następujące akcje:
-
+.sp 1
 .IP 1)
-Pliki z numerowanymi wersjami są przenoszone cyklicznie. Wersja \fIplik\fP.\fI2\fP
-jest przenoszona do wersji \fIplik\fP.\fI3\fP, wersja \fIplik\fP.\fI1\fP jest
-przenoszona do wersji \fIplik\fP.\fI2\fP i tak dalej. W końcu wersja \fIplik\fP.\fI0\fP
-jest przenoszona do wersji \fIplik\fP.\fI1\fP, a wersja \fIplik\fP.\fIliczba_cykli\fP
-jest usuwana.  Zarówno skompresowane, jak i nieskompresowane nazwy plików są
-przenoszone cyklicznie, niezależnie od \fB\-l\fP. Brakujące pliki wersji są
-ignorowane.
-
+Version numbered files are cycled.  Version \fIfile\fP\fB\&.2\fP is moved to
+version \fIfile\fP\fB\&.3\fP, version \fIfile\fP\fB\&.1\fP is moved to version
+\fIfile\fP\fB\&.2\fP, and so on.  Finally version \fIfile\fP\fB\&.0\fP is moved to
+version \fIfile\fP\fB\&.1\fP, and version \fIfile\fP is deleted.  Both compressed
+names and uncompressed names are cycled, regardless of \fB\-l\fP.  Missing
+version files are ignored.
+.
 .IP 2)
-Nowo utworzony \fIplik\fP.\fI1\fP jest kompresowany, chyba że podano opcję
-\fB\-l\fP. Następnie plik ten jest zmieniany zgodnie z ustawieniami opcji \fB\-m\fP,
-\fB\-u\fP oraz \fB\-g\fP.
-
+The new \fIfile\fP\fB\&.1\fP is compressed unless the \fB\-l\fP flag was given.  It is
+changed subject to the \fB\-m\fP, \fB\-u\fP, and \fB\-g\fP flags.
+.
 .IP 3)
-Główny \fIplik\fP jest przenoszony do \fIplik\fP.\fI0\fP.
-
+The main \fIfile\fP is moved to \fIfile\fP\fB.0\fP.
+.
 .IP 4)
 Jeśli podano opcje \fB\-m\fP, \fB\-u\fP, \fB\-g\fP, \fB\-t\fP lub \fB\-p\fP, to tworzony jest
 pusty \fIplik\fP, zgodnie z ustawieniami tych opcji. Opcja \fB\-p\fP powoduje, że
 uprawnienia do pliku będą takie same, jak poprzednio.
-
+.
 .IP 5)
-Nowy \fIplik\fP.\fI0\fP jest zmieniany zgodnie z ustawieniami wynikającymi z opcji
-\fB\-m\fP, \fB\-u\fP i \fB\-g\fP.
-
+The new \fIfile\fP\fB\&.0\fP is changed subject to the \fB\-m\fP, \fB\-u\fP, and \fB\-g\fP
+flags.
+.
 .SH OPCJE
 .TP 
 \fB\-m uprawnienia\fP
@@ -68,8 +67,8 @@ zmienia właściciela plików na podanego użytkownika, włącza \fB\-t\fP
 zmienia grupę będącą właścicielem pliku na podaną grupę, włącza \fB\-t\fP
 .TP 
 \fB\-c liczba_cykli\fP
-ustawia liczbę cykli wersji pliku dziennika (domyślnie: 7). \fILiczba_cykli\fP
-musi wynosić co najmniej 2.
+Save cycle versions of the logfile (default: 7).  The \fIcycle\fP count must be
+at least 2.
 .TP 
 \fB\-t\fP
 tworzy nowy plik dziennika, jeśli nie istnieje
@@ -85,11 +84,10 @@ używa bzip2 zamiast gzip do kompresowania
 .TP 
 \fB\-J\fP
 używa xz zamiast gzip do kompresowania
-
-W przypadku kompresowania xz nie można ustawić siły kompresji, ponieważ xz
-samoczynnie przyjmuje pewną wartość domyślną zależną od całkowitego rozmiaru
-fizycznej pamięci RAM. Proszę zauważyć, że xz może użyć całkiem sporej
-ilości pamięci w przypadku wyższych poziomów kompresji.
+.sp 1
+For xz no strength option is set, and xz decides on the default based on the
+total amount of physical RAM.  Note that xz can use a very large amount of
+memory for the higher compression levels.
 .TP 
 \fB\-1\ .\|.\ \-9\fP
 siła kompresji lub użycie pamięci (domyślnie: 9, z wyjątkiem kompresji xz)
@@ -104,7 +102,7 @@ używa standardowej daty do obracania
 override date format, in the syntax understood by the \fBdate\fP(1)  command
 .TP 
 \fB\-r\fP
-używa \fIkatalogu\fP zamiast katalogu bieżącego do zapisywania plików wersji
+use \fIrolldir\fP instead of \&.\& to roll files
 .TP 
 \fB\-n\fP
 nie rotuje pustych plików
@@ -112,9 +110,9 @@ nie rotuje pustych plików
 \fB\-q\fP
 tryb cichy
 .SH BŁĘDY
-Jeśli proces wciąż zapisuje dane do \fIplik\fP.\fI0\fP, a savelog zmieni jego
-nazwę na \fIplik\fP.\fI1\fP i skompresuje go, to dane mogą zostać utracone.
-
+If a process is still writing to \fIfile\fP\fB\&.0\fP, and savelog moves it to
+\fIfile\fP\fB\&.1\fP and compresses it, data could be lost.
+.
 .SH "ZOBACZ TAKŻE"
 \fBlogrotate\fP(8)
 .SH TŁUMACZENIE

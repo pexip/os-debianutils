@@ -9,7 +9,6 @@ installkernel \- installa una nuova immagine del kernel
 .SH SINTASSI
 \fBinstallkernel \fP\fIversione zImage System.map [directory]\fP
 .SH DESCRIZIONE
-.PP
 \fBinstallkernel\fP installa una nuova immagine del kernel nel sistema
 dall'albero dei sorgenti Linux. Viene invocato dai makefile del kernel Linux
 quando viene lì eseguito \fBmake install\fP.
@@ -20,6 +19,6 @@ creando un collegamento da \fI{directory}/vmlinuz\fP al nuovo kernel, e il
 kernel precedentemente installato è disponibile come
 \fI{directory}/vmlinuz.old\fP.
 .SH BUG
-installkernel viene posizionato in /sbin solo perché i makefile del kernel
-Linux lo invocano da lì. Dovrebbe in realtà essere in /usr/sbin. Non è
-necessario per avviare un sistema.
+\fBinstallkernel\fP resides in /sbin only because the Linux kernel makefiles
+call it from there.  It should really be in /usr/sbin.  It isn't needed to
+boot a system.

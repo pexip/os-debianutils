@@ -10,12 +10,11 @@ which \- Localiser une commande
 .SH SYNOPSIS
 \fBwhich\fP [\fB\-a\fP] \fInom_de_fichier\fP...
 .SH DESCRIPTION
-\fBwhich\fP renvoie le chemin des fichiers (ou liens) qui seraient exécutés
-dans l'environnement courant si ses arguments avaient été donnés comme
-commandes dans un interpréteur de commandes strictement conforme à
-POSIX. Pour ce faire, \fBwhich\fP cherche dans la variable \fBPATH\fP les fichiers
-exécutables correspondant aux noms des arguments. \fBwhich\fP ne normalise pas
-les chemins.
+\fBwhich\fP returns the pathnames of the files (or links) which would be
+executed in the current environment, had its arguments been given as
+commands in a strictly POSIX\-conformant shell.  It does this by searching
+the PATH for executable files matching the names of the arguments.  It does
+not canonicalize path names.
 .SH OPTIONS
 .TP 
 \fB\-a\fP

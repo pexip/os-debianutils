@@ -4,7 +4,7 @@ Priority: required
 Maintainer: Pexip AS <packaging@pexip.com>
 XSBC-Pexip-Original-Maintainer: Clint Adams <clint@debian.org>
 XSBC-Pexip-Original-Uploaders: Manoj Srivastava <srivasta@debian.org>
-Standards-Version: 4.1.4
+Standards-Version: 4.5.0
 Build-Depends: dpkg (>= 1.19.0.3~)
 Rules-Requires-Root: no
 Vcs-Git: https://salsa.debian.org/debian/debianutils.git

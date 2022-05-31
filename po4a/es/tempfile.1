@@ -12,7 +12,6 @@ tempfile \- Crea un fichero temporal de forma segura
 [\-\-directory=DIRECTORIO] [\-\-prefix=CADENA] [\-\-suffix=CADENA] [\-\-mode=MODO]
 [\-\-name=FICHERO] [\-\-help] [\-\-version]
 .SH DESCRIPCIÓN
-.PP
 \fBtempfile\fP creates a temporary file in a safe manner.  It uses
 \fBmkstemps\fP(3)  to choose the name and opens it with O_RDWR | O_CREAT |
 O_EXCL.  The filename is printed on standard output.
@@ -33,7 +32,7 @@ De no ser así, se utiliza \fIP_tmpdir\fP (tal y como se define en
 \fI<stdio.h>\fP) cuando es apropiado.
 .TP 
 d)
-Por último, se puede utilizar el directorio implementado \fI(/tmp)\fP.
+Finally an implementation\-defined directory (\fI/tmp\fP)  may be used.
 .SH OPCIONES
 .TP 
 \fB\-d, \-\-directory \fP\fIDIRECTORIO\fP
@@ -61,12 +60,10 @@ Muestra información de la versión por la salida estándar y cierra con éxito.
 Un estado de salida cero significa que el fichero temporal ha sido creado
 con éxito. Cualquier otro estado de salida indica un fallo.
 .SH FALLOS
-No se garantiza la creación exclusiva al crear ficheros en particiones
-NFS. tempfile no puede crear directorios temporales. tempfile está obsoleto,
-debe utilizar mktemp(1) en su lugar.
+Exclusive creation is not guaranteed when creating files on NFS partitions.
+tempfile cannot make temporary directories.  tempfile is deprecated; you
+should use \fBmktemp\fP(1)  instead.
 .SH EJEMPLO
-
-.RS
 .nf
 #!/bin/sh
 #[...]

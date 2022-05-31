@@ -10,9 +10,8 @@ ischroot \- wykrywa, czy jest uruchomiony wewnątrz chroot
 .SH SKŁADNIA
 \fBischroot\fP [\-\-default\-false] [\-\-default\-true] [\-\-help] [\-\-version]
 .SH OPIS
-.PP
-\fBischroot\fP wykrywa, czy zostało uruchomione wewnątrz chroot. Kod wyjścia
-wynosi:
+\fBischroot\fP detects if it is currently running in a chroot.  The exit status
+is:
 .TP 
 0
 jest uruchomiony wewnątrz chroot
@@ -25,10 +24,10 @@ wykrycie nie jest możliwe (w systemie GNU/Linux zdarza się to, gdy skrypt
 nie jest uruchomiony przez administratora).
 .SH OPCJE
 .TP 
-\fB\-f, \-\-default\-false \fP
+\fB\-f, \-\-default\-false\fP
 Zwraca kod wyjścia 1, gdy wykrycie nie jest możliwe.
 .TP 
-\fB\-t, \-\-default\-true \fP
+\fB\-t, \-\-default\-true\fP
 Zwraca kod wyjścia 0, gdy wykrycie nie jest możliwe.
 .TP 
 \fB\-\-help\fP
@@ -39,8 +38,8 @@ kończy pracę.
 Wypisuje na standardowym wyjściu informację o wersji i pomyślnie kończy
 pracę.
 .SH BŁĘDY
-W systemie GNU/Linux wykrycie chroot nie jest możliwe, jeśli nie jest się
-administratorem. Działa to poprawnie w systemach GNU/Hurd oraz GNU/kFreeBSD.
+On GNU/Linux, chroot detection is not possible when not root.  This works
+correctly on GNU/Hurd and GNU/kFreeBSD.
 .SH TŁUMACZENIE
 Niniejsze tłumaczenie jest częścią pakietu debianutils.
 Strony podręcznika zawarte w pakiecie przetłumaczyli:

@@ -12,7 +12,6 @@ tempfile \- ustvari začasno datoteko v varnem načinu
 [\-\-directory=MAPA] [\-\-prefix=NIZ] [\-\-suffix=NIZ] [\-\-mode=NAČIN]
 [\-\-name=DATOTEKA] [\-\-help] [\-\-version]
 .SH OPIS
-.PP
 \fBtempfile\fP creates a temporary file in a safe manner.  It uses
 \fBmkstemps\fP(3)  to choose the name and opens it with O_RDWR | O_CREAT |
 O_EXCL.  The filename is printed on standard output.
@@ -32,7 +31,7 @@ Drugače se, ko je primerno, uporabi \fIP_tmpdir\fP (kot je naveden v
 \fI<stdio.h>\fP).
 .TP 
 d)
-Končno se lahko uporabi mapa \fI(/tmp)\fP navedena z implementacijo.
+Finally an implementation\-defined directory (\fI/tmp\fP)  may be used.
 .SH MOŽNOSTI
 .TP 
 \fB\-d, \-\-directory \fP\fIMAPA\fP
@@ -60,12 +59,10 @@ Izpiše podrobnosti o različici na standardni izhod in uspešno konča.
 Stanje končanja 0 pomeni, da je bila začasna datoteka uspešno
 ustvarjena. Katerokoli drugo izhodno stanje predstavlja napako.
 .SH HROŠČI
-Izključno ustvarjanje ni zagotovljeno ob ustvarjanju datotek na razdelkih
-NFS. začasna datoteka ne more ustvariti začasnih map. začasna datoteka je
-zastarela, namesto nje uporabite mktemp(1).
+Exclusive creation is not guaranteed when creating files on NFS partitions.
+tempfile cannot make temporary directories.  tempfile is deprecated; you
+should use \fBmktemp\fP(1)  instead.
 .SH PRIMERI
-
-.RS
 .nf
 #!/bin/sh
 #[...]

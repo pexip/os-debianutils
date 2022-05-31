@@ -10,9 +10,8 @@ ischroot \- rileva se è in esecuzione in una chroot
 .SH SINTASSI
 \fBischroot\fP [\-\-default\-false] [\-\-default\-true] [\-\-help] [\-\-version]
 .SH DESCRIZIONE
-.PP
-\fBischroot\fP rileva se è attualmente in esecuzione in una chroot. Lo stato di
-uscita è:
+\fBischroot\fP detects if it is currently running in a chroot.  The exit status
+is:
 .TP 
 0
 se è attualmente in esecuzione in una chroot
@@ -25,10 +24,10 @@ se non è possibile fare la rilevazione. (In GNU/Linux ciò accade se lo
 script non è eseguito come root).
 .SH OPZIONI
 .TP 
-\fB\-f, \-\-default\-false \fP
+\fB\-f, \-\-default\-false\fP
 Termina con stato 1 se la rilevazione non è possibile.
 .TP 
-\fB\-t, \-\-default\-true \fP
+\fB\-t, \-\-default\-true\fP
 Termina con stato 0 se la rilevazione non è possibile.
 .TP 
 \fB\-\-help\fP
@@ -38,5 +37,5 @@ Stampa un messaggio sull'uso sullo standard output e termina con successo.
 Stampa informazioni sulla versione sullo standard output e termina con
 successo.
 .SH BUG
-In GNU/Linux, la rilevazione della chroot non è possibile quando non
-root. Funziona in modo corretto in GNU/Hurd e GNU/kFreeBSD.
+On GNU/Linux, chroot detection is not possible when not root.  This works
+correctly on GNU/Hurd and GNU/kFreeBSD.

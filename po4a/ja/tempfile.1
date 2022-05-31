@@ -12,7 +12,6 @@ tempfile \- 安全な一時ファイルの作成
 [\-\-directory=DIR] [\-\-prefix=STRING] [\-\-suffix=STRING] [\-\-mode=MODE]
 [\-\-name=FILE] [\-\-help] [\-\-version]
 .SH 説明
-.PP
 \fBtempfile\fP creates a temporary file in a safe manner.  It uses
 \fBmkstemps\fP(3)  to choose the name and opens it with O_RDWR | O_CREAT |
 O_EXCL.  The filename is printed on standard output.
@@ -30,7 +29,7 @@ c)
 そうでない場合、\fIP_tmpdir\fP (\fI<stdio.h>\fP で定義) が適切であれば、これを使用します。
 .TP 
 d)
-最後に、実装で定義したディレクトリ \fI(/tmp)\fP を使用します。
+Finally an implementation\-defined directory (\fI/tmp\fP)  may be used.
 .SH オプション
 .TP 
 \fB\-d, \-\-directory \fP\fIDIR\fP
@@ -57,11 +56,10 @@ STRING を末尾にするファイルを生成します。
 .SH 戻り値
 終了ステータスが 0 は一時ファイルが正常に作成できたことを意味します。その他の終了ステータスはエラーです。
 .SH バグ
-NFS パーティションでファイルを作成する際、排他作成は保証されません。tempfile は一時ディレクトリを作成できません。tempfile
-は非推奨です。代わりに mktemp(1) を使用してください。
+Exclusive creation is not guaranteed when creating files on NFS partitions.
+tempfile cannot make temporary directories.  tempfile is deprecated; you
+should use \fBmktemp\fP(1)  instead.
 .SH 例
-
-.RS
 .nf
 #!/bin/sh
 #[...]

@@ -11,41 +11,46 @@ savelog \- ログファイルの保存
 \fBsavelog\fP [\-m mode] [\-u user] [\-g group] [\-t] [\-p] [\-c cycle] [\-l] [\-j]
 [\-J] [\-1\ .\|.\ \-9] [\-C] [\-d] [\-l] [\-r rolldir] [\-n] [\-q] [\-D dateformat]
 file ...
+.
 .SH 説明
 \fBsavelog\fP コマンドは、古いファイルのコピーを保存し、オプションで圧縮を行います。\fIfile\fP
 の古いバージョンは、以下のように名前がつきます。
 .RS
-
+.sp 1
 \fIfile\fP.\fI<number>\fP\fI<compress_suffix>\fP
-
+.sp 1
 .RE
 \fI<number>\fP は版番号です。0 が最も新しくなります。版番号が > 0 の場合、\fB\-l\fP
 を指定して抑制しない限り圧縮します。版番号 0 は、プロセスがまだ I/O のために開いている可能性があるため、圧縮しません。ファイルを
 \fIcycle\fP 版までしか保存しません。
-
+.sp 1
 ファイルがまだ存在せず、\fB\-t\fP を与えられると、ファイルを生成します。
-
+.sp 1
 ファイルが存在し、ファイルの長さが 0 バイトより大きい場合、以下のアクションを実行します。
-
+.sp 1
 .IP 1)
-版番号ファイルを循環します。版  \fIfile\fP.\fI2\fP を版 \fIfile\fP.\fI3\fP に移動し、版  \fIfile\fP.\fI1\fP を版
-\fIfile\fP.\fI2\fP に移動する、などのようにします。最後に版 \fIfile\fP.\fI0\fP を版 \fIfile\fP.\fI1\fP に移動し、\fIfile\fP
-を削除します。圧縮名・非圧縮名ともに \fB\-l\fP に関係なく循環します。見つからない版ファイルは無視します。
-
+Version numbered files are cycled.  Version \fIfile\fP\fB\&.2\fP is moved to
+version \fIfile\fP\fB\&.3\fP, version \fIfile\fP\fB\&.1\fP is moved to version
+\fIfile\fP\fB\&.2\fP, and so on.  Finally version \fIfile\fP\fB\&.0\fP is moved to
+version \fIfile\fP\fB\&.1\fP, and version \fIfile\fP is deleted.  Both compressed
+names and uncompressed names are cycled, regardless of \fB\-l\fP.  Missing
+version files are ignored.
+.
 .IP 2)
-\fB\-l\fP を与えられた場合、新しい \fIfile\fP.\fI1\fP は圧縮されます。このとき \fB\-m\fP, \fB\-u\fP, \fB\-g\fP
-の各フラグにより、その対象が変更されます。
-
+The new \fIfile\fP\fB\&.1\fP is compressed unless the \fB\-l\fP flag was given.  It is
+changed subject to the \fB\-m\fP, \fB\-u\fP, and \fB\-g\fP flags.
+.
 .IP 3)
-メインの \fIfile\fP を \fIfile\fP.\fI0\fP に移動します。
-
+The main \fIfile\fP is moved to \fIfile\fP\fB.0\fP.
+.
 .IP 4)
 \fB\-m\fP, \fB\-u\fP, \fB\-g\fP, \fB\-t\fP, \fB\-p\fP の各フラグが与えられた場合、そのフラグに該当する空の \fIfile\fP
 を生成します。\fB\-p\fP フラグの場合、以前と同じ所有者、グループ、パーミッションで生成します。
-
+.
 .IP 5)
-新しい \fIfile\fP.\fI0\fP を \fB\-m\fP, \fB\-u\fP, \fB\-g\fP の各フラグに応じて変更します。
-
+The new \fIfile\fP\fB\&.0\fP is changed subject to the \fB\-m\fP, \fB\-u\fP, and \fB\-g\fP
+flags.
+.
 .SH オプション
 .TP 
 \fB\-m mode\fP
@@ -58,7 +63,8 @@ file ...
 ログファイルを group に chgrp します。\fB\-t\fP を暗示します。
 .TP 
 \fB\-c cycle\fP
-ログファイルの保存する版を cycle までとします (デフォルト: 7)。\fIcycle\fP は 2 以上でなければなりません。
+Save cycle versions of the logfile (default: 7).  The \fIcycle\fP count must be
+at least 2.
 .TP 
 \fB\-t\fP
 新しいログファイルを生成するよう touch します。
@@ -74,9 +80,10 @@ gzip に代えて bzip2 で圧縮
 .TP 
 \fB\-J\fP
 gzip に代えて xz で圧縮
-
-xz で 強度オプションを与えない場合、xz はデフォルトで物理メモリ量をベースに判断します。xz
-は、圧縮レベルを高めるために、非常に大きなメモリが必要なことに注意してください。
+.sp 1
+For xz no strength option is set, and xz decides on the default based on the
+total amount of physical RAM.  Note that xz can use a very large amount of
+memory for the higher compression levels.
 .TP 
 \fB\-1\ .\|.\ \-9\fP
 圧縮強度やメモリー使用量 (デフォルト: 9、xz 除く)
@@ -91,7 +98,7 @@ xz で 強度オプションを与えない場合、xz はデフォルトで物�
 override date format, in the syntax understood by the \fBdate\fP(1)  command
 .TP 
 \fB\-r\fP
-ファイルの循環をする際に . に代えて \fIrolldir\fP を使用します。
+use \fIrolldir\fP instead of \&.\& to roll files
 .TP 
 \fB\-n\fP
 空ファイルを回転しない
@@ -99,8 +106,9 @@ override date format, in the syntax understood by the \fBdate\fP(1)  command
 \fB\-q\fP
 静かに
 .SH バグ
-プロセスが \fIfile.0\fP にまだ書き込んでいる間に、savelog が \fIfile.1\fP に移動して圧縮すると、データを失うことになります。
-
+If a process is still writing to \fIfile\fP\fB\&.0\fP, and savelog moves it to
+\fIfile\fP\fB\&.1\fP and compresses it, data could be lost.
+.
 .SH 関連項目
 \fBlogrotate\fP(8)
 .SH 翻訳
