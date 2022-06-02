@@ -1,3 +1,9 @@
+debianutils (4.11.2pexip1) pexip; urgency=medium
+
+  * Initial bullseye build
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Thu, 02 Jun 2022 14:42:07 +0100
+
 debianutils (4.11.2) unstable; urgency=medium
 
   * ischroot: send usage and version to stdout.  closes: #961872.
