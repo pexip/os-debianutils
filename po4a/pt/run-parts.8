@@ -15,9 +15,9 @@
 run\-parts \- corre scripts ou programas num directório
 .SH SINOPSE
 .PP
-\fBrun\-parts\fP [\-\-test] [\-\-verbose] [\-\-report] [\-\-lsbsysinit] [\-\-regex=RE]
-[\-\-umask=umask] [\-\-arg=argumento] [\-\-exit\-on\-error] [\-\-help] [\-\-version]
-[\-\-list] [\-\-reverse] [\-\-] DIRECTÓRIO
+\fBrun\-parts\fP [\-\-test] [\-\-verbose] [\-\-debug] [\-\-report] [\-\-lsbsysinit]
+[\-\-regex=RE] [\-\-umask=umask] [\-\-arg=argument] [\-\-exit\-on\-error] [\-\-help]
+[\-\-version] [\-\-list] [\-\-reverse] [\-\-] DIRECTORY
 .PP
 \fBrun\-parts\fP \-V
 .SH DESCRIÇÃO
@@ -40,9 +40,9 @@ um ou mais dos seguintes 'namespaces': o namespace atribuído a LANANA
 Se a opção \-\-regex for usada, os nomes têm de corresponder à extensão
 regular extensa e personalizada especificada como argumento dessa opção.
 
-OS ficheiros serão executados em ordem léxica (de acordo com as regras de
-ordenação de caracteres do C/POSIX) dos seus nomes a menos que a opção
-\-\-reverse seja usada, o que nesse caso serão executados pela ordem oposta.
+Files are run sequentially in the lexical sort order (according to the
+C/POSIX locale character collation rules) of their names unless the
+\-\-reverse option is given, in which case they are run in the opposite order.
 
 .SH OPÇÕES
 .TP 
@@ -62,6 +62,9 @@ escreve o nome de cada script no stderr antes de correr.
 semelhante a \fB\-\-verbose\fP, mas apenas escreve os nomes dos scripts que
 produzem resultados (output). O nome do script é escrito para qualquer um
 dos stdout ou stderr onde o script esteja programado para escrever primeiro.
+.TP 
+\fB\-d, \-\-debug\fP
+print to stderr which scripts get selected for running and which don't.
 .TP 
 \fB\-\-reverse\fP
 reverte a ordem de execução dos scripts.

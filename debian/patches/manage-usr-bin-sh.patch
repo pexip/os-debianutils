@@ -1,0 +1,29 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: manage (/usr)/bin/sh in the state file
+
+--- a/update-shells
++++ b/update-shells
+@@ -63,19 +63,20 @@ done
+ 
+ PKG_DIR="$ROOT/usr/share/debianutils/shells.d"
+ STATE_FILE="$ROOT/var/lib/shells.state"
++TEMPLATE_ETC_FILE="$ROOT/usr/share/debianutils/shells"
+ TARGET_ETC_FILE="$ROOT/etc/shells"
+ SOURCE_ETC_FILE="$TARGET_ETC_FILE"
+ NEW_ETC_FILE="$TARGET_ETC_FILE.tmp"
+ NEW_STATE_FILE="$STATE_FILE.tmp"
+ 
+ if ! test -e "$SOURCE_ETC_FILE"; then
+-	SOURCE_ETC_FILE="$ROOT/usr/share/debianutils/shells"
++	SOURCE_ETC_FILE="$TEMPLATE_ETC_FILE"
+ fi
+ 
+ PKG_SHELLS='#'
+ LC_COLLATE=C.UTF-8  # glob in reproducible order
+-for f in "$PKG_DIR/"*; do
+-	[ "$f" = "$PKG_DIR/*" ] && break
++for f in "$TEMPLATE_ETC_FILE" "$PKG_DIR/"*; do
++	test -f "$f" || continue
+ 	while IFS='#' read -r line _; do
+ 		[ -n "$line" ] || continue
+ 		PKG_SHELLS="$PKG_SHELLS$line#"

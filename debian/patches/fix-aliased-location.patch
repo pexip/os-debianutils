@@ -1,0 +1,18 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix detection of shells in aliased locations
+ only canonicalize the directory where the shell resides,
+ not the shell itself (which may be a symlink, e.g. managed by
+ update-alternatives)
+Bug-Debian: https://bugs.debian.org/1035820
+
+--- a/update-shells
++++ b/update-shells
+@@ -80,7 +80,7 @@ for f in "$TEMPLATE_ETC_FILE" "$PKG_DIR/
+ 	while IFS='#' read -r line _; do
+ 		[ -n "$line" ] || continue
+ 		PKG_SHELLS="$PKG_SHELLS$line#"
+-		realshell=$(dirname "$(dpkg-realpath --root "$ROOT" "$line")")/$(basename "$line")
++		realshell=$(dpkg-realpath --root "$ROOT" "$(dirname "$line")")/$(basename "$line")
+ 		if [ "$line" != "$realshell" ]; then
+ 			PKG_SHELLS="$PKG_SHELLS$realshell#"
+ 		fi

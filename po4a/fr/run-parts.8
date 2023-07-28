@@ -15,10 +15,9 @@
 run\-parts \- Exécuter les scripts ou les exécutables d'un répertoire
 .SH SYNOPSIS
 .PP
-\fBrun\-parts\fP [\fB\-\-test\fP] [\fB\-\-verbose\fP] [\fB\-\-report\fP] [\fB\-\-lsbsysinit\fP]
-[\fB\-\-regex\fP=\fIRE\fP] [\fB\-\-umask\fP=\fIumask\fP] [\fB\-\-arg\fP=\fIargument\fP]
-[\fB\-\-exit\-on\-error\fP] [\fB\-\-help\fP] [\fB\-\-version\fP] [\fB\-\-list\fP] [\fB\-\-reverse\fP]
-[\fB\-\-\fP] \fIrépertoire\fP
+\fBrun\-parts\fP [\-\-test] [\-\-verbose] [\-\-debug] [\-\-report] [\-\-lsbsysinit]
+[\-\-regex=RE] [\-\-umask=umask] [\-\-arg=argument] [\-\-exit\-on\-error] [\-\-help]
+[\-\-version] [\-\-list] [\-\-reverse] [\-\-] DIRECTORY
 .PP
 \fBrun\-parts\fP \-V
 .SH DESCRIPTION
@@ -42,10 +41,9 @@ et doivent appartenir à un (ou plusieurs) des ensembles de noms suivants\ :
 Si l'option \fB\-\-regex\fP est utilisée, les noms doivent correspondre à
 l'expression rationnelle spécifiée en tant qu'argument à cette option.
 
-Les fichiers sont exécutés dans l'ordre lexicographique de leur nom (d'après
-les règles de classement de caractères des paramètres linguistiques
-régionaux («\ locale\ ») C/POSIX) à moins que l'option \fB\-\-reverse\fP ne soit
-utilisée, auquel cas ils sont exécutés dans l'ordre inverse.
+Files are run sequentially in the lexical sort order (according to the
+C/POSIX locale character collation rules) of their names unless the
+\-\-reverse option is given, in which case they are run in the opposite order.
 
 .SH OPTIONS
 .TP 
@@ -64,6 +62,9 @@ affiche le nom de chaque script sur la sortie d'erreur avant de l'exécuter.
 similaire à \fB\-\-verbose\fP, mais n'affiche que le nom des scripts qui
 produisent une sortie. Le nom du script est affiché sur la sortie utilisée
 en premier\ : soit la sortie standard, soit la sortie d'erreur.
+.TP 
+\fB\-d, \-\-debug\fP
+print to stderr which scripts get selected for running and which don't.
 .TP 
 \fB\-\-reverse\fP
 inverse l'ordre d'exécution des scripts.

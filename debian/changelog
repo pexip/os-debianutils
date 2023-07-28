@@ -1,3 +1,171 @@
+debianutils (5.7-0.5~deb12u1) bookworm; urgency=medium
+
+  * Rebuild for bookworm.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 29 Jul 2023 01:46:35 +0200
+
+debianutils (5.7-0.5) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * update-shells: Do not create duplicate entries in /etc/shells.
+  * update-shells: Manage (/usr)/bin/sh in the state file.
+  * update-shells: Fix canonicalization of shells in aliased locations.
+    (Closes: #1035820)
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 22 Jun 2023 21:59:33 +0200
+
+debianutils (5.7-0.4) unstable; urgency=medium
+
+  * Non-maintainer upload
+  * d/copyright: Convert to machine-readable format
+
+ -- Bastian Germann <bage@debian.org>  Wed, 02 Nov 2022 17:31:14 +0100
+
+debianutils (5.7-0.3) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * update-shells: workaround for merged-/usr (closes: #1006694)
+  * update-shells: set the default for ROOT to $DPKG_ROOT
+
+ -- Johannes Schauer Marin Rodrigues <josch@debian.org>  Wed, 27 Jul 2022 08:20:06 +0200
+
+debianutils (5.7-0.2) unstable; urgency=medium
+
+  * Non-maintainer upload
+  * debian/rules:
+    - Set the NO_PKG_MANGLE variable (for Ubuntu). Closes: #1006970
+
+ -- Gunnar Hjalmarsson <gunnarhj@debian.org>  Sun, 01 May 2022 18:47:00 +0200
+
+debianutils (5.7-0.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Remove old and now conflicting manpage.  closes: #1004167
+
+ -- Bastian Blank <waldi@debian.org>  Sun, 23 Jan 2022 19:05:32 +0100
+
+debianutils (5.6-0.1) unstable; urgency=medium
+
+  [ Bastian Blank ]
+  * Non-maintainer upload.
+  * Implement CTTE ruling #994275.
+  * Revert deprecation of which (no. 2).
+    closes: #993582, #993700
+  * Restore tempfile (no. 4).
+  * Revert move to /usr (no. 5).
+    closes: #992481, #992615, #992639, #992649
+  * Remove not longer applicable NEWS entry.
+  * Force creation of translated man-pages to fix all build.
+
+  [ Johannes Schauer Marin Rodrigues ]
+  * also distribute *.po files and *.add files in dist tarball
+    (closes: #1000866)
+
+ -- Bastian Blank <waldi@debian.org>  Fri, 21 Jan 2022 23:12:40 +0100
+
+debianutils (5.5-1) unstable; urgency=medium
+
+  * New upstream version.
+  * Add debian/watch and debian/upstream/metadata
+
+ -- Clint Adams <clint@debian.org>  Sat, 18 Sep 2021 16:23:29 -0400
+
+debianutils (5.4-4) unstable; urgency=medium
+
+  * Add Breaks on printer-driver-pnm2ppa.  closes: #993665.
+
+ -- Clint Adams <clint@debian.org>  Wed, 08 Sep 2021 16:57:40 -0400
+
+debianutils (5.4-3) unstable; urgency=medium
+
+  * Handle translated which(1) man pages with alternatives as well.
+    closes: #992480.
+
+ -- Clint Adams <clint@debian.org>  Tue, 24 Aug 2021 15:54:11 -0400
+
+debianutils (5.4-2) unstable; urgency=medium
+
+  * Patch from Johannes Schauer Marin Rodrigues for busybox fallback
+    in postinst.
+
+ -- Clint Adams <clint@debian.org>  Mon, 23 Aug 2021 13:20:28 -0400
+
+debianutils (5.4-1) unstable; urgency=medium
+
+  * New upstream version:
+    - add-shell, remove-shell, update-shells: restore busybox
+      compatibility thanks to Johannes Schauer Marin Rodrigues.
+      closes: #992695.
+    - which: change the deprecation warning so people won't need
+      to read the man page.  closes: #992383.
+
+ -- Clint Adams <clint@debian.org>  Sun, 22 Aug 2021 12:24:58 -0400
+
+debianutils (5.3-1) unstable; urgency=medium
+
+  * New upstream version
+    - * update-shells, update-shells.8: multiple fixes.  closes: #992559.
+  * Add NEWS.Debian with text from Christoph Anton Mitterer and
+    Michael Gold.  closes: #992383, #992466.
+
+ -- Clint Adams <clint@debian.org>  Fri, 20 Aug 2021 07:31:04 -0400
+
+debianutils (5.2-2) unstable; urgency=medium
+
+  * Add Breaks on ifupdown (<< 0.8.36+nmu1).  closes: #992410.
+
+ -- Clint Adams <clint@debian.org>  Thu, 19 Aug 2021 11:35:38 -0400
+
+debianutils (5.2-1) unstable; urgency=medium
+
+  * New upstream version.
+
+ -- Clint Adams <clint@debian.org>  Thu, 19 Aug 2021 06:43:02 -0400
+
+debianutils (5.1-2) unstable; urgency=medium
+
+  * Manage `which` through alternatives so people can package
+    FreeBSD which and GNU which as replacements.
+
+ -- Clint Adams <clint@debian.org>  Wed, 18 Aug 2021 17:07:48 -0400
+
+debianutils (5.1-1) unstable; urgency=medium
+
+  * Patch from Helmut Grohne to add update-shells.
+    closes: #990440.
+
+ -- Clint Adams <clint@debian.org>  Wed, 18 Aug 2021 13:36:11 -0400
+
+debianutils (5.0.1-2) unstable; urgency=medium
+
+  * Redirect stderr from which in smoke test
+  * Add Breaks on x11-common still using `tempfile`.
+    closes: #992396.
+
+ -- Clint Adams <clint@debian.org>  Wed, 18 Aug 2021 11:26:56 -0400
+
+debianutils (5.0.1-1) unstable; urgency=medium
+
+  * which: fix punctuation.
+
+ -- Clint Adams <clint@debian.org>  Tue, 17 Aug 2021 17:53:04 -0400
+
+debianutils (5.0-1) unstable; urgency=medium
+
+  [ Tomas Pospisek ]
+  * run-parts.8: document --debug flag introduced in commit 37596c61
+  * run-parts.8: mention that run-parts runs parts sequentially
+
+  [ Clint Adams ]
+  * run-parts: Apply patch from Christoph Biedl to add --debug flag.
+    closes: #243676.
+  * Add missing newline to regexp build error, thanks to Christoph Biedl.
+  * Remove tempfile.
+  * Deprecate which.
+  * Move run-parts to /usr/bin and installkernel to /usr/sbin.
+
+ -- Clint Adams <clint@debian.org>  Tue, 17 Aug 2021 17:03:42 -0400
+
 debianutils (4.11.2) unstable; urgency=medium
 
   * ischroot: send usage and version to stdout.  closes: #961872.

@@ -24,6 +24,9 @@ LDFLAGS := $(shell dpkg-buildflags --get LDFLAGS)
 
 BUILD_DATE := $(shell dpkg-parsechangelog | sed -n -e 's/^Date: //p')
 
+# don't create translation tarball (useful for Ubuntu)
+export NO_PKG_MANGLE=1
+
 build: build-indep build-arch
 build-indep:
 
@@ -56,11 +59,15 @@ binary-arch:	build
 		       debian/tmp/sbin \
 		       debian/tmp/usr/bin \
 		       debian/tmp/usr/sbin \
+		       debian/tmp/usr/share/debianutils/shells.d \
 		       debian/tmp/usr/share/man/man1 \
 		       debian/tmp/usr/share/man/man8 \
 		       debian/tmp/usr/share/doc/$(package) \
 		       debian/tmp/usr/share/$(package)
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/tmp INSTALL_PROGRAM="$(INSTALL_PROGRAM)"
+	mv debian/tmp/usr/bin/which debian/tmp/usr/bin/which.debianutils
+	mv debian/tmp/usr/share/man/man1/which.1 debian/tmp/usr/share/man/man1/which.debianutils.1
+	for i in de es fr it ja pl sl; do mv debian/tmp/usr/share/man/$${i}/man1/which.1 debian/tmp/usr/share/man/$${i}/man1/which.debianutils.1; done
 	mv debian/tmp/usr/bin/run-parts \
 	   debian/tmp/usr/bin/tempfile \
 	   debian/tmp/bin/
@@ -68,7 +75,7 @@ binary-arch:	build
 ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
 	$(STRIP) --remove-section=.comment --remove-section=.note \
 		debian/tmp/bin/run-parts \
-	   	debian/tmp/bin/tempfile \
+		debian/tmp/bin/tempfile \
 	   	debian/tmp/usr/bin/ischroot
 endif
 
@@ -79,7 +86,8 @@ else
 	   debian/tmp/usr/share/man/man8/installkernel.8
 endif
 	$(INSTALL_FILE) debian/shells debian/tmp/usr/share/$(package)
-	$(INSTALL_FILE) debian/changelog debian/tmp/usr/share/doc/$(package)
+	$(INSTALL_FILE) CHANGELOG debian/tmp/usr/share/doc/$(package)/changelog
+	$(INSTALL_FILE) debian/changelog debian/tmp/usr/share/doc/$(package)/changelog.Debian
 	$(INSTALL_FILE) debian/README.shells debian/tmp/usr/share/doc/$(package)
 	find debian/tmp/usr/share/man/man[18] \
 	     debian/tmp/usr/share/man/de/man[18] \
@@ -88,11 +96,14 @@ endif
 	     debian/tmp/usr/share/man/it/man[18] \
 	     debian/tmp/usr/share/man/ja/man[18] \
 	     debian/tmp/usr/share/man/pl/man[18] \
+	     debian/tmp/usr/share/man/pt/man[18] \
 	     debian/tmp/usr/share/man/sl/man[18] \
              debian/tmp/usr/share/doc/$(package) -type f | xargs gzip -9n
 	$(INSTALL_FILE) debian/copyright debian/tmp/usr/share/doc/$(package)
 	$(INSTALL_SCRIPT) debian/postinst debian/tmp/DEBIAN/
 	$(INSTALL_SCRIPT) debian/postrm debian/tmp/DEBIAN/
+	$(INSTALL_SCRIPT) debian/prerm debian/tmp/DEBIAN/
+	$(INSTALL_FILE) debian/triggers debian/tmp/DEBIAN/
 
 	cd debian/tmp && find * -type f ! -regex '^DEBIAN/.*' -print0 | LC_ALL=C sort -z | xargs -r0 md5sum > DEBIAN/md5sums
 
@@ -115,8 +126,6 @@ binary:	binary-indep binary-arch
 prebuild:
 	autoreconf -fi
 	$(RM) -rf autom4te.cache
-
-	cd po4a && po4a --no-backups po4a.conf
 
 
 .PHONY: build build-indep binary binary-arch binary-indep clean prebuild

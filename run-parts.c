@@ -39,6 +39,7 @@
 int test_mode = 0;
 int list_mode = 0;
 int verbose_mode = 0;
+int debug_mode = 0;
 int report_mode = 0;
 int reverse_mode = 0;
 int exitstatus = 0;
@@ -62,7 +63,8 @@ static char* regex_get_error(int errcode, regex_t *compiled);
 static void  regex_compile_pattern(void);
 static void  regex_clean(void);
 
-void error(char *format, ...)
+__attribute__((format (printf, 1, 2)))
+void error(const char *format, ...)
 {
   va_list ap;
 
@@ -95,6 +97,7 @@ void usage()
 	  "      --list          print names of all valid files (can not be used with\n"
 	  "                      --test)\n"
 	  "  -v, --verbose       print script names before running them.\n"
+	  "  -d, --debug         print script names while checking them.\n"
 	  "      --report        print script names if they produce output.\n"
 	  "      --reverse       reverse execution order of scripts.\n"
 	  "      --exit-on-error exit as soon as a script returns with a non-zero exit\n"
@@ -151,19 +154,30 @@ int valid_name(const struct dirent *d)
 
     s = (char *)&(d->d_name);
 
-    if (regex_mode == RUNPARTS_ERE)
+    if (regex_mode == RUNPARTS_ERE) {
         retval = !regexec(&customre, s, 0, NULL, 0);
+	if (debug_mode)
+	    fprintf(stderr, "\"%s\": customre %s\n", s, retval ? "pass" : "fail");
 
-    else if (regex_mode == RUNPARTS_LSBSYSINIT) {
+    } else if (regex_mode == RUNPARTS_LSBSYSINIT) {
 
-        if (!regexec(&hierre, s, 0, NULL, 0))
+        if (!regexec(&hierre, s, 0, NULL, 0)) {
             retval = regexec(&excsre, s, 0, NULL, 0);
+	    if (debug_mode)
+		fprintf(stderr, "\"%s\": hierre pass, excsre %s\n", s, retval ? "pass" : "fail");
 
-	else
+	} else {
             retval = !regexec(&tradre, s, 0, NULL, 0);
+	    if (debug_mode)
+		fprintf(stderr, "\"%s\": tradre %s\n", s, retval ? "pass" : "fail");
 
-    } else
+	}
+    } else {
         retval = !regexec(&classicalre, s, 0, NULL, 0);
+	if (debug_mode)
+	    fprintf(stderr, "\"%s\": classicalre %s\n", s, retval ? "pass" : "fail");
+
+    }
 
     return retval;
 }
@@ -423,7 +437,6 @@ static int open_tmpfile_rw(void)
 static int copy_stdin(void)
 {
   int fd;
-  const char *tmpdir;
   char buffer[4096];
   ssize_t bytes;
 
@@ -490,7 +503,6 @@ void run_parts(char *dirname)
     }
   }
 
-  i = reverse_mode ? 0 : entries;
   for (i = reverse_mode ? (entries - 1) : 0;
        reverse_mode ? (i >= 0) : (i < entries); reverse_mode ? i-- : i++) {
     if (filename_length < dirname_length + strlen(namelist[i]->d_name) + 1) {
@@ -526,7 +538,7 @@ void run_parts(char *dirname)
 	    printf("%s\n", filename);
 	}
 	else {
-	  if (verbose_mode)
+	  if (verbose_mode) {
 	    if (argcount) {
 	      char **a = args;
 
@@ -537,6 +549,7 @@ void run_parts(char *dirname)
 	    } else {
 	      fprintf(stderr, "run-parts: executing %s\n", filename);
 	    }
+	  }
 	  run_part(filename);
 	  if (exitstatus != 0 && exit_on_error_mode) return;
 	}
@@ -582,6 +595,7 @@ int main(int argc, char *argv[])
       {"test", 0, &test_mode, 1},
       {"list", 0, &list_mode, 1},
       {"verbose", 0, 0, 'v'},
+      {"debug", 0, 0, 'd'},
       {"report", 0, &report_mode, 1},
       {"reverse", 0, &reverse_mode, 1},
       {"umask", 1, 0, 'u'},
@@ -601,7 +615,7 @@ int main(int argc, char *argv[])
       break;
     switch (c) {
     case 0:
-      if(option_index==10) { /* hardcoding this will lead to trouble */
+      if(option_index==11) { /* hardcoding this will lead to trouble */
         custom_ere = strdup(optarg);
       }
       break;
@@ -616,6 +630,9 @@ int main(int argc, char *argv[])
       break;
     case 'v':
       verbose_mode = 1;
+      break;
+    case 'd':
+      debug_mode = 1;
       break;
     case 'V':
       version();
@@ -686,7 +703,7 @@ regex_compile_pattern (void)
         pt_regex = &classicalre;
 
     if (err != 0) {
-        fprintf(stderr, "Unable to build regexp: %s", \
+        fprintf(stderr, "Unable to build regexp: %s\n", \
                             regex_get_error(err, pt_regex));
         exit(1);
     }

@@ -3,7 +3,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH REMOVE\-SHELL 8 "7 avril 2005"  
+.TH REMOVE\-SHELL 8 "23 Sep 2021"  
 .SH NOM
 remove\-shell \- Supprimer des interpréteurs de la liste des interpréteurs
 initiaux valables
@@ -14,6 +14,10 @@ initiaux valables
 \fI/etc/shells.tmp2\fP pour supprimer les interpréteurs de commandes
 («\ shell\ ») de la liste des interpréteurs de commandes initiaux («\ login
 shell\ ») valables, puis copie le résultat dans \fI/etc/shells\fP.
+.SH ENVIRONMENT
+.TP 
+\fIDPKG_ROOT\fP
+specifies the base path under which \fI/etc/shells\fP resides.
 .SH "VOIR AUSSI"
 \fBshells\fP(5)
 .SH TRADUCTION

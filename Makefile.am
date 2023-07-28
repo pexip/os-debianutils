@@ -2,16 +2,18 @@ AUTOMAKE_OPTIONS = foreign
 
 SUBDIRS = po4a
 
+EXTRA_DIST = CHANGELOG CONTRIBUTING .gitlab-ci.yml
+
 bin_PROGRAMS = run-parts tempfile ischroot
 run_parts_SOURCES = run-parts.c
 tempfile_SOURCES = tempfile.c
 ischroot_SOURCES = ischroot.c
 
-bin_SCRIPTS = which savelog
+dist_bin_SCRIPTS = which savelog
 
-sbin_SCRIPTS = installkernel add-shell remove-shell
+dist_sbin_SCRIPTS = installkernel add-shell remove-shell update-shells
 
-man_MANS = run-parts.8 \
+dist_man_MANS = run-parts.8 \
 	   installkernel.8 savelog.8 \
 	   tempfile.1 which.1 add-shell.8 \
-	   remove-shell.8 ischroot.1
+	   remove-shell.8 update-shells.8 ischroot.1

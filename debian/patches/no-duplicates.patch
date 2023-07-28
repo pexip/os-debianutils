@@ -1,0 +1,18 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: do not create duplicate entries in /etc/shells
+
+--- a/update-shells
++++ b/update-shells
+@@ -106,8 +106,10 @@ while IFS= read -r line; do
+ 	if [ -z "$shell" ] ||
+ 			hashset_contains "$PKG_SHELLS" "$shell" ||
+ 			! hashset_contains "$STATE_SHELLS" "$shell"; then
+-		echo "$line" >> "$NEW_ETC_FILE"
+-		ETC_SHELLS="$ETC_SHELLS$shell#"
++		if [ -z "$shell" ] || ! hashset_contains "$ETC_SHELLS" "$shell"; then
++			echo "$line" >> "$NEW_ETC_FILE"
++			ETC_SHELLS="$ETC_SHELLS$shell#"
++		fi
+ 	else
+ 		log "removing shell $shell"
+ 	fi
