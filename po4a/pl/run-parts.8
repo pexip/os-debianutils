@@ -15,9 +15,9 @@
 run\-parts \- uruchamia skrypty lub programy w katalogu
 .SH SKŁADNIA
 .PP
-\fBrun\-parts\fP [\-\-test] [\-\-verbose] [\-\-report] [\-\-lsbsysinit] [\-\-regex=RE]
-[\-\-umask=umask] [\-\-arg=argument] [\-\-exit\-on\-error] [\-\-help] [\-\-version]
-[\-\-list] [\-\-reverse] [\-\-] KATALOG
+\fBrun\-parts\fP [\-\-test] [\-\-verbose] [\-\-debug] [\-\-report] [\-\-lsbsysinit]
+[\-\-regex=RE] [\-\-umask=umask] [\-\-arg=argument] [\-\-exit\-on\-error] [\-\-help]
+[\-\-version] [\-\-list] [\-\-reverse] [\-\-] DIRECTORY
 .PP
 \fBrun\-parts\fP \-V
 .SH OPIS
@@ -39,10 +39,9 @@ LANANA (^[a\-z0\-9]+$); hierarchiczna i zarezerwowana przestrzeń nazw LSB
 Jeśli podano opcję \-\-regex, nazwy muszą pasować do rozszerzonego wyrażenia
 regularnego podanego jako wartość tej opcji.
 
-Znalezione pliki są uruchamiane w alfabetycznej kolejności ich nazw (zgodnie
-z porządkiem sortowania ustawień regionalnych C/POSIX), chyba że w linii
-poleceń podano opcję \-\-reverse, która powoduje, że skrypty będą uruchamiane
-w odwrotnej kolejności.
+Files are run sequentially in the lexical sort order (according to the
+C/POSIX locale character collation rules) of their names unless the
+\-\-reverse option is given, in which case they are run in the opposite order.
 
 .SH OPCJE
 .TP 
@@ -62,6 +61,9 @@ wyjście błędów.
 podobne do \fB\-\-verbose\fP, ale wypisuje nazwy tylko tych skryptów, które
 generują wyjście.  Nazwa skryptu jest wypisywana na stdout lub stderr, w
 zależności od tego, gdzie skrypt wysyła swoje pierwsze wyniki.
+.TP 
+\fB\-d, \-\-debug\fP
+print to stderr which scripts get selected for running and which don't.
 .TP 
 \fB\-\-reverse\fP
 odwraca porządek wykonywania skryptów.

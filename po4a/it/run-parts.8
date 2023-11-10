@@ -15,9 +15,9 @@
 run\-parts \- esegue script o programmi in una directory
 .SH SINTASSI
 .PP
-\fBrun\-parts\fP [\-\-test] [\-\-verbose] [\-\-report] [\-\-lsbsysinit] [\-\-regex=ER]
-[\-\-umask=umask] [\-\-arg=argomento] [\-\-exit\-on\-error] [\-\-help] [\-\-version]
-[\-\-list] [\-\-reverse] [\-\-] DIRECTORY
+\fBrun\-parts\fP [\-\-test] [\-\-verbose] [\-\-debug] [\-\-report] [\-\-lsbsysinit]
+[\-\-regex=RE] [\-\-umask=umask] [\-\-arg=argument] [\-\-exit\-on\-error] [\-\-help]
+[\-\-version] [\-\-list] [\-\-reverse] [\-\-] DIRECTORY
 .PP
 \fBrun\-parts\fP \-V
 .SH DESCRIZIONE
@@ -41,10 +41,9 @@ Se viene specificata l'opzione \-\-regex, i nomi devono corrispondere
 all'espressione regolare estesa personalizzata specificata come argomento di
 tale opzione.
 
-I file vengono eseguiti in base all'ordine lessicale (secondo le regole di
-collazione dei caratteri della locale C/POSIX) dei loro nomi, a meno che non
-venga specificata l'opzione \-\-reverse nel qual caso vengono eseguiti
-nell'ordine inverso.
+Files are run sequentially in the lexical sort order (according to the
+C/POSIX locale character collation rules) of their names unless the
+\-\-reverse option is given, in which case they are run in the opposite order.
 
 .SH OPZIONI
 .TP 
@@ -64,6 +63,9 @@ stampa il nome di ogni script su stderr prima dell'esecuzione.
 simile a \fB\-\-verbose\fP, ma stampa solo il nome degli script che producono
 output. Il nome dello script viene stampato su stdout o stderr, a seconda su
 quale dei due lo script produce prima output.
+.TP 
+\fB\-d, \-\-debug\fP
+print to stderr which scripts get selected for running and which don't.
 .TP 
 \fB\-\-reverse\fP
 inverte l'ordine di esecuzione degli script.

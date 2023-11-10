@@ -15,9 +15,9 @@
 run\-parts \- zažene skripte ali programe v mapi
 .SH POVZETEK
 .PP
-\fBrun\-parts\fP [\-\-test] [\-\-verbose] [\-\-report] [\-\-lsbsysinit] [\-\-regex=RE]
-[\-\-umask=umask] [\-\-arg=argument] [\-\-exit\-on\-error] [\-\-help] [\-\-version]
-[\-\-list] [\-\-reverse] [\-\-] MAPA
+\fBrun\-parts\fP [\-\-test] [\-\-verbose] [\-\-debug] [\-\-report] [\-\-lsbsysinit]
+[\-\-regex=RE] [\-\-umask=umask] [\-\-arg=argument] [\-\-exit\-on\-error] [\-\-help]
+[\-\-version] [\-\-list] [\-\-reverse] [\-\-] DIRECTORY
 .PP
 \fBrun\-parts\fP \-V
 .SH OPIS
@@ -39,9 +39,9 @@ in imenski prostor Debian cron skript (^[a\-zA\-Z0\-9_\-]+$).
 Če je podana možnost \-\-regex, morajo imena ustrezati po meri narejenemu
 razširjenemu logičnemu izrazu določenemu kot argument te možnosti.
 
-Datoteke se zaganjajo po abecednem vrstnem redu njihovih imen (glede na
-pravila krajevnih oznak C/POSIX), razen če je podana možnost
-\-\-reverse. Takrat se zaganjajo v obratnem vrstnem redu.
+Files are run sequentially in the lexical sort order (according to the
+C/POSIX locale character collation rules) of their names unless the
+\-\-reverse option is given, in which case they are run in the opposite order.
 
 .SH MOŽNOSTI
 .TP 
@@ -59,6 +59,9 @@ izpiše ime vsake skripte na stderr pred zagonom
 podobno kot \fB\-\-verbose\fP, vendar izpiše le imena skript, ki imajo izhod.
 Ime skripte se izpiše na stdout ali pa stderr glede na to kje se izpiše prvi
 izhod skripte.
+.TP 
+\fB\-d, \-\-debug\fP
+print to stderr which scripts get selected for running and which don't.
 .TP 
 \fB\-\-reverse\fP
 obrni vrstni red izvajanja skript

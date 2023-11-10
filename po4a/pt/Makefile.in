@@ -86,7 +86,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-subdir = po4a/sl
+subdir = po4a/pt
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/acinclude.m4 \
 	$(top_srcdir)/configure.ac
@@ -239,10 +239,9 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = foreign
-l = sl
-addendum = -a $(top_srcdir)/po4a/$(l)/translator_slovene.add
+l = pt
+addendum = 
 TRANSLATE = po4a-translate -k 0 -f man $(addendum) -p $(top_srcdir)/po4a/po/$(l).po
-EXTRA_DIST = translator_slovene.add
 manlangonedir = $(mandir)/$(l)/man1
 dist_manlangone_DATA = which.1
 manlangeightdir = $(mandir)/$(l)/man8
@@ -259,9 +258,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign po4a/sl/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign po4a/pt/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign po4a/sl/Makefile
+	  $(AUTOMAKE) --foreign po4a/pt/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \

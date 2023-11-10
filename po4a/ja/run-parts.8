@@ -15,9 +15,9 @@
 run\-parts \- ディレクトリにあるスクリプト・プログラムの実行
 .SH 書式
 .PP
-\fBrun\-parts\fP [\-\-test] [\-\-verbose] [\-\-report] [\-\-lsbsysinit] [\-\-regex=RE]
-[\-\-umask=umask] [\-\-arg=argument] [\-\-exit\-on\-error] [\-\-help] [\-\-version]
-[\-\-list] [\-\-reverse] [\-\-] DIRECTORY
+\fBrun\-parts\fP [\-\-test] [\-\-verbose] [\-\-debug] [\-\-report] [\-\-lsbsysinit]
+[\-\-regex=RE] [\-\-umask=umask] [\-\-arg=argument] [\-\-exit\-on\-error] [\-\-help]
+[\-\-version] [\-\-list] [\-\-reverse] [\-\-] DIRECTORY
 .PP
 \fBrun\-parts\fP \-V
 .SH 説明
@@ -35,8 +35,9 @@ ASCII の数字、ASCII のアンダースコアと ASCII のマイナス・ハ�
 
 \-\-regex オプションを指定した場合、オプションの引数に与えた正規表現に一致する名前でなければなりません。
 
-ファイルは \-\-reverse オプションを与えない限り、ファイル名の辞書順 (C/POSIX のロケール文字照合規則に従う)
-で実行されます。与えた場合は逆順となります。
+Files are run sequentially in the lexical sort order (according to the
+C/POSIX locale character collation rules) of their names unless the
+\-\-reverse option is given, in which case they are run in the opposite order.
 
 .SH オプション
 .TP 
@@ -53,6 +54,9 @@ don't actually run them.  This option cannot be used with \-\-test.
 \fB\-\-report\fP
 \fB\-\-verbose\fP
 と同様ですが、出力を提供するスクリプトの名前のみ出力します。そのスクリプトの最初の出力先に合わせて、標準出力・標準エラー出力どちらにでも、スクリプト名を出力します。
+.TP 
+\fB\-d, \-\-debug\fP
+print to stderr which scripts get selected for running and which don't.
 .TP 
 \fB\-\-reverse\fP
 スクリプトの実行順を逆にします。
