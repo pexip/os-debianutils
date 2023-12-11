@@ -1,3 +1,9 @@
+debianutils (5.7-0.5~deb12u1pexip3) pexip-bookworm; urgency=medium
+
+  * Fix maintainer fields.
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Mon, 11 Dec 2023 10:22:21 +0000
+
 debianutils (5.7-0.5~deb12u1pexip2) pexip-bookworm; urgency=medium
 
   * Bookworm build for product distribution
