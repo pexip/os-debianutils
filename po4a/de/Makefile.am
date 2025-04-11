@@ -12,7 +12,7 @@ endif
 EXTRA_DIST = translator_german.add
 
 manlangonedir = $(mandir)/$(l)/man1
-dist_manlangone_DATA = which.1
+dist_manlangone_DATA = which.debianutils.1
 
 manlangeightdir = $(mandir)/$(l)/man8
 dist_manlangeight_DATA = add-shell.8 installkernel.8 remove-shell.8 run-parts.8 savelog.8

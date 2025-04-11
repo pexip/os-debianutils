@@ -4,19 +4,19 @@
 # Copyright (C) 2014 the debianutils copyright holder
 # This file is distributed under the same license as the debianutils package.
 #
-# Américo Monteiro <a_monteiro@gmx.com>, 2014 - 2020.
+# Américo Monteiro <a_monteiro@gmx.com>, 2014 - 2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: debianutils 4.11\n"
+"Project-Id-Version: debianutils 5.7-0.2\n"
 "POT-Creation-Date: 2021-09-23 12:52-0400\n"
-"PO-Revision-Date: 2020-06-07 19:10+0000\n"
+"PO-Revision-Date: 2022-05-17 00:01+0100\n"
 "Last-Translator: Américo Monteiro <a_monteiro@gmx.com>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 20.12.0\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 # type: TH
@@ -30,7 +30,7 @@ msgstr "ADD-SHELL"
 #: add-shell.8:1 remove-shell.8:1
 #, no-wrap
 msgid "23 Sep 2021"
-msgstr ""
+msgstr "23 Setembro 2021"
 
 # type: SH
 #. type: SH
@@ -90,18 +90,18 @@ msgstr "As shells devem ser fornecidas com os seus nomes de caminho completos."
 #: add-shell.8:20 remove-shell.8:17
 #, no-wrap
 msgid "ENVIRONMENT"
-msgstr ""
+msgstr "AMBIENTE"
 
 #. type: TP
 #: add-shell.8:21 remove-shell.8:18
 #, no-wrap
 msgid "I<DPKG_ROOT>"
-msgstr ""
+msgstr "I<DPKG_ROOT>"
 
 #. type: Plain text
 #: add-shell.8:26 remove-shell.8:23
 msgid "specifies the base path under which I</etc/shells> resides."
-msgstr ""
+msgstr "especifica o caminho base sob o qual reside I</etc/shells>."
 
 # type: SH
 #. type: SH
@@ -394,7 +394,6 @@ msgstr "run-parts - corre scripts ou programas num directório"
 # type: Plain text
 #. type: Plain text
 #: run-parts.8:17
-#, fuzzy
 #| msgid ""
 #| "B<run-parts> [--test] [--verbose] [--report] [--lsbsysinit] [--regex=RE] "
 #| "[--umask=umask] [--arg=argument] [--exit-on-error] [--help] [--version] "
@@ -404,9 +403,9 @@ msgid ""
 "regex=RE] [--umask=umask] [--arg=argument] [--exit-on-error] [--help] [--"
 "version] [--list] [--reverse] [--] DIRECTORY"
 msgstr ""
-"B<run-parts> [--test] [--verbose] [--report] [--lsbsysinit] [--regex=RE] [--"
-"umask=umask] [--arg=argumento] [--exit-on-error] [--help] [--version] [--"
-"list] [--reverse] [--] DIRECTÓRIO"
+"B<run-parts> [--test] [--verbose] [--debug] [--report] [--lsbsysinit] [--"
+"regex=RE] [--umask=umask] [--arg=argument] [--exit-on-error] [--help] [--"
+"version] [--list] [--reverse] [--] DIRECTORY"
 
 # type: Plain text
 #. type: Plain text
@@ -467,7 +466,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: run-parts.8:46
-#, fuzzy
 #| msgid ""
 #| "Files are run in the lexical sort order (according to the C/POSIX locale "
 #| "character collation rules) of their names unless the --reverse option is "
@@ -477,9 +475,10 @@ msgid ""
 "POSIX locale character collation rules) of their names unless the --reverse "
 "option is given, in which case they are run in the opposite order."
 msgstr ""
-"OS ficheiros serão executados em ordem léxica (de acordo com as regras de "
-"ordenação de caracteres do C/POSIX) dos seus nomes a menos que a opção --"
-"reverse seja usada, o que nesse caso serão executados pela ordem oposta."
+"OS ficheiros serão executados sequencialmente em ordem léxica (de acordo "
+"com as regras de ordenação de caracteres do C/POSIX) dos seus nomes a menos "
+"que a opção --reverse seja usada, o que nesse caso serão executados pela "
+"ordem oposta."
 
 # type: TP
 #. type: TP
@@ -551,18 +550,18 @@ msgstr ""
 # type: TP
 #. type: TP
 #: run-parts.8:67
-#, fuzzy, no-wrap
+#, no-wrap
 #| msgid "B<-v, --verbose>"
 msgid "B<-d, --debug>"
-msgstr "B<-v, --verbose>"
+msgstr "B<-d, --debug>"
 
 # type: Plain text
 #. type: Plain text
 #: run-parts.8:70
-#, fuzzy
 #| msgid "print the name of each script to stderr before running."
 msgid "print to stderr which scripts get selected for running and which don't."
-msgstr "escreve o nome de cada script no stderr antes de correr."
+msgstr ""
+"escreve no stderr quais scripts são selecionados para correr e quais não são."
 
 # type: TP
 #. type: TP
@@ -1198,31 +1197,30 @@ msgstr "B<logrotate>(8)"
 # type: TH
 #. type: TH
 #: update-shells.8:1
-#, fuzzy, no-wrap
+#, no-wrap
 #| msgid "ADD-SHELL"
 msgid "UPDATE-SHELLS"
-msgstr "ADD-SHELL"
+msgstr "UPDATE-SHELLS"
 
 # type: TH
 #. type: TH
 #: update-shells.8:1
-#, fuzzy, no-wrap
+#, no-wrap
 #| msgid "27 Jun 2012"
 msgid "28 Jun 2021"
-msgstr "27 Jun 2012"
+msgstr "28 Junho 2021"
 
 # type: Plain text
 #. type: Plain text
 #: update-shells.8:4
-#, fuzzy
 #| msgid "add-shell - add shells to the list of valid login shells"
 msgid "update-shells - update the list of valid login shells"
-msgstr "add-shell - adiciona shells à lista de shells de login válidas"
+msgstr "update-shells - actualiza a lista de shells de login válidas"
 
 #. type: Plain text
 #: update-shells.8:7
 msgid "B<update-shells> [I<options>]"
-msgstr ""
+msgstr "B<update-shells> [I<options>]"
 
 #. type: Plain text
 #: update-shells.8:16
@@ -1232,64 +1230,69 @@ msgid ""
 "shells.  To track changes made by the administrator, it consults a state "
 "file in I</var/lib/shells.state .>"
 msgstr ""
+"B<update-shells> localiza as shells fornecidas por pacotes a partir de "
+"I</usr/share/debianutils/shells.d> e actualiza I</etc/shells> com as shells "
+"recentemente adicionadas ou removidas. Para seguir as alterações feitas "
+"pelo administrador, consulta um ficheiro de estado em "
+"I</var/lib/shells.state .>"
 
 # type: TP
 #. type: TP
 #: update-shells.8:17
-#, fuzzy, no-wrap
+#, no-wrap
 #| msgid "B<--report>"
 msgid "B<--no-act>"
-msgstr "B<--report>"
+msgstr "B<--no-act>"
 
 #. type: Plain text
 #: update-shells.8:21
 msgid "Do not actually perform the changes to I</etc/shells .>"
-msgstr ""
+msgstr "Não executa realmente as alterações em I</etc/shells .>"
 
 # type: TP
 #. type: TP
 #: update-shells.8:21
-#, fuzzy, no-wrap
+#, no-wrap
 #| msgid "B<--report>"
 msgid "B<--root>"
-msgstr "B<--report>"
+msgstr "B<--root>"
 
 #. type: Plain text
 #: update-shells.8:24
-#, fuzzy
 #| msgid "ISCHROOT"
 msgid "I<ROOT>"
-msgstr "ISCHROOT"
+msgstr "I<ROOT>"
 
 #. type: Plain text
 #: update-shells.8:27
 msgid "Operate on a chroot at I<ROOT .>"
-msgstr ""
+msgstr "Opera numa chroot em I<ROOT .>"
 
 # type: TP
 #. type: TP
 #: update-shells.8:27
-#, fuzzy, no-wrap
+#, no-wrap
 #| msgid "B<-v, --verbose>"
 msgid "B<--verbose>"
-msgstr "B<-v, --verbose>"
+msgstr "B<--verbose>"
 
 #. type: Plain text
 #: update-shells.8:30
 msgid "Print the shells that are being added or removed."
-msgstr ""
+msgstr "Escreve as shells que estão a ser adicionadas ou removidas."
 
 #. type: SH
 #: update-shells.8:30
 #, no-wrap
 msgid "FILES"
-msgstr ""
+msgstr "FICHEIROS"
 
 #. type: Plain text
 #: update-shells.8:34
 msgid ""
 "I</etc/shells> I</var/lib/shells.state> I</usr/share/debianutils/shells.d>"
 msgstr ""
+"I</etc/shells> I</var/lib/shells.state> I</usr/share/debianutils/shells.d>"
 
 # type: TH
 #. type: TH
@@ -1301,10 +1304,10 @@ msgstr "WHICH"
 # type: TH
 #. type: TH
 #: which.1:2
-#, fuzzy, no-wrap
+#, no-wrap
 #| msgid "29 Jun 2016"
 msgid "9 Jul 2021"
-msgstr "29 Jun 2016"
+msgstr "9 Julho 2021"
 
 # type: Plain text
 #. type: Plain text
@@ -1397,10 +1400,10 @@ msgstr "se for especificada uma opção inválida"
 # type: SH
 #. type: SH
 #: which.1:30
-#, fuzzy, no-wrap
+#, no-wrap
 #| msgid "DESCRIPTION"
 msgid "DEPRECATION"
-msgstr "DESCRIÇÃO"
+msgstr "DESCONTINUAÇÃO"
 
 #. type: Plain text
 #: which.1:37
@@ -1409,6 +1412,9 @@ msgid ""
 "longer useful for maintainer scripts and thus will be removed from "
 "debianutils."
 msgstr ""
+"Como B<type> e B<command -v> eram obrigatórios pelo POSIX, este utilitário "
+"não é mais útil para scripts de maintainer e assim irão ser removidos "
+"do debianutils."
 
 # type: TH
 #, no-wrap

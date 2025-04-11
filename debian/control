@@ -1,10 +1,10 @@
 Source: debianutils
 Section: utils
 Priority: required
-Maintainer: Clint Adams <clint@debian.org>
-Uploaders: Manoj Srivastava <srivasta@debian.org>
-Standards-Version: 4.6.0
-Build-Depends: dpkg (>= 1.19.0.3~)
+Maintainer: Ileana Dumitrescu <ileanadumitrescu95@gmail.com>
+Uploaders: Niels Thykier <niels@thykier.net>
+Standards-Version: 4.7.2
+Build-Depends: debhelper-compat (= 13), po4a
 Rules-Requires-Root: no
 Vcs-Git: https://salsa.debian.org/debian/debianutils.git
 Vcs-Browser: https://salsa.debian.org/debian/debianutils
@@ -12,6 +12,7 @@ Vcs-Browser: https://salsa.debian.org/debian/debianutils
 Package: debianutils
 Architecture: any
 Pre-Depends: ${shlibs:Depends}
+Depends: ${misc:Depends}
 Essential: yes
 Multi-Arch: foreign
 Breaks: printer-driver-pnm2ppa (<< 1.13-12), x11-common (<< 1:7.7+23~), ifupdown (<< 0.8.36+nmu1)
@@ -23,4 +24,3 @@ Description: Miscellaneous utilities specific to Debian
  The specific utilities included are:
  add-shell installkernel ischroot remove-shell run-parts savelog
  update-shells which
-

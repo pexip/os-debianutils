@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: debianutils\n"
 "POT-Creation-Date: 2021-09-23 12:52-0400\n"
-"PO-Revision-Date: 2018-11-06 21:42+0100\n"
+"PO-Revision-Date: 2024-03-07 00:01+0100\n"
 "Last-Translator: Baptiste Jammet <baptiste@mailoo.org>\n"
 "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
 "Language: fr\n"
@@ -37,7 +37,7 @@ msgstr "ADD-SHELL"
 #: add-shell.8:1 remove-shell.8:1
 #, no-wrap
 msgid "23 Sep 2021"
-msgstr ""
+msgstr "23 septembre 2021"
 
 # type: SH
 #. type: SH
@@ -52,8 +52,8 @@ msgstr "NOM"
 #: add-shell.8:4
 msgid "add-shell - add shells to the list of valid login shells"
 msgstr ""
-"add-shell - Ajouter des interpréteurs à la liste des interpréteurs initiaux "
-"valables"
+"add-shell – Ajouter des interpréteurs à la liste des interpréteurs de "
+"connexion valables"
 
 # type: SH
 #. type: SH
@@ -86,7 +86,7 @@ msgid ""
 "temporary file back to I</etc/shells>."
 msgstr ""
 "B<add-shell> copie I</etc/shells> dans I</etc/shells.tmp>, ajoute les "
-"interpréteurs de commandes (« shell ») à ce fichier s'il n'y est pas déjà, "
+"interpréteurs de commandes (« shell ») à ce fichier s'ils n'y sont pas déjà, "
 "puis copie ce fichier temporaire dans I</etc/shells>."
 
 # type: Plain text
@@ -99,18 +99,18 @@ msgstr "Le chemin complet des interpréteurs doit être fourni."
 #: add-shell.8:20 remove-shell.8:17
 #, no-wrap
 msgid "ENVIRONMENT"
-msgstr ""
+msgstr "ENVIRONNEMENT"
 
 #. type: TP
 #: add-shell.8:21 remove-shell.8:18
 #, no-wrap
 msgid "I<DPKG_ROOT>"
-msgstr ""
+msgstr "I<DPKG_ROOT>"
 
 #. type: Plain text
 #: add-shell.8:26 remove-shell.8:23
 msgid "specifies the base path under which I</etc/shells> resides."
-msgstr ""
+msgstr "Spécification du chemin de base dans lequel I</etc/shells> est placé."
 
 # type: SH
 #. type: SH
@@ -151,7 +151,7 @@ msgstr "Debian GNU/Linux"
 #. type: Plain text
 #: installkernel.8:4
 msgid "installkernel - install a new kernel image"
-msgstr "installkernel - Installer une nouvelle image de noyau"
+msgstr "installkernel – Installer une nouvelle image de noyau"
 
 # type: Plain text
 #. type: Plain text
@@ -168,7 +168,7 @@ msgid ""
 "install> is invoked there."
 msgstr ""
 "B<installkernel> installe une nouvelle image de noyau depuis une "
-"arborescence source de Linux. Cette commande est appelée par les Makefiles "
+"arborescence source de Linux. Cette commande est appelée par les Makefile "
 "du noyau Linux lors de l'invocation de B<make install>."
 
 # type: Plain text
@@ -181,7 +181,7 @@ msgid ""
 "previously installed kernel is available as I<{directory}/vmlinuz.old>."
 msgstr ""
 "Le nouveau noyau est installé dans I<{répertoire}/vmlinuz-{version}>. Si un "
-"lien symbolique I<{répertoire}/vmlinuz> existait, il sera modifié pour "
+"lien symbolique I<{répertoire}/vmlinuz> existe déjà, il sera modifié pour "
 "pointer sur le nouveau noyau et un lien symbolique I<{répertoire}/vmlinuz."
 "old> pointera sur l'ancien noyau."
 
@@ -196,20 +196,15 @@ msgstr "BOGUES"
 #.  -*- nroff -*-
 #. type: Plain text
 #: ischroot.1:2
-#, fuzzy
-#| msgid ""
-#| "installkernel resides in /sbin only because the Linux kernel makefiles "
-#| "call it from there.  It should really be in /usr/sbin.  It isn't needed "
-#| "to boot a system."
 msgid ""
 "B<installkernel> resides in /sbin only because the Linux kernel makefiles "
 "call it from there.  It should really be in /usr/sbin.  It isn't needed to "
 "boot a system."
 msgstr ""
-"Le programme B<installkernel> est placé dans /sbin uniquement parce que les "
-"makefiles du noyau Linux l'appellent à cet emplacement -- même si, en "
-"principe, il devrait plutôt être placé dans /usr/sbin, puisqu'il n'est pas "
-"nécessaire pour l'amorçage du système."
+"Le programme B<installkernel> est placé dans I</sbin> uniquement parce que "
+"les Makefiles du noyau Linux l'appellent à cet emplacement, même si, en "
+"principe, il devrait plutôt être placé dans I</usr/sbin>, puisqu'il n'est "
+"pas nécessaire pour l'amorçage du système."
 
 #. type: TH
 #: ischroot.1:2
@@ -229,13 +224,13 @@ msgstr "30 mai 2011"
 #: ischroot.1:2 run-parts.8:8 savelog.8:2 which.1:2
 #, no-wrap
 msgid "Debian"
-msgstr "Debian GNU/Linux"
+msgstr "Debian"
 
 #. type: Plain text
 #: ischroot.1:5
 msgid "ischroot - detect if running in a chroot"
 msgstr ""
-"ischroot - Détection de l'utilisation d'un environnement fermé (« chroot »)"
+"ischroot – Détection de l'utilisation d'un environnement fermé (« chroot »)"
 
 #. type: Plain text
 #: ischroot.1:8
@@ -246,16 +241,12 @@ msgstr ""
 
 #. type: Plain text
 #: ischroot.1:12
-#, fuzzy
-#| msgid ""
-#| "B<ischroot> detects if it is currently running in a chroot. The exit "
-#| "status is:"
 msgid ""
 "B<ischroot> detects if it is currently running in a chroot.  The exit status "
 "is:"
 msgstr ""
 "B<ischroot> détecte s'il est exécuté à l'intérieur d'un environnement fermé "
-"d'exécution (« chroot »). L'état de sortie est le suivant :"
+"(« chroot »). L'état de sortie est le suivant :"
 
 #. type: TP
 #: ischroot.1:12
@@ -305,27 +296,25 @@ msgstr "OPTIONS"
 
 #. type: TP
 #: ischroot.1:23
-#, fuzzy, no-wrap
-#| msgid "B<-f, --default-false >"
+#, no-wrap
 msgid "B<-f, --default-false>"
 msgstr "B<-f>, B<--default-false>"
 
 #. type: Plain text
 #: ischroot.1:26
 msgid "Exit with status 1 if the detection is not possible."
-msgstr "Sort avec l'état B<1> si la détection est impossible."
+msgstr "Sortie avec l'état B<1> si la détection est impossible."
 
 #. type: TP
 #: ischroot.1:26
-#, fuzzy, no-wrap
-#| msgid "B<-t, --default-true >"
+#, no-wrap
 msgid "B<-t, --default-true>"
 msgstr "B<-t>, B<--default-true>"
 
 #. type: Plain text
 #: ischroot.1:29
 msgid "Exit with status 0 if the detection is not possible."
-msgstr "Sort avec l'état B<0> si la détection est impossible."
+msgstr "Sortie avec l'état B<0> si la détection est impossible."
 
 # type: TP
 #. type: TP
@@ -339,7 +328,7 @@ msgstr "B<--help>"
 #: ischroot.1:32
 msgid "Print a usage message on standard output and exit successfully."
 msgstr ""
-"affiche un message d'aide sur la sortie standard, puis quitte sans erreur."
+"Afficher un message d'aide sur la sortie standard, puis quitter sans erreur."
 
 # type: TP
 #. type: TP
@@ -352,14 +341,10 @@ msgstr "B<--version>"
 #. type: Plain text
 #: ischroot.1:35
 msgid "Print version information on standard output and exit successfully."
-msgstr "affiche les informations sur la version, puis quitte sans erreur."
+msgstr "Afficher des informations sur la version, puis quitter sans erreur."
 
 #. type: Plain text
 #: remove-shell.8:1
-#, fuzzy
-#| msgid ""
-#| "On GNU/Linux, chroot detection is not possible when not root. This works "
-#| "correctly on GNU/Hurd and GNU/kFreeBSD."
 msgid ""
 "On GNU/Linux, chroot detection is not possible when not root.  This works "
 "correctly on GNU/Hurd and GNU/kFreeBSD."
@@ -380,8 +365,8 @@ msgstr "REMOVE-SHELL"
 #: remove-shell.8:4
 msgid "remove-shell - remove shells from the list of valid login shells"
 msgstr ""
-"remove-shell - Supprimer des interpréteurs de la liste des interpréteurs "
-"initiaux valables"
+"remove-shell – Supprimer des interpréteurs de la liste des interpréteurs de "
+"connexion valables"
 
 # type: Plain text
 #. type: Plain text
@@ -399,7 +384,7 @@ msgid ""
 msgstr ""
 "B<remove-shell> utilise les fichiers temporaires I</etc/shells.tmp> et I</"
 "etc/shells.tmp2> pour supprimer les interpréteurs de commandes (« shell ») "
-"de la liste des interpréteurs de commandes initiaux (« login shell ») "
+"de la liste des interpréteurs de commandes de connexion (« login shell ») "
 "valables, puis copie le résultat dans I</etc/shells>."
 
 # type: TH
@@ -420,26 +405,21 @@ msgstr "27 juin 2012"
 #. type: Plain text
 #: run-parts.8:11
 msgid "run-parts - run scripts or programs in a directory"
-msgstr "run-parts - Exécuter les scripts ou les exécutables d'un répertoire"
+msgstr "run-parts – Exécuter les scripts ou les exécutables d'un répertoire"
 
 # NOTE : DIRECTORY, + font modifiers
 # type: Plain text
 #. type: Plain text
 #: run-parts.8:17
-#, fuzzy
-#| msgid ""
-#| "B<run-parts> [--test] [--verbose] [--report] [--lsbsysinit] [--regex=RE] "
-#| "[--umask=umask] [--arg=argument] [--exit-on-error] [--help] [--version] "
-#| "[--list] [--reverse] [--] DIRECTORY"
 msgid ""
 "B<run-parts> [--test] [--verbose] [--debug] [--report] [--lsbsysinit] [--"
 "regex=RE] [--umask=umask] [--arg=argument] [--exit-on-error] [--help] [--"
 "version] [--list] [--reverse] [--] DIRECTORY"
 msgstr ""
-"B<run-parts> [B<--test>] [B<--verbose>] [B<--report>] [B<--lsbsysinit>] [B<--"
-"regex>=I<RE>] [B<--umask>=I<umask>] [B<--arg>=I<argument>] [B<--exit-on-"
-"error>] [B<--help>] [B<--version>] [B<--list>] [B<--reverse>] [B<-->] "
-"I<répertoire>"
+"B<run-parts> [B<--test>] [B<--verbose>] [B<--debug>] [B<--report>] [B<--"
+"lsbsysinit>] [B<--regex>=I<RE>] [B<--umask>=I<umask>] [B<--arg>=I<argument>] "
+"[B<--exit-on-error>] [B<--help>] [B<--version>] [B<--list>] [B<--reverse>] "
+"[B<-->] I<répertoire>"
 
 # type: Plain text
 #. type: Plain text
@@ -467,9 +447,9 @@ msgid ""
 "names must consist entirely of ASCII upper- and lower-case letters, ASCII "
 "digits, ASCII underscores, and ASCII minus-hyphens."
 msgstr ""
-"Si ni l'option B<--lsbsysinit> ni l'option B<--regex> n'est utilisée, alors "
+"Si ni l'option B<--lsbsysinit> ni l'option B<--regex> ne sont utilisées, "
 "les noms ne doivent comporter que des lettres ASCII (minuscules ou "
-"majuscules), des chiffres ASCII, des tirets de soulignement (« underscore ») "
+"capitales), des chiffres ASCII, des tirets de soulignement (« underscore ») "
 "ASCII ou des tirets (signes moins) ASCII."
 
 # type: Plain text
@@ -482,12 +462,12 @@ msgid ""
 "the LSB hierarchical and reserved namespaces (^_?([a-z0-9_.]+-)+[a-z0-9]+$); "
 "and the Debian cron script namespace (^[a-zA-Z0-9_-]+$)."
 msgstr ""
-"Si l'option B<--lsbsysinit> est utilisée, alors les noms ne doivent pas se "
+"Si l'option B<--lsbsysinit> est utilisée, les noms ne doivent pas se "
 "terminer par « .dpkg-old », « .dpkg-dist », « .dpkg-new » ou « .dpkg-tmp » "
-"et doivent appartenir à un (ou plusieurs) des ensembles de noms suivants :\n"
-" - noms spécifiés par LANANA (^[a-z0-9]+$) ;\n"
-" - noms hiérarchiques et réservés par LSB (^_?([a-z0-9_.]+-)+[a-z0-9]+$) ;\n"
-" - noms des scripts cron définis par Debian (^[a-zA-Z0-9_-]+$)."
+"et doivent appartenir à un ou plusieurs des espaces de noms suivants : "
+"espace de noms spécifiés par LANANA (^[a-z0-9]+$), espaces de noms "
+"hiérarchiques et réservés par LSB (^_?([a-z0-9_.]+-)+[a-z0-9]+$) et espaces "
+"de noms des scripts cron définis par Debian (^[a-zA-Z0-9_-]+$)."
 
 # type: Plain text
 #. type: Plain text
@@ -502,20 +482,15 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: run-parts.8:46
-#, fuzzy
-#| msgid ""
-#| "Files are run in the lexical sort order (according to the C/POSIX locale "
-#| "character collation rules) of their names unless the --reverse option is "
-#| "given, in which case they are run in the opposite order."
 msgid ""
 "Files are run sequentially in the lexical sort order (according to the C/"
 "POSIX locale character collation rules) of their names unless the --reverse "
 "option is given, in which case they are run in the opposite order."
 msgstr ""
-"Les fichiers sont exécutés dans l'ordre lexicographique de leur nom (d'après "
-"les règles de classement de caractères des paramètres linguistiques "
-"régionaux (« locale ») C/POSIX) à moins que l'option B<--reverse> ne soit "
-"utilisée, auquel cas ils sont exécutés dans l'ordre inverse."
+"Les fichiers sont exécutés séquentiellement dans l'ordre lexicographique de "
+"leur nom (d'après les règles de classement de caractères des paramètres "
+"linguistiques régionaux (« locale ») C/POSIX) à moins que l'option B<--"
+"reverse> ne soit utilisée, auquel cas ils sont exécutés dans l'ordre inverse."
 
 # type: TP
 #. type: TP
@@ -549,7 +524,7 @@ msgid ""
 msgstr ""
 "affiche le nom de tous les fichiers dont le nom satisfait les contraintes "
 "(pas uniquement les exécutables), mais ne les exécute pas. Cette option ne "
-"peut pas être utilisée en conjonction de l'option B<--test>."
+"peut pas être utilisée en conjonction avec l'option B<--test>."
 
 # type: TP
 #. type: TP
@@ -587,19 +562,17 @@ msgstr ""
 # type: TP
 #. type: TP
 #: run-parts.8:67
-#, fuzzy, no-wrap
-#| msgid "B<-v, --verbose>"
+#, no-wrap
 msgid "B<-d, --debug>"
-msgstr "B<-v>, B<--verbose>"
+msgstr "B<-d>, B<--debug>"
 
 # type: Plain text
 #. type: Plain text
 #: run-parts.8:70
-#, fuzzy
-#| msgid "print the name of each script to stderr before running."
 msgid "print to stderr which scripts get selected for running and which don't."
 msgstr ""
-"affiche le nom de chaque script sur la sortie d'erreur avant de l'exécuter."
+"affiche sur la sortie d'erreur le nom des scripts sélectionnés pour "
+"exécution et ceux qui ne le sont pas."
 
 # type: TP
 #. type: TP
@@ -638,7 +611,7 @@ msgstr "B<--lsbsysinit>"
 #. type: Plain text
 #: run-parts.8:79
 msgid "use LSB namespaces instead of classical behavior."
-msgstr "utilise les noms LSB plutôt que le comportement ordinaire."
+msgstr "utilise les noms LSB plutôt que le comportement traditionnel."
 
 # type: TP
 #. type: TP
@@ -767,7 +740,7 @@ msgstr "EXEMPLES"
 msgid ""
 "Print the names of all files in /etc that start with `p' and end with `d':"
 msgstr ""
-"Affiche les noms de tous les fichiers dans /etc commençant par « p » et se "
+"Afficher les noms de tous les fichiers dans /etc commençant par « p » et se "
 "terminant par « d » :"
 
 # type: Plain text
@@ -838,7 +811,7 @@ msgstr "30 décembre 2017"
 #. type: Plain text
 #: savelog.8:5
 msgid "savelog - save a log file"
-msgstr "savelog - Sauvegarder un fichier journal"
+msgstr "savelog – Sauvegarder un fichier journal"
 
 # NOTE : -l en double
 # type: Plain text
@@ -881,8 +854,8 @@ msgid ""
 msgstr ""
 "où I<E<lt>numéroE<gt>> est le numéro de version, la version la plus récente "
 "portant le numéro 0. Si l'option B<-l> n'est pas spécifiée, les versions "
-"dont le numéro est supérieur à 0 sont compressées.  La version 0 n'est pas "
-"compressée car le I<fichier> est peut-être utilisé par un programme. Le "
+"dont le numéro est supérieur à 0 sont compressées. La version 0 n'est pas "
+"compressée, car le I<fichier> est peut-être utilisé par un programme. Le "
 "paramètre I<cycle> indique le nombre de versions à conserver."
 
 # type: Plain text
@@ -912,14 +885,6 @@ msgstr "1)"
 # type: Plain text
 #. type: Plain text
 #: savelog.8:61
-#, fuzzy
-#| msgid ""
-#| "Version numbered files are cycled.  Version I<file>.I<2> is moved to "
-#| "version I<file>.I<3>, version I<file>.I<1> is moved to version I<file>."
-#| "I<2>, and so on.  Finally version I<file>.I<0> is moved to version "
-#| "I<file>.I<1>, and version I<file> is deleted.  Both compressed names and "
-#| "uncompressed names are cycled, regardless of B<-l>.  Missing version "
-#| "files are ignored."
 msgid ""
 "Version numbered files are cycled.  Version I<file>B<\\&.2> is moved to "
 "version I<file>B<\\&.3>, version I<file>B<\\&.1> is moved to version "
@@ -928,12 +893,13 @@ msgid ""
 "names and uncompressed names are cycled, regardless of B<-l>.  Missing "
 "version files are ignored."
 msgstr ""
-"la numérotation des versions est cyclique. Le fichier de version I<fichier>."
-"I<2> devient version I<fichier>.I<3>, la version I<fichier>.I<1> devient "
-"version I<fichier>.I<2>, ainsi de suite. Enfin, la version I<fichier>.I<0> "
-"devient version I<fichier>.I<1> et la version I<fichier> est supprimée. Les "
-"fichiers compressés et non compressés entrent dans ce cycle, même si "
-"l'option B<-l> a été spécifiée. Les versions manquantes sont ignorées ;"
+"la numérotation des versions est cyclique. Le fichier de version I<fichier>"
+"B<\\&.2> devient version I<fichier>B<\\&.3>, la version I<fichier>B<\\&.1> "
+"devient version I<fichier>B<\\&.2>, ainsi de suite. Enfin, la version "
+"I<fichier>B<\\&.0> devient version I<fichier>B<\\&.1> et la version "
+"I<fichier> est supprimée. Les fichiers compressés et non compressés entrent "
+"dans ce cycle, même si l'option B<-l> a été spécifiée. Les versions "
+"manquantes sont ignorées ;"
 
 # type: IP
 #. type: IP
@@ -945,15 +911,11 @@ msgstr "2)"
 # type: Plain text
 #. type: Plain text
 #: savelog.8:70
-#, fuzzy
-#| msgid ""
-#| "The new I<file>.I<1> is compressed unless the B<-l> flag was given.  It "
-#| "is changed subject to the B<-m>, B<-u>, and B<-g> flags."
 msgid ""
 "The new I<file>B<\\&.1> is compressed unless the B<-l> flag was given.  It "
 "is changed subject to the B<-m>, B<-u>, and B<-g> flags."
 msgstr ""
-"le nouveau I<fichier>.I<1> est compressé sauf si l'option B<-l> est "
+"le nouveau I<fichier>B<\\&.1> est compressé sauf si l'option B<-l> est "
 "utilisée. Il est modifié en tenant compte des paramètres des options B<-m>, "
 "B<-u> et B<-g> ;"
 
@@ -967,10 +929,8 @@ msgstr "3)"
 # type: Plain text
 #. type: Plain text
 #: savelog.8:76
-#, fuzzy
-#| msgid "The main I<file> is moved to I<file>.I<0>."
 msgid "The main I<file> is moved to I<file>B<.0>."
-msgstr "le fichier principal devient I<fichier>.I<0> ;"
+msgstr "le I<fichier> principal devient I<fichier>B<.0>;"
 
 # type: IP
 #. type: IP
@@ -1002,16 +962,12 @@ msgstr "5)"
 # type: Plain text
 #. type: Plain text
 #: savelog.8:93
-#, fuzzy
-#| msgid ""
-#| "The new I<file>.I<0> is changed subject to the B<-m>, B<-u>, and B<-g> "
-#| "flags."
 msgid ""
 "The new I<file>B<\\&.0> is changed subject to the B<-m>, B<-u>, and B<-g> "
 "flags."
 msgstr ""
-"le nouveau I<fichier>.I<0> est modifié en fonction des arguments des options "
-"B<-m>, B<-u> et B<-g>."
+"le nouveau I<fichier>B<\\&.0> est modifié en fonction des arguments des "
+"options B<-m>, B<-u> et B<-g>."
 
 # type: TP
 #. type: TP
@@ -1068,16 +1024,12 @@ msgstr "B<-c> I<cycle>"
 # type: Plain text
 #. type: Plain text
 #: savelog.8:113
-#, fuzzy
-#| msgid ""
-#| "Save cycle versions of the logfile (default: 7). The I<cycle> count must "
-#| "be at least 2."
 msgid ""
 "Save cycle versions of the logfile (default: 7).  The I<cycle> count must be "
 "at least 2."
 msgstr ""
-"sauvegarde I<cycle> versions du fichier de journalisation (7 par défaut). Le "
-"nombre de I<cycle> doit être au minimum de 2."
+"sauvegarde I<cycle> versions du fichier de journalisation (7 par défaut). Le "
+"nombre I<cycle> doit être au minimum de 2."
 
 # type: TP
 #. type: TP
@@ -1090,7 +1042,7 @@ msgstr "B<-t>"
 #. type: Plain text
 #: savelog.8:116
 msgid "touch new logfile into existence"
-msgstr "si nécessaire, crée le fichier journal."
+msgstr "crée un nouveau fichier journal."
 
 # type: TP
 #. type: TP
@@ -1149,20 +1101,15 @@ msgstr "compresse avec xz au lieu de gzip."
 
 #. type: Plain text
 #: savelog.8:134
-#, fuzzy
-#| msgid ""
-#| "For xz no strength option is set, and xz decides on the default based on "
-#| "the total amount of physical RAM. Note that xz can use a very large "
-#| "amount of memory for the higher compression levels."
 msgid ""
 "For xz no strength option is set, and xz decides on the default based on the "
 "total amount of physical RAM.  Note that xz can use a very large amount of "
 "memory for the higher compression levels."
 msgstr ""
-"Pour xz, aucune option de compression n'est fixée, xz choisira la valeur par "
-"défaut en fonction de la quantité disponible de mémoire physique. Veuillez "
-"noter que xz peut utiliser des quantités importantes de mémoire pour les "
-"niveaux de compression les plus élevés."
+"Pour xz aucune option de compression n'est définie et xz choisira la valeur "
+"par défaut en fonction de la quantité disponible de mémoire physique. "
+"Veuillez noter que xz peut utiliser des quantités importantes de mémoire "
+"pour les niveaux de compression les plus élevés."
 
 #. type: TP
 #: savelog.8:134
@@ -1188,7 +1135,7 @@ msgstr "B<-C>"
 #. type: Plain text
 #: savelog.8:140
 msgid "force cleanup of cycled logfiles"
-msgstr "force la suppression des sauvegardes."
+msgstr "force la suppression des fichiers journaux du cycle."
 
 # type: TP
 #. type: TP
@@ -1201,7 +1148,7 @@ msgstr "B<-d>"
 #. type: Plain text
 #: savelog.8:143
 msgid "use standard date for rolling"
-msgstr "utilise la date (AAMMJJhhmmss) au lieu du numéro de version."
+msgstr "utilise la date (AAMMJJhhmmss) au lieu du numéro de version du cycle."
 
 # type: TP
 #. type: TP
@@ -1228,12 +1175,10 @@ msgstr "B<-r> I<répertoire_cyclique>"
 # type: Plain text
 #. type: Plain text
 #: savelog.8:153
-#, fuzzy
-#| msgid "use I<rolldir> instead of . to roll files"
 msgid "use I<rolldir> instead of \\&.\\& to roll files"
 msgstr ""
-"sauvegarde les fichiers journaux dans le répertoire I<répertoire_cyclique> "
-"au lieu du répertoire courant."
+"rotation des fichiers journaux dans le répertoire I<répertoire_cyclique> "
+"au lieu du répertoire courant (\\&.\\&)."
 
 # type: TP
 #. type: TP
@@ -1246,7 +1191,7 @@ msgstr "B<-n>"
 #. type: Plain text
 #: savelog.8:156
 msgid "do not rotate empty files"
-msgstr "ne sauvegarde pas les fichiers vides."
+msgstr "ne permute pas les fichiers vides."
 
 # type: TP
 #. type: TP
@@ -1264,16 +1209,13 @@ msgstr "n'affiche pas de message."
 # type: Plain text
 #. type: Plain text
 #: savelog.8:165
-#, fuzzy
-#| msgid ""
-#| "If a process is still writing to I<file.0>, and savelog moves it to "
-#| "I<file.1> and compresses it, data could be lost."
 msgid ""
 "If a process is still writing to I<file>B<\\&.0>, and savelog moves it to "
 "I<file>B<\\&.1> and compresses it, data could be lost."
 msgstr ""
-"Si un programme est en train d'écrire I<fichier.0>, et que savelog le "
-"renomme I<fichier.1> et le compresse, des données peuvent être perdues."
+"Si un programme est en train d'écrire I<fichier>B<\\&.0>, et que B<savelog> "
+"le renomme I<fichier>B<\\&.1> et le compresse, des données peuvent être "
+"perdues."
 
 #. type: Plain text
 #: update-shells.8:1
@@ -1283,33 +1225,29 @@ msgstr "B<logrotate>(8)"
 # type: TH
 #. type: TH
 #: update-shells.8:1
-#, fuzzy, no-wrap
-#| msgid "ADD-SHELL"
+#, no-wrap
 msgid "UPDATE-SHELLS"
-msgstr "ADD-SHELL"
+msgstr "UPDATE-SHELLS"
 
 # type: TH
 #. type: TH
 #: update-shells.8:1
-#, fuzzy, no-wrap
-#| msgid "27 Jun 2012"
+#, no-wrap
 msgid "28 Jun 2021"
-msgstr "27 juin 2012"
+msgstr "28 juin 2021"
 
 # type: Plain text
 #. type: Plain text
 #: update-shells.8:4
-#, fuzzy
-#| msgid "add-shell - add shells to the list of valid login shells"
 msgid "update-shells - update the list of valid login shells"
 msgstr ""
-"add-shell - Ajouter des interpréteurs à la liste des interpréteurs initiaux "
+"update-shells – Mettre à jour la liste des interpréteurs de connexion "
 "valables"
 
 #. type: Plain text
 #: update-shells.8:7
 msgid "B<update-shells> [I<options>]"
-msgstr ""
+msgstr "B<update-shells> [I<options>]"
 
 #. type: Plain text
 #: update-shells.8:16
@@ -1319,64 +1257,65 @@ msgid ""
 "shells.  To track changes made by the administrator, it consults a state "
 "file in I</var/lib/shells.state .>"
 msgstr ""
+"B<update-shells> localise les interpréteurs fournis par des paquets à partir "
+"de I</usr/share/debianutils/shells.d> et met à jour I</etc/shells> avec les "
+"nouveaux interpréteurs ajoutés ou supprimés. Pour suivre les modifications "
+"réalisées par l'administrateur, il consulte un fichier d'état dans I</var/lib/"
+"shells.state>."
 
 # type: TP
 #. type: TP
 #: update-shells.8:17
-#, fuzzy, no-wrap
-#| msgid "B<--report>"
+#, no-wrap
 msgid "B<--no-act>"
-msgstr "B<--report>"
+msgstr "B<--no-act>"
 
 #. type: Plain text
 #: update-shells.8:21
 msgid "Do not actually perform the changes to I</etc/shells .>"
-msgstr ""
+msgstr "Ne pas appliquer vraiment les modifications de I</etc/shells>."
 
 # type: TP
 #. type: TP
 #: update-shells.8:21
-#, fuzzy, no-wrap
-#| msgid "B<--report>"
+#, no-wrap
 msgid "B<--root>"
-msgstr "B<--report>"
+msgstr "B<--root>"
 
 #. type: Plain text
 #: update-shells.8:24
-#, fuzzy
-#| msgid "ISCHROOT"
 msgid "I<ROOT>"
-msgstr "ISCHROOT"
+msgstr "I<ROOT>"
 
 #. type: Plain text
 #: update-shells.8:27
 msgid "Operate on a chroot at I<ROOT .>"
-msgstr ""
+msgstr "Opérer sur un environnement fermé (chroot) sur I<ROOT .>"
 
 # type: TP
 #. type: TP
 #: update-shells.8:27
-#, fuzzy, no-wrap
-#| msgid "B<-v, --verbose>"
+#, no-wrap
 msgid "B<--verbose>"
-msgstr "B<-v>, B<--verbose>"
+msgstr "B<--verbose>"
 
 #. type: Plain text
 #: update-shells.8:30
 msgid "Print the shells that are being added or removed."
-msgstr ""
+msgstr "Afficher les interpréteurs ajoutés ou supprimés."
 
 #. type: SH
 #: update-shells.8:30
 #, no-wrap
 msgid "FILES"
-msgstr ""
+msgstr "FICHIERS"
 
 #. type: Plain text
 #: update-shells.8:34
 msgid ""
 "I</etc/shells> I</var/lib/shells.state> I</usr/share/debianutils/shells.d>"
 msgstr ""
+"I</etc/shells> I</var/lib/shells.state> I</usr/share/debianutils/shells.d>"
 
 # type: TH
 #. type: TH
@@ -1388,33 +1327,25 @@ msgstr "WHICH"
 # type: TH
 #. type: TH
 #: which.1:2
-#, fuzzy, no-wrap
-#| msgid "29 Jun 2016"
+#, no-wrap
 msgid "9 Jul 2021"
-msgstr "29 juin 2016"
+msgstr "9 juillet 2021"
 
 # type: Plain text
 #. type: Plain text
 #: which.1:5
 msgid "which - locate a command"
-msgstr "which - Localiser une commande"
+msgstr "which – Localiser une commande"
 
 # type: Plain text
 #. type: Plain text
 #: which.1:7
 msgid "which [-a] filename ..."
-msgstr "B<which> [B<-a>] I<nom_de_fichier>..."
+msgstr "B<which> [B<-a>] I<nom_de_fichier> ..."
 
 # type: Plain text
 #. type: Plain text
 #: which.1:16
-#, fuzzy
-#| msgid ""
-#| "B<which> returns the pathnames of the files (or links) which would be "
-#| "executed in the current environment, had its arguments been given as "
-#| "commands in a strictly POSIX-conformant shell.  It does this by searching "
-#| "the PATH for executable files matching the names of the arguments. It "
-#| "does not canonicalize path names."
 msgid ""
 "B<which> returns the pathnames of the files (or links) which would be "
 "executed in the current environment, had its arguments been given as "
@@ -1493,10 +1424,9 @@ msgstr "si une option non valable est spécifiée."
 # type: SH
 #. type: SH
 #: which.1:30
-#, fuzzy, no-wrap
-#| msgid "DESCRIPTION"
+#, no-wrap
 msgid "DEPRECATION"
-msgstr "DESCRIPTION"
+msgstr "OBSOLESCENCE"
 
 #. type: Plain text
 #: which.1:37
@@ -1505,13 +1435,6 @@ msgid ""
 "longer useful for maintainer scripts and thus will be removed from "
 "debianutils."
 msgstr ""
-
-# type: TH
-#, no-wrap
-#~ msgid "12 May 2011"
-#~ msgstr "12 mai 2011"
-
-# type: TH
-#, no-wrap
-#~ msgid "7 Apr 2005"
-#~ msgstr "7 avril 2005"
+"Dans la mesure où B<type> et B<command -v> sont désormais exigés par POSIX, "
+"cet utilitaire n'est plus utile pour les scripts du mainteneur et sera donc "
+"supprimé de debianutils."

@@ -63,11 +63,14 @@ updatever () {
   fi
 }
 
-if [ "$(basename $img)" = "vmlinux" ] ; then
-  img_dest=vmlinux
-else
-  img_dest=vmlinuz
-fi
+case "$(basename $img)" in
+  "vmlinux"|"Image")
+    img_dest=vmlinux
+    ;;
+  *)
+    img_dest=vmlinuz
+    ;;
+esac
 updatever $img_dest "$img"
 updatever System.map "$map"
 
