@@ -23,7 +23,7 @@ log() {
 	fi
 }
 
-ROOT=
+ROOT=${DPKG_ROOT:-}
 VERBOSE=0
 NOACT=0
 
@@ -63,25 +63,28 @@ done
 
 PKG_DIR="$ROOT/usr/share/debianutils/shells.d"
 STATE_FILE="$ROOT/var/lib/shells.state"
+TEMPLATE_ETC_FILE="$ROOT/usr/share/debianutils/shells"
 TARGET_ETC_FILE="$ROOT/etc/shells"
 SOURCE_ETC_FILE="$TARGET_ETC_FILE"
 NEW_ETC_FILE="$TARGET_ETC_FILE.tmp"
 NEW_STATE_FILE="$STATE_FILE.tmp"
 
 if ! test -e "$SOURCE_ETC_FILE"; then
-	SOURCE_ETC_FILE="$ROOT/usr/share/debianutils/shells"
+	SOURCE_ETC_FILE="$TEMPLATE_ETC_FILE"
 fi
 
 PKG_SHELLS='#'
 LC_COLLATE=C.UTF-8  # glob in reproducible order
-for f in "$PKG_DIR/"*; do
-	[ "$f" = "$PKG_DIR/*" ] && break
+for f in "$TEMPLATE_ETC_FILE" "$PKG_DIR/"*; do
+	test -f "$f" || continue
 	while IFS='#' read -r line _; do
 		[ -n "$line" ] || continue
-		PKG_SHELLS="$PKG_SHELLS$line#"
-		realshell=$(dpkg-realpath --root "$ROOT" "$line")
-		if [ "$line" != "$realshell" ]; then
-			PKG_SHELLS="$PKG_SHELLS$realshell#"
+		if ! hashset_contains "$PKG_SHELLS" "$line"; then
+			PKG_SHELLS="$PKG_SHELLS$line#"
+		fi
+		realshell=$(dpkg-realpath --root "$ROOT" "$(dirname "$line")")/$(basename "$line")
+		if ! hashset_contains "$PKG_SHELLS" "$realshell"; then
+		       PKG_SHELLS="$PKG_SHELLS$realshell#"
 		fi
 	done < "$f"
 done
@@ -106,8 +109,10 @@ while IFS= read -r line; do
 	if [ -z "$shell" ] ||
 			hashset_contains "$PKG_SHELLS" "$shell" ||
 			! hashset_contains "$STATE_SHELLS" "$shell"; then
-		echo "$line" >> "$NEW_ETC_FILE"
-		ETC_SHELLS="$ETC_SHELLS$shell#"
+		if [ -z "$shell" ] || ! hashset_contains "$ETC_SHELLS" "$shell"; then
+			echo "$line" >> "$NEW_ETC_FILE"
+			ETC_SHELLS="$ETC_SHELLS$shell#"
+		fi
 	else
 		log "removing shell $shell"
 	fi

@@ -1,2 +1,1 @@
-Tests: smoke
-Restrictions: superficial
+Tests: smoke, run-parts.test

@@ -1,4 +1,0 @@
-dpkg-root.patch
-no-duplicates.patch
-manage-usr-bin-sh.patch
-fix-aliased-location.patch

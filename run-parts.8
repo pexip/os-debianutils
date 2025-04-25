@@ -9,16 +9,14 @@
 .SH NAME
 run\-parts \- run scripts or programs in a directory
 .SH SYNOPSIS
-.PP
 .B run\-parts
 [\-\-test] [\-\-verbose] [\-\-debug] [\-\-report] [\-\-lsbsysinit] [\-\-regex=RE]
 [\-\-umask=umask] [\-\-arg=argument] [\-\-exit\-on\-error] [\-\-help]
-[\-\-version] [\-\-list] [\-\-reverse] [\-\-] DIRECTORY
+[\-\-version] [\-\-list] [\-\-reverse] [\-\-] DIRECTORY [DIRECTORY ...]
 .PP
 .B run\-parts
 \-V
 .SH DESCRIPTION
-.PP
 .B run\-parts
 runs all the executable files named within constraints described below, found
 in directory
@@ -30,7 +28,7 @@ then the names must consist entirely of ASCII upper- and lower-case
 letters, ASCII digits, ASCII underscores, and ASCII minus-hyphens.
 
 If the \-\-lsbsysinit option is given, then the names must not end
-in .dpkg\-old  or .dpkg\-dist or .dpkg\-new or .dpkg\-tmp, and must
+in \&.dpkg\-old or \&.dpkg\-dist or \&.dpkg\-new or \&.dpkg\-tmp, and must
 belong to one or more of the following namespaces: the
 LANANA-assigned namespace (^[a\-z0\-9]+$); the LSB hierarchical and
 reserved namespaces (^_?([a\-z0\-9_.]+\-)+[a\-z0\-9]+$);
@@ -43,6 +41,13 @@ Files are run sequentially in the lexical sort order (according to the C/POSIX
 locale character collation rules) of their names unless the
 \-\-reverse option is given, in which case they are run in the
 opposite order.
+
+If more than more DIRECTORY is specified, then files with the same name
+in earlier directories will take precedence over files in directories
+specified in later arguments. This allows run-parts to receive directories
+with scripts in both /usr and /etc but let files in /etc override scripts
+in /usr if they are named the same. The directory under /etc would need
+to be specified before the path under /usr for this to happen.
 
 .SH OPTIONS
 .TP
@@ -73,6 +78,9 @@ reverse the scripts' execution order.
 .TP
 .B \-\-exit\-on\-error
 exit as soon as a script returns with a non-zero exit code.
+.TP
+.B \-\-stdin
+multiplex stdin to scripts being run, using temporary file
 .TP
 .B \-\-lsbsysinit
 use LSB namespaces instead of classical behavior.
@@ -114,13 +122,11 @@ display usage information and exit.
 display version and copyright and exit.
 
 .SH EXAMPLES
-.P
 Print the names of all files in /etc that start with `p' and end with `d':
 .P
 run-parts \-\-list \-\-regex \[aq]^p.*d$\[aq] /etc
 
 .SH COPYRIGHT
-.P
 Copyright (C) 1994 Ian Jackson.
 .P
 Copyright (C) 1996 Jeff Noxon.

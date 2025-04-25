@@ -1,3 +1,189 @@
+debianutils (5.22) unstable; urgency=medium
+
+  [Bastian Blank]
+  * run-parts: Fix failing on empty directories (Closes: #1102512).
+
+  [Ileana Dumitrescu]
+  * d/tests/run-parts.test: Extend testing of run-parts.
+  * d/control: Bump standards version from 4.7.0 to 4.7.2.
+  * acinclude.m4: Bump DEBIANUTILS_VERSION from 5.21 to 5.22.
+
+ -- Ileana Dumitrescu <ileanadumitrescu95@gmail.com>  Fri, 11 Apr 2025 17:00:11 +0300
+
+debianutils (5.21) unstable; urgency=medium
+
+  [Johannes Schauer Marin Rodrigues]
+  * run-parts: Support uapi configuration_files_specification
+    (Closes: #1084170).
+  * d/tests/run-parts.test: Extend and enhance testing of run-parts.
+
+  [Ileana Dumitrescu]
+  * acinclude.m4: Bump DEBIANUTILS_VERSION from 5.20 to 5.21.
+
+ -- Ileana Dumitrescu <ileanadumitrescu95@gmail.com>  Fri, 15 Nov 2024 17:48:10 +0200
+
+debianutils (5.20) unstable; urgency=medium
+
+  [ WHR ]
+  * installkernel: Recognize "Image" as an uncompressed image basename
+    (Closes: #1075748).
+
+  [ Ileana Dumitrescu ]
+  * acinclude.m4: Bump DEBIANUTILS_VERSION from 5.18 to 5.20.
+
+ -- Ileana Dumitrescu <ileanadumitrescu95@gmail.com>  Thu, 04 Jul 2024 16:33:33 +0300
+
+debianutils (5.19) unstable; urgency=medium
+
+  [ Helmut Grohne ]
+  * update-shells: Avoid duplicate lines when package shells contain both
+    aliased and canonical shells. (Closes: #1072732)
+
+ -- Niels Thykier <niels@thykier.net>  Sun, 09 Jun 2024 07:25:40 +0000
+
+debianutils (5.18) unstable; urgency=medium
+
+  [ Jean-Pierre Giraud ]
+  * po4a/po/fr.po: Updated french translations for manpages (Closes: #1065581).
+
+  [ Ileana Dumitrescu ]
+  * d/control: Bump standards version from 4.6.2 to 4.7.0.
+  * acinclude.m4: Bump DEBIANUTILS_VERSION from 5.17 to 5.18.
+
+ -- Ileana Dumitrescu <ileanadumitrescu95@gmail.com>  Thu, 06 Jun 2024 17:25:12 +0300
+
+debianutils (5.17) unstable; urgency=medium
+
+  [ Patrick Brünn ]
+  * run-parts.c: Forward last exit code to preserve exit status.
+
+  [ Ileana Dumitrescu ]
+  * d/tests/control: Add run-parts.test to autopkgtests.
+  * d/tests/run-parts.test: Move run-parts testing here and add testing for
+    the --exit-on-error option.
+  * d/tests/smoke: Remove duplicate run-parts testing.
+  * acinclude.m4: Bump DEBIANUTILS_VERSION from 5.14 to 5.17.
+
+ -- Ileana Dumitrescu <ileanadumitrescu95@gmail.com>  Fri, 01 Mar 2024 21:08:45 +0200
+
+debianutils (5.16) unstable; urgency=medium
+
+  * Upload to unstable per request of Chris Hofstaedtler.
+
+ -- Niels Thykier <niels@thykier.net>  Wed, 03 Jan 2024 21:29:19 +0000
+
+debianutils (5.15) experimental; urgency=medium
+
+  [ Erik Gustafsson ]
+  * Shellscript compatibility with BSD and Mac, for "which -s"
+
+  [ Ileana Dumitrescu ]
+  * d/tests/smoke: Update to test "which -s"
+
+ -- Ileana Dumitrescu <ileanadumitrescu95@gmail.com>  Fri, 08 Dec 2023 20:16:01 +0200
+
+debianutils (5.14+nmu1) experimental; urgency=medium
+
+  * Non-maintainer upload.
+  * Install files into /usr (Closes: #1056971).
+
+ -- Chris Hofstaedtler <zeha@debian.org>  Mon, 27 Nov 2023 12:10:53 +0100
+
+debianutils (5.14) unstable; urgency=medium
+
+  * acinclude.m4: Bump DEBIANUTILS_VERSION from 5.13 to 5.14.
+  * d/run-parts.c:
+    - Send --help information to stdout, not stderr.
+    - Change mask from int to unsigned int.
+  * d/tests/smoke: Remove unnecessary redirection of stderr to stdout.
+  * d/rules: Rewrite for dh.
+    - Thanks to Niels Thykier for help with this.
+  * d/control: Add {misc:Depends} to debianutils Depends.
+  * d/prerm, d/postrm, d/postinst: Add in debhelper token.
+  * d/docs: Move d/README.shells install here.
+  * d/which: Rename to which.debianutils.
+  * d/which.1: Rename to which.debianutils.1.
+  * CHANGELOG: Merge entries with d/changelog.
+
+ -- Ileana Dumitrescu <ileanadumitrescu95@gmail.com>  Tue, 19 Sep 2023 21:35:25 +0300
+
+debianutils (5.13) unstable; urgency=medium
+
+  [ Ileana Dumitrescu ]
+  * acinclude.m4: Bump DEBIANUTILS_VERSION from 5.8 to 5.13.
+  * d/tests/smoke: Update autopkgtest to be more robust.
+  * d/tests/control: Remove superficial restriction.
+
+  [ Alexey Sokolov ]
+  * run-parts.c: Fix build with clang on darwin.
+
+ -- Ileana Dumitrescu <ileanadumitrescu95@gmail.com>  Wed, 13 Sep 2023 16:44:14 +0300
+
+debianutils (5.12) unstable; urgency=medium
+
+  * d/control:
+    - Add myself as maintainer and Niels Thykier as uploader (Closes: #1050806).
+    - Bump standards version from 4.6.0 to 4.6.2.
+  * d/prerm: Make script executable.
+  * d/postinst: Use 'set -e' in the body of the script.
+  * d/tests/smoke: Use 'set -e' in the body of the script.
+  * d/source/lintian-overrides: Ignore upstream metadata warning for Debian
+    native package.
+  * ischroot.c: Add missing newline in version output.
+
+ -- Ileana Dumitrescu <ileanadumitrescu95@gmail.com>  Mon, 04 Sep 2023 15:51:04 +0300
+
+debianutils (5.11) unstable; urgency=medium
+
+  * postinst: Remove the bogus links that were created in 5.9 and 5.10
+
+ -- Bastian Germann <bage@debian.org>  Tue, 29 Aug 2023 11:06:08 +0200
+
+debianutils (5.10) unstable; urgency=medium
+
+  * On non-usrmerged systems, correct run-parts/tmpfile links (Closes: #1050725)
+  * ischroot: Do not claim it does not run as non-root (Closes: #914921)
+  * Align the cron file regex with the documentation (Closes: #790027)
+
+  [ Johannes Schauer Marin Rodrigues ]
+  * debian/postinst: add DPKG_ROOT prefix to paths in usrmerge()
+    (Closes: #1050752)
+
+ -- Bastian Germann <bage@debian.org>  Tue, 29 Aug 2023 00:39:28 +0200
+
+debianutils (5.9) unstable; urgency=medium
+
+  * Partial translation of which(1) into hungarian (Closes: #1007166)
+  * Run autoreconf during the build
+  * Drop obsolete dpkg-gencontrol flag -isp
+  * Drop unnecessary CI config file
+  * Revert the package to be format 3.0 (native)
+
+  [ Helmut Grohne ]
+  * Update /etc/shells micropolicy to recommend declarative use (Closes: #1023380)
+
+  [ Bjarni Ingi Gislason ]
+  * Correct manpage macros (Closes: #1039046, #1039070, #1039076, #1039077)
+
+  [ Helge Kreutzmann ]
+  * Update German manpage translation (Closes: #1004496, #1007180)
+
+  [ Américo Monteiro ]
+  * Update Portuguese manpage translation (Closes: #1011106)
+
+  [ Georges Khaznadar ]
+  * Modify post{inst,rm} in order to comply with UsrMerge
+
+ -- Bastian Germann <bage@debian.org>  Mon, 28 Aug 2023 10:51:02 +0200
+
+debianutils (5.8-1) unstable; urgency=medium
+
+  * Remove constraints unnecessary since buster (oldstable)
+  * Salvage package (Closes: #1038553)
+  * Apply quilt patches from NMUs
+
+ -- Bastian Germann <bage@debian.org>  Sun, 09 Jul 2023 23:29:29 +0200
+
 debianutils (5.7-0.5~deb12u1+pexip24u4) pexip-bookworm; urgency=medium
 
   * New versioning scheme
@@ -21,12 +207,6 @@ debianutils (5.7-0.5~deb12u1pexip1) pexip-bookworm; urgency=medium
   * Initial bookworm build
 
  -- Mark Hymers <mark.hymers@pexip.com>  Thu, 16 Nov 2023 09:57:30 +0000
-
-debianutils (5.7-0.5~deb12u1) bookworm; urgency=medium
-
-  * Rebuild for bookworm.
-
- -- Andreas Beckmann <anbe@debian.org>  Sat, 29 Jul 2023 01:46:35 +0200
 
 debianutils (5.7-0.5) unstable; urgency=medium
 
@@ -116,19 +296,22 @@ debianutils (5.4-2) unstable; urgency=medium
 
 debianutils (5.4-1) unstable; urgency=medium
 
-  * New upstream version:
-    - add-shell, remove-shell, update-shells: restore busybox
-      compatibility thanks to Johannes Schauer Marin Rodrigues.
-      closes: #992695.
-    - which: change the deprecation warning so people won't need
-      to read the man page.  closes: #992383.
+  * add-shell, remove-shell, update-shells: create /etc/shells with
+    default SELinux context, by Christian Göttsche.
+  * add-shell, remove-shell, update-shells: fall back to
+    busybox-compatible arguments if certain calls fail, thanks to
+    Johannes Schauer Marin Rodrigues. closes: #992695.
+  * which: directly recommend `command -v` in the deprecation warning, so
+    people won't need to read the man page. closes: #992383.
 
  -- Clint Adams <clint@debian.org>  Sun, 22 Aug 2021 12:24:58 -0400
 
 debianutils (5.3-1) unstable; urgency=medium
 
-  * New upstream version
-    - * update-shells, update-shells.8: multiple fixes.  closes: #992559.
+  * update-shells: multiple fixes, thanks to Helmut Grohne for the
+    patch and Guillem Jover and Johannes Schauer for testing.
+  * update-shells.8: FILES section from Helmut Grohne, suggested by
+    Guillem Jover. closes: #992559.
   * Add NEWS.Debian with text from Christoph Anton Mitterer and
     Michael Gold.  closes: #992383, #992466.
 
@@ -142,7 +325,7 @@ debianutils (5.2-2) unstable; urgency=medium
 
 debianutils (5.2-1) unstable; urgency=medium
 
-  * New upstream version.
+  * savelog: use `command -v` instead of `which`, since `which` is deprecated.
 
  -- Clint Adams <clint@debian.org>  Thu, 19 Aug 2021 06:43:02 -0400
 
@@ -170,7 +353,7 @@ debianutils (5.0.1-2) unstable; urgency=medium
 
 debianutils (5.0.1-1) unstable; urgency=medium
 
-  * which: fix punctuation.
+  * which: fix punctuation for Brown-paper-bag.
 
  -- Clint Adams <clint@debian.org>  Tue, 17 Aug 2021 17:53:04 -0400
 

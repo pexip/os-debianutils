@@ -1,12 +1,12 @@
 # Translation of debianutils man page template to German
-# Copyright (C) Helge Kreutzmann <debian@helgefjell.de>, 2011, 2012, 2017, 2018, 2020.
+# Copyright (C) Helge Kreutzmann <debian@helgefjell.de>, 2011, 2012, 2017, 2018, 2020, 2022.
 # This file is distributed under the same license as the debianutils package.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: debianutils man page 4.11\n"
+"Project-Id-Version: debianutils man page 5.7\n"
 "POT-Creation-Date: 2021-09-23 12:52-0400\n"
-"PO-Revision-Date: 2020-05-31 06:39+0200\n"
+"PO-Revision-Date: 2022-03-12 21:05+0100\n"
 "Last-Translator: Helge Kreutzmann <debian@helgefjell.de>\n"
 "Language-Team: de <debian-l10n-german@lists.debian.org>\n"
 "Language: de\n"
@@ -24,7 +24,7 @@ msgstr "ADD-SHELL"
 #: add-shell.8:1 remove-shell.8:1
 #, no-wrap
 msgid "23 Sep 2021"
-msgstr ""
+msgstr "23. Sep. 2021"
 
 #. type: SH
 #: add-shell.8:2 installkernel.8:2 ischroot.1:3 remove-shell.8:2 run-parts.8:9
@@ -77,18 +77,18 @@ msgstr "Die Shells müssen mit ihrem vollen Pfadnamen angegeben werden."
 #: add-shell.8:20 remove-shell.8:17
 #, no-wrap
 msgid "ENVIRONMENT"
-msgstr ""
+msgstr "UMGEBUNG"
 
 #. type: TP
 #: add-shell.8:21 remove-shell.8:18
 #, no-wrap
 msgid "I<DPKG_ROOT>"
-msgstr ""
+msgstr "I<DPKG_ROOT>"
 
 #. type: Plain text
 #: add-shell.8:26 remove-shell.8:23
 msgid "specifies the base path under which I</etc/shells> resides."
-msgstr ""
+msgstr "legt den Basispfad fest, unter dem sich I</etc/shells> befindet."
 
 #. type: SH
 #: add-shell.8:26 remove-shell.8:23 savelog.8:166 update-shells.8:34
@@ -359,17 +359,12 @@ msgstr "run-parts - Skripte oder Programme in einem Verzeichnis ausführen"
 
 #. type: Plain text
 #: run-parts.8:17
-#, fuzzy
-#| msgid ""
-#| "B<run-parts> [--test] [--verbose] [--report] [--lsbsysinit] [--regex=RE] "
-#| "[--umask=umask] [--arg=argument] [--exit-on-error] [--help] [--version] "
-#| "[--list] [--reverse] [--] DIRECTORY"
 msgid ""
 "B<run-parts> [--test] [--verbose] [--debug] [--report] [--lsbsysinit] [--"
 "regex=RE] [--umask=umask] [--arg=argument] [--exit-on-error] [--help] [--"
 "version] [--list] [--reverse] [--] DIRECTORY"
 msgstr ""
-"B<run-parts> [--test] [--verbose] [--report] [--lsbsysinit] [--regex=RE] [--"
+"B<run-parts> [--test] [--verbose] [--debug] [--report] [--lsbsysinit] [--regex=RE] [--"
 "umask=Umask] [--arg=Option] [--exit-on-error] [--help] [--version] [--list] "
 "[--reverse] [--] VERZEICHNIS"
 
@@ -428,17 +423,12 @@ msgstr ""
 
 #. type: Plain text
 #: run-parts.8:46
-#, fuzzy
-#| msgid ""
-#| "Files are run in the lexical sort order (according to the C/POSIX locale "
-#| "character collation rules) of their names unless the --reverse option is "
-#| "given, in which case they are run in the opposite order."
 msgid ""
 "Files are run sequentially in the lexical sort order (according to the C/"
 "POSIX locale character collation rules) of their names unless the --reverse "
 "option is given, in which case they are run in the opposite order."
 msgstr ""
-"Dateien werden in der lexikalisch sortierten Reihenfolge (gemäß den C/POSIX-"
+"Dateien werden sequenziell in der lexikalisch sortierten Reihenfolge (gemäß den C/POSIX-"
 "Locale-Sortierregeln) ihrer Namen ausgeführt, es sei denn, die Option »--"
 "reverse« ist angegeben, in diesem Fall werden sie in der umgekehrten "
 "Reihenfolge ausgeführt."
@@ -505,17 +495,14 @@ msgstr ""
 
 #. type: TP
 #: run-parts.8:67
-#, fuzzy, no-wrap
-#| msgid "B<-v, --verbose>"
+#, no-wrap
 msgid "B<-d, --debug>"
-msgstr "B<-v, --verbose>"
+msgstr "B<-d, --debug>"
 
 #. type: Plain text
 #: run-parts.8:70
-#, fuzzy
-#| msgid "print the name of each script to stderr before running."
 msgid "print to stderr which scripts get selected for running and which don't."
-msgstr "gibt vor der Ausführung jedes Skriptes den Namen auf Stderr aus."
+msgstr "gibt auf Stderr aus, welche Skripte zur Ausführung ausgewählt werden und welche nicht."
 
 #. type: TP
 #: run-parts.8:70
@@ -1075,29 +1062,25 @@ msgstr "B<logrotate>(8)"
 
 #. type: TH
 #: update-shells.8:1
-#, fuzzy, no-wrap
-#| msgid "ADD-SHELL"
+#, no-wrap
 msgid "UPDATE-SHELLS"
-msgstr "ADD-SHELL"
+msgstr "UPDATE-SHELLS"
 
 #. type: TH
 #: update-shells.8:1
-#, fuzzy, no-wrap
-#| msgid "27 Jun 2012"
+#, no-wrap
 msgid "28 Jun 2021"
-msgstr "27. Jun. 2012"
+msgstr "28. Juni 2021"
 
 #. type: Plain text
 #: update-shells.8:4
-#, fuzzy
-#| msgid "add-shell - add shells to the list of valid login shells"
 msgid "update-shells - update the list of valid login shells"
-msgstr "add-shell - Shells zu der Liste der gültigen Anmelde-Shells hinzufügen"
+msgstr "update-shells - Liste der gültigen Anmelde-Shells aktualisieren"
 
 #. type: Plain text
 #: update-shells.8:7
 msgid "B<update-shells> [I<options>]"
-msgstr ""
+msgstr "B<update-shells> [I<Optionen>]"
 
 #. type: Plain text
 #: update-shells.8:16
@@ -1107,61 +1090,62 @@ msgid ""
 "shells.  To track changes made by the administrator, it consults a state "
 "file in I</var/lib/shells.state .>"
 msgstr ""
+"B<update-shells> stellt die durch Pakete aus I</usr/share/debianutils/shells."
+"d> bereitgestellten Shells fest und aktualisiert I</etc/shells> mit den neu "
+"hinzugefügten oder entfernten Shells. Um vom Administrator durchgeführte "
+"Änderungen nachzuverfolgen, befragt es eine Zustandsdatei in I</var/lib/"
+"shells.state .>"
 
 #. type: TP
 #: update-shells.8:17
-#, fuzzy, no-wrap
-#| msgid "B<--report>"
+#, no-wrap
 msgid "B<--no-act>"
-msgstr "B<--report>"
+msgstr "B<--no-act>"
 
 #. type: Plain text
 #: update-shells.8:21
 msgid "Do not actually perform the changes to I</etc/shells .>"
-msgstr ""
+msgstr "führt keine Änderungen an I</etc/shells> durch."
 
 #. type: TP
 #: update-shells.8:21
-#, fuzzy, no-wrap
-#| msgid "B<--report>"
+#, no-wrap
 msgid "B<--root>"
-msgstr "B<--report>"
+msgstr "B<--root>"
 
 #. type: Plain text
 #: update-shells.8:24
-#, fuzzy
-#| msgid "ISCHROOT"
 msgid "I<ROOT>"
-msgstr "ISCHROOT"
+msgstr "I<WURZEL>"
 
 #. type: Plain text
 #: update-shells.8:27
 msgid "Operate on a chroot at I<ROOT .>"
-msgstr ""
+msgstr "agiert auf einer Chroot unter I<WURZEL .>"
 
 #. type: TP
 #: update-shells.8:27
-#, fuzzy, no-wrap
-#| msgid "B<-v, --verbose>"
+#, no-wrap
 msgid "B<--verbose>"
-msgstr "B<-v, --verbose>"
+msgstr "B<--verbose>"
 
 #. type: Plain text
 #: update-shells.8:30
 msgid "Print the shells that are being added or removed."
-msgstr ""
+msgstr "zeigt die Shells an, die hinzugefügt oder entfernt werden."
 
 #. type: SH
 #: update-shells.8:30
 #, no-wrap
 msgid "FILES"
-msgstr ""
+msgstr "DATEIEN"
 
 #. type: Plain text
 #: update-shells.8:34
 msgid ""
 "I</etc/shells> I</var/lib/shells.state> I</usr/share/debianutils/shells.d>"
 msgstr ""
+"I</etc/shells> I</var/lib/shells.state> I</usr/share/debianutils/shells.d>"
 
 #. type: TH
 #: which.1:2
@@ -1171,10 +1155,9 @@ msgstr "WHICH"
 
 #. type: TH
 #: which.1:2
-#, fuzzy, no-wrap
-#| msgid "29 Jun 2016"
+#, no-wrap
 msgid "9 Jul 2021"
-msgstr "29. Jun. 2016"
+msgstr "9. Juli 2021"
 
 #. type: Plain text
 #: which.1:5
@@ -1255,10 +1238,9 @@ msgstr "falls eine ungültige Option angegeben wurde"
 
 #. type: SH
 #: which.1:30
-#, fuzzy, no-wrap
-#| msgid "DESCRIPTION"
+#, no-wrap
 msgid "DEPRECATION"
-msgstr "BESCHREIBUNG"
+msgstr "MISSBILLIGUNG"
 
 #. type: Plain text
 #: which.1:37
@@ -1267,6 +1249,9 @@ msgid ""
 "longer useful for maintainer scripts and thus will be removed from "
 "debianutils."
 msgstr ""
+"Da B<type> und B<command -v> durch POSIX verlangt werden, ist dieses "
+"Hilfswerkzeug für Betreuerskripte nicht mehr nützlich und wird daher aus "
+"Debianutils entfernt."
 
 #, no-wrap
 #~ msgid "12 May 2011"

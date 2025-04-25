@@ -92,7 +92,7 @@ void version()
 
 void usage()
 {
-  fprintf(stderr, "Usage: run-parts [OPTION]... DIRECTORY\n"
+  printf("Usage: run-parts [OPTION]... DIRECTORY [DIRECTORY ...]\n"
 	  "      --test          print script names which would run, but don't run them.\n"
 	  "      --list          print names of all valid files (can not be used with\n"
 	  "                      --test)\n"
@@ -119,7 +119,7 @@ void usage()
  */
 void set_umask()
 {
-  int mask, result;
+  unsigned int mask, result;
 
   result = sscanf(optarg, "%o", &mask);
   if ((result != 1) || (mask > 07777) || (mask < 0)) {
@@ -361,7 +361,7 @@ void run_part(char *progname)
 
   if (WIFEXITED(result) && WEXITSTATUS(result)) {
     error("%s exited with return code %d", progname, WEXITSTATUS(result));
-    exitstatus = 1;
+    exitstatus = WEXITSTATUS(result);
   }
   else if (WIFSIGNALED(result)) {
     error("%s exited because of uncaught signal %d", progname,
@@ -414,7 +414,7 @@ static int open_tmpfile_rw(void)
 }
 #else
 static char tmpfile_path[] = "/tmp/run-parts.stdin.XXXXXX";
-static int cleanup_tmpfile(void)
+static void cleanup_tmpfile(void)
 {
 	unlink(tmpfile_path);
 }
@@ -468,31 +468,131 @@ static int copy_stdin(void)
   return fd;
 }
 
+static int qsort_strcoll(const void *p1, const void *p2) {
+  /* The actual arguments to this function are "pointers to
+     pointers to char", but strcoll(3) arguments are "pointers
+     to char", hence the following cast plus dereference. */
+  return strcoll(*(const char **)p1, *(const char **)p2);
+}
+
+static int remove_dupes(char **list, int len) {
+	if (len == 0) {
+		return 0;
+	}
+	int j = 1;
+	for (int i = 1; i < len; i++) {
+		// compare each element with the one before
+		if (strcmp(list[j-1], list[i]) == 0) {
+			// found duplicate, free memory
+			free(list[i]);
+			continue;
+		}
+		// not a duplicate
+		list[j] = list[i];
+		j++;
+	}
+	return j;
+}
+
 /* Find the parts to run & call run_part() */
-void run_parts(char *dirname)
+void run_parts(char **dirnames)
 {
-  struct dirent **namelist;
-  char *filename;
-  size_t filename_length, dirname_length;
-  int entries, i, result;
   struct stat st;
 
-  /* dirname + "/" */
-  dirname_length = strlen(dirname) + 1;
-  /* dirname + "/" + ".." + "\0" (This will save one realloc.) */
-  filename_length = dirname_length + 2 + 1;
-  if (!(filename = malloc(filename_length))) {
-    error("failed to allocate memory for path: %s", strerror(errno));
+  /* 1st step: gather a list of all files in the given directories */
+
+  char **basenames = NULL;
+  int num_basenames = 0;
+  for (int i = 0; dirnames[i] != NULL; i++) {
+    DIR *dirfd = opendir(dirnames[i]);
+    if (!dirfd) {
+      printf("run-parts: Skipping \"%s\"; failed to opendir: %s\n", dirnames[i], strerror(errno));
+      continue;
+    }
+    struct dirent *dp;
+    while ((dp = readdir(dirfd)) != NULL) {
+      if (!strcmp(dp->d_name, ".") || !strcmp(dp->d_name, "..")) {
+        continue;
+      }
+      if (!valid_name(dp)) {
+        continue;
+      }
+      num_basenames++;
+      if (!(basenames = realloc(basenames, num_basenames * sizeof(char *)))) {
+        error("failed to reallocate memory for basenames: %s", strerror(errno));
+        exit(1);
+      }
+      basenames[num_basenames - 1] = strdup(dp->d_name);
+    }
+  }
+
+  if (num_basenames == 0) {
+    // nothing to do
+    return;
+  }
+
+  /* 2nd step: sort that list with alphasort */
+
+  qsort(basenames, num_basenames, sizeof(char *), qsort_strcoll);
+
+  /* 3rd step: make the sorted list only contain unique elements */
+
+  num_basenames = remove_dupes(basenames, num_basenames);
+  if (!(basenames = realloc(basenames, num_basenames * sizeof(char *)))) {
+    error("failed to reallocate memory for basenames: %s", strerror(errno));
     exit(1);
   }
-  strcpy(filename, dirname);
-  strcat(filename, "/");
+  if (debug_mode) {
+    fprintf(stderr, "list of unique basenames:\n");
+    for (int i = 0; i < num_basenames; i++) {
+      fprintf(stderr, " - %s\n", basenames[i]);
+    }
+  }
 
-  /* scandir() isn't POSIX, but it makes things easy. */
-  entries = scandir(dirname, &namelist, valid_name, alphasort);
-  if (entries < 0) {
-    error("failed to open directory %s: %s", dirname, strerror(errno));
-    exit(1);
+  /* 4th step: for each of the basenames, loop over the given directories
+   *           and store the full path of the first directory in which a
+   *           file with that basename was found */
+  char **full_paths = NULL;
+  int num_full_paths = 0;
+  char *tmp_full_path = NULL;
+  int max_full_path_length = 0;
+  for (int i = 0; i < num_basenames; i++) {
+    // Try to find the filename in each of the given directories, first match
+    // wins.
+    size_t basename_length = strlen(basenames[i]);
+    for (int j = 0; dirnames[j] != NULL; j++) {
+      size_t dirname_length = strlen(dirnames[j]);
+      // check if we need to increase the buffer for the temporary full path
+      if (max_full_path_length < basename_length + dirname_length + 2) {
+        max_full_path_length = basename_length + dirname_length + 2;
+        if (!(tmp_full_path = realloc(tmp_full_path, max_full_path_length))) {
+          error("failed to reallocate memory for path: %s", strerror(errno));
+          exit(1);
+        }
+      }
+      strcpy(tmp_full_path, dirnames[j]);
+      strcpy(tmp_full_path + dirname_length, "/");
+      strcpy(tmp_full_path + dirname_length + 1, basenames[i]);
+      if (debug_mode)
+        fprintf(stderr, "checking %s... ", tmp_full_path);
+      int result = stat(tmp_full_path, &st);
+      if (result < 0) {
+        if (debug_mode)
+          fprintf(stderr, "not found\n");
+        // not found in this directory, keep searching
+        continue;
+      }
+      // this path exists, so do not search further directories for matches
+      num_full_paths++;
+      if (!(full_paths = realloc(full_paths, num_full_paths * sizeof(char *)))) {
+        error("failed to reallocate memory for full paths: %s", strerror(errno));
+        exit(1);
+      }
+      full_paths[num_full_paths - 1] = strdup(tmp_full_path);
+      if (debug_mode)
+        fprintf(stderr, "found\n");
+      break;
+    }
   }
 
   if (stdin_mode) {
@@ -503,22 +603,13 @@ void run_parts(char *dirname)
     }
   }
 
-  for (i = reverse_mode ? (entries - 1) : 0;
-       reverse_mode ? (i >= 0) : (i < entries); reverse_mode ? i-- : i++) {
-    if (filename_length < dirname_length + strlen(namelist[i]->d_name) + 1) {
-      filename_length = dirname_length + strlen(namelist[i]->d_name) + 1;
-      if (!(filename = realloc(filename, filename_length))) {
-	error("failed to reallocate memory for path: %s", strerror(errno));
-	exit(1);
-      }
-    }
-    strcpy(filename + dirname_length, namelist[i]->d_name);
-
-    strcpy(filename, dirname);
-    strcat(filename, "/");
-    strcat(filename, namelist[i]->d_name);
-
-    result = stat(filename, &st);
+  /* 5th step: process the list of full paths */
+  for (int i = reverse_mode ? (num_full_paths - 1) : 0;
+       reverse_mode ? (i >= 0) : (i < num_full_paths); reverse_mode ? i-- : i++) {
+    char *filename = full_paths[i];
+    if (debug_mode)
+      fprintf(stderr, "processing: %s\n", filename);
+    int result = stat(filename, &st);
     if (result < 0) {
       error("failed to stat component %s: %s", filename, strerror(errno));
       if (exit_on_error_mode) {
@@ -574,10 +665,22 @@ void run_parts(char *dirname)
       }
     }
 
-    free(namelist[i]);
   }
-  free(namelist);
-  free(filename);
+
+  if (full_paths != NULL) {
+    for (int i = 0; i < num_full_paths; i++) {
+      free(full_paths[i]);
+    }
+    free(full_paths);
+  }
+
+  if (basenames != NULL) {
+    for (int i = 0; i < num_basenames; i++) {
+      free(basenames[i]);
+    }
+    free(basenames);
+  }
+
 }
 
 /* Process options */
@@ -644,25 +747,27 @@ int main(int argc, char *argv[])
   }
 
   /* We require exactly one argument: the directory name */
-  if (optind != (argc - 1)) {
+  if (optind == argc) {
     error("missing operand");
     fprintf(stderr, "Try `run-parts --help' for more information.\n");
     exit(1);
-  } else if (list_mode && test_mode) {
+  }
+
+  if (list_mode && test_mode) {
     error("--list and --test can not be used together");
     fprintf(stderr, "Try `run-parts --help' for more information.\n");
     exit(1);
-  } else {
-    catch_signals();
-    regex_compile_pattern();
-    run_parts(argv[optind]);
-    regex_clean();
-
-    free(args);
-    free(custom_ere);
-
-    return exitstatus;
   }
+
+  catch_signals();
+  regex_compile_pattern();
+  run_parts(argv+optind);
+  regex_clean();
+
+  free(args);
+  free(custom_ere);
+
+  return exitstatus;
 }
 
 /*
@@ -694,7 +799,7 @@ regex_compile_pattern (void)
                     REG_EXTENDED | REG_NOSUB)) != 0)
             pt_regex = &excsre;
 
-        else if ( (err = regcomp(&tradre, "^[a-z0-9][a-z0-9-]*$", REG_NOSUB))
+        else if ( (err = regcomp(&tradre, "^[a-z0-9][a-z0-9_-]*$", REG_NOSUB))
                     != 0)
             pt_regex = &tradre;
 

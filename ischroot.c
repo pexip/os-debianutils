@@ -23,7 +23,7 @@
 void version()
 {
   printf( "Debian ischroot, version " PACKAGE_VERSION
-          "Copyright (C) 2011 Aurelien Jarno\n"
+          "\nCopyright (C) 2011 Aurelien Jarno\n"
           "This is free software; see the GNU General Public License version 2\n"
           "or later for copying conditions.  There is NO warranty.\n");
   exit(0);
