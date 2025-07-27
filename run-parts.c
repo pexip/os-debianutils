@@ -506,7 +506,6 @@ void run_parts(char **dirnames)
   for (int i = 0; dirnames[i] != NULL; i++) {
     DIR *dirfd = opendir(dirnames[i]);
     if (!dirfd) {
-      printf("run-parts: Skipping \"%s\"; failed to opendir: %s\n", dirnames[i], strerror(errno));
       continue;
     }
     struct dirent *dp;
