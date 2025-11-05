@@ -1,3 +1,12 @@
+debianutils (5.23.2) unstable; urgency=medium
+
+  * run-parts: Remove warning on non-existing
+    directory with `--list`. It was emitted
+    to `stdout` and even on `stderr` it would
+    cause issues. (Closes: #1109705)
+
+ -- Niels Thykier <niels@thykier.net>  Sun, 27 Jul 2025 11:01:22 +0000
+
 debianutils (5.23.1+pexip25u1) pexip-trixie; urgency=medium
 
   * New upstream release

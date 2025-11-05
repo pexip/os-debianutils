@@ -29,6 +29,12 @@ END
 chmod 755 "${AUTOPKGTEST_TMP}/Run-parts/executable1"
 cp --archive "${AUTOPKGTEST_TMP}/Run-parts/executable1" "${AUTOPKGTEST_TMP}/Run-parts/executable2"
 
+list_missing_path=$("$RUN_PARTS" --list "${AUTOPKGTEST_TMP}/nonexisting" 2>/dev/null)
+if [ -n "${list_missing_path}" ]; then
+    echo "Failure! 'run-parts --list .../nonexisting' should return no matches, got: ${list_missing_path}" >&2
+    exit 1
+fi
+
 list=$("$RUN_PARTS" --list "${AUTOPKGTEST_TMP}/Run-parts")
 echo "$list"
 test=$("$RUN_PARTS" --test "${AUTOPKGTEST_TMP}/Run-parts")
